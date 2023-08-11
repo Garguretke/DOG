@@ -26,7 +26,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-/*Route::get('/player/{series}', [PlayerController::class, 'index'])->name('player');
+Route::get('/player/{series}', [PlayerController::class, 'index'])->name('player');
 Route::get('/player/naruto', [PlayerController::class, 'naruto'])->name('naruto');
 Route::get('/player/shippuuden', [PlayerController::class, 'shippuuden'])->name('shippuuden');
 Route::get('/player/boruto', [PlayerController::class, 'boruto'])->name('boruto');
@@ -41,4 +41,4 @@ Route::get('/generator-qr', [QRCodeController::class, 'index'])->name('qrcode.ge
 Route::post('/generator-qr', [QRCodeController::class, 'generate'])->name('qrcode.generate');
 
 // Sewey
-Route::get('/sewey', [SeweyController::class, 'sewey'])->name('sewey');*/
+Route::get('/sewey', [SeweyController::class, 'sewey'])->name('sewey');
