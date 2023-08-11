@@ -7,22 +7,26 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MercjaDOG') }}</title>
 
-    <!-- Fonts -->
+    <!-- Fonts & Scripts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
     <link href="{{ mix('css/app2.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('fa6/css/all.min.css') }}" rel="stylesheet">
+<!--    <link href="{{ mix('css/liqcalc.css') }}" rel="stylesheet">-->
+<!--    <script src="{{ mix('js/bootstrap.js') }}"></script>-->
+    <script src="{{ mix('select2/dist/js/select2.min.js') }}"></script>
+	<link href="{{ mix('select2/dist/css/select2.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'MercjaDOG') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -30,7 +34,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
 
                     </ul>
 

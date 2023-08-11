@@ -540,7 +540,7 @@ legend + * {
 }
 
 [type=search] {
-  appearance: textfield;
+appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -562,7 +562,7 @@ legend + * {
 
 ::file-selector-button {
   font: inherit;
-  appearance: button;
+appearance: button;
 }
 
 output {
