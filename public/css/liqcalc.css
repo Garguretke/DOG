@@ -1,0 +1,102 @@
+#lqheader {
+  color: white;
+  background: #444;
+  border: solid 1px #A9B8C2;
+  padding: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#policz {
+  cursor: pointer;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+a img {
+  border: none;
+}
+
+form div {
+  overflow: hidden;
+  background: #444;
+  padding: 10px;
+  border: solid 1px #A9B8C2;
+  margin: 10px auto;
+}
+
+form div fieldset {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+form div input.text,
+form div select {
+  display: block;
+  border: solid 1px #999;
+  width: 250px;
+  margin: 3px 0 10px 0;
+}
+
+input[type=button] {
+  font-weight: bold;
+}
+
+fieldset {
+  border: solid 1px #A9B8C2;
+  padding: 10px;
+}
+
+fieldset legend {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#odpowiedz {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+div p strong {
+  text-decoration: underline;
+}
+
+div .ok {
+  color: #ffffff;
+}
+
+div .blad {
+  color: #8B0000;
+}
+
+span.help {
+  color: #ffffff;
+  background: #345EB9;
+  font-weight: bold;
+  padding: 2px 8px;
+  cursor: help;
+}
+
+#liqbutton {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#lqvalues {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}

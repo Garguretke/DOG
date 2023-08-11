@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header bg-dark-subtle">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-dark-subtle">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

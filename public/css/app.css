@@ -1,0 +1,151 @@
+@charset "UTF-8";
+#sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #333;
+  color: white;
+  position: fixed;
+}
+
+.sidebar-header {
+  padding: 20px;
+}
+
+.menu {
+  list-style: none;
+  border-top: 1px solid black;
+  padding: 0;
+}
+
+.menu li {
+  width: 100%;
+}
+
+.menubutton {
+  padding: 15px;
+  display: block;
+  font-size: 16px;
+  border-bottom: 1px solid black;
+  background-color: #333;
+  color: white;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menubutton:hover {
+  background-color: #666;
+  color: white;
+  text-decoration: none;
+}
+
+/* Nowy styl dla rozwijanych opcji */
+.options {
+  display: none;
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-open .options {
+  display: block;
+  list-style: none;
+  padding: 0;
+}
+
+.options li {
+  width: 100%;
+}
+
+.options a {
+  display: block;
+  border-bottom: 1px solid black;
+  padding: 15px;
+  padding-left: 45px;
+  background-color: #444;
+  color: white;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.options a:hover {
+  background-color: #666;
+  color: white;
+  text-decoration: none;
+}
+
+#video {
+  width: calc(100% - 250px); /* Szerokość - szerokość sidebaru */
+  margin-left: 250px;
+}
+
+#contentplayer {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  color: #333;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+}
+
+#linkButton {
+  margin-left: 250px;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-block;
+  background-color: #444;
+  color: white;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#linkButton:hover {
+  background-color: #666;
+  color: white;
+  text-decoration: none;
+}
+
+#epselect {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+}
+
+#nextButton {
+  margin-left: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-block;
+  background-color: #444;
+  color: white;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#previousButton {
+  margin-left: 250px;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  display: inline-block;
+  background-color: #444;
+  color: white;
+  font-family: FreeMono, monospace;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#nextButton:hover {
+  background-color: #666;
+  color: white;
+  text-decoration: none;
+}
+
+#previousButton:hover {
+  background-color: #666;
+  color: white;
+  text-decoration: none;
+}
