@@ -14,7 +14,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="{{ mix('css/app2.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+<!--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">-->
     <link href="{{ asset('fa6/css/all.min.css') }}" rel="stylesheet">
 <!--    <link href="{{ mix('css/liqcalc.css') }}" rel="stylesheet">-->
 <!--    <script src="{{ mix('js/bootstrap.js') }}"></script>-->
@@ -58,7 +58,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdown">
                             @if (Route::has('naruto'))    
-                            <a class="dropdown-item bg-dark-subtle" href="{ route('player', ['series' => 'naruto']) }}">
+                            <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'naruto']) }}">
                                 {{ __('Naruto') }}
                             </a>
                             @endif
@@ -115,7 +115,7 @@
             </div>
         </nav>
 
-        <main class="py-4 bg-dark">
+        <main >
             @yield('content')
         </main>
     </div>

@@ -1,4 +1,4 @@
-#lqheader {
+/*#lqheader {
   color: white;
   background: #444;
   border: solid 1px #A9B8C2;
@@ -76,7 +76,7 @@ div .ok {
 
 div .blad {
   color: #8B0000;
-}
+}*/
 
 span.help {
   color: #ffffff;
@@ -85,7 +85,7 @@ span.help {
   padding: 2px 8px;
   cursor: help;
 }
-
+/*
 #liqbutton {
   display: inline-block;
   background-color: #333;
@@ -100,3 +100,4 @@ span.help {
   padding: 0;
   color: #ffffff;
 }
+*/

@@ -4,6 +4,8 @@
 
 @section('content')
 
+<link href="{{ mix('css/liqcalc.css') }}" rel="stylesheet">
+
 <script type="text/javascript">
 	var cLiquidCalc={
 		helpStr : new Array(
@@ -286,103 +288,114 @@
 				document.getElementById('odpowiedz').innerHTML=odpowiedz;
 		}
 	}
-	</script>
-	<div id="lqheader">
-		<h3>Kalkulator mocy liquidu</h3>
-	<form method="get" action="#">
-		<fieldset>
-			<legend>&nbsp; Co chcesz policzyć? &nbsp;</legend>
-			<select id="policz" name="policz" onchange="cLiquidCalc.changeMode(this.value);">
-				<option value="0">(1) Wynikową moc nikotyny po zmieszaniu dwóch liquidów</option>
-				<option value="1">(2) Wynikową moc nikotyny po zmieszaniu kilku liquidów</option>
-				<option value="2">(3) Ilość płynu potrzebnego do uzyskania zadanej mocy</option>
-				<option value="3">(4) Ilość składników potrzebnych do uzyskania konkretnej ilości liquidu o zadanej mocy</option>
-			</select>
-		</fieldset>
-		<div id="forform0">
-		<fieldset>
-			<legend>&nbsp; Liquid bazowy &nbsp;</legend>
-			<label id="lqvalues" for="iloscs0">Ilość liquidu bazowego [ml]:</label>
-			<input type="text" class="text" name="iloscs0" id="iloscs0" />
-			<label id="lqvalues" for="mocs0">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
-			<input type="text" class="text" name="moc0s" id="mocs0" />
-		</fieldset>
-		<fieldset>
-			<legend>&nbsp; Liquid rozcieńczający &nbsp;</legend>
-			<label id="lqvalues" for="iloscd0">Ilość liquidu rozcieńczającego [ml]:</label>
-			<input type="text" class="text" name="iloscd0" id="iloscd0" />
-			<label id="lqvalues" for="mocd0">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
-			<input type="text" class="text" name="mocd0" id="mocd0" />
-		</fieldset>
-		</div>
-		<div id="forform1">
-		<fieldset>
-			<legend>&nbsp; Liquidy w mieszaninie &nbsp;</legend>
-			<select name="liquidy" id="liquidy" size="5" multiple="multiple">
-			<option value="">---</option>
-			</select>
-			<input id="liqbutton" type="button" value="Usuń wybrane" title="Usuń z mieszaniny" onclick="cLiquidCalc.remSelected();"/>
-			<input id="liqbutton" type="button" value="Usuń wszystkie" title="Usuń wszystkie z mieszaniny" onclick="cLiquidCalc.remAll();"/>
-		</fieldset>
-		<fieldset>
-			<legend>&nbsp; Dodaj liquid do mieszaniny &nbsp;</legend>
-			<label id="lqvalues" for="ilosc">Ilość liquidu [ml]:</label>
-			<input type="text" class="text" name="ilosc" id="ilosc" />
-			<label id="lqvalues" for="moc">Moc liquidu [mg/ml]: <span class="help help0">?</span></label>
-			<input type="text" class="text" name="moc" id="moc" />
-			<input id="liqbutton" type="button" value="Dodaj" title="Dodaj do mieszaniny" onclick="cLiquidCalc.addSel();"/>
-		</fieldset>
-		</div>
-		<div id="forform2">
-		<fieldset>
-			<legend>&nbsp; Liquid bazowy &nbsp;</legend>
-			<label id="lqvalues" for="ilosc1">Ilość liquidu bazowego [ml]:</label>
-			<input type="text" class="text" name="ilosc1" id="ilosc1" />
-			<label id="lqvalues" for="moc1">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
-			<input type="text" class="text" name="moc1" id="moc1" />
-		</fieldset>
-		<fieldset>
-			<legend>&nbsp; Moce &nbsp;</legend>
-			<label id="lqvalues" for="moc2">Moc oczekiwana [mg/ml]:</label>
-			<input type="text" class="text" name="moc2" id="moc2" />
-			<label id="lqvalues" for="moc3">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
-			<input type="text" class="text" name="moc3" id="moc3" />
-			<label id="lqvalues" for="procent">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1">?</span></label>
-			<input type="text" class="text" name="procent" id="procent" />
-			<label id="lqvalues" for="alko1">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2">?</span></label>
-			<input type="text" class="text" name="alko1" id="alko1" />
-			<label id="lqvalues" for="ilosc1liquid">Uwzględnij aromat do liquidu [ml]:</label>
-			<input type="text" class="text" name="ilosc1liquid" id="ilosc1liquid" />
-		</fieldset>
-		</div>
-		<div id="forform3">
-		<fieldset>
-			<legend>&nbsp; Chcę uzyskać &nbsp;</legend>
-			<label id="lqvalues" for="ilosc4">Ilość liquidu [ml]:</label>
-			<input type="text" class="text" name="ilosc4" id="ilosc4" />
-			<label id="lqvalues" for="moc4">Moc liquidu [mg/ml]:</label>
-			<input type="text" class="text" name="moc4" id="moc4" />
-		</fieldset>
-		<fieldset>
-			<legend>&nbsp; Mam dostępne &nbsp;</legend>
-			<label id="lqvalues" for="moc6">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
-			<input type="text" class="text" name="moc6" id="moc6" />
-			<label id="lqvalues" for="moc7">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
-			<input type="text" class="text" name="moc7" id="moc7" />
-			<label id="lqvalues" for="procent2">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1">?</span></label>
-			<input type="text" class="text" name="procent2" id="procent2" />
-			<label id="lqvalues" for="alko2">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2">?</span></label>
-			<input type="text" class="text" name="alko2" id="alko2" />
-			<label id="lqvalues" for="ilosc2liquid">Uwzględnij aromat do liquidu [ml]:</label>
-			<input type="text" class="text" name="ilosc2liquid" id="ilosc2liquid" />
-		</fieldset>
-		</div>
-		<div id="odpowiedz">
-			<p>&nbsp; Tu pojawi się odpowiedź dla zadanego obliczenia...</p>
-		</div>
-	</form>
-	</div>
-	<script type="text/javascript">
-		cLiquidCalc.prepare();
-	</script>
+</script>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-dark-subtle">{{ __('Kalkulator mocy liquidu') }}</div>
+				
+                <div class="card-body bg-dark-subtle">
+					<form method="get" action="#">
+						<fieldset>
+							<legend>Co chcesz policzyć?</legend>
+							<select id="policz" name="policz" onchange="cLiquidCalc.changeMode(this.value);">
+								<option value="0">(1) Wynikową moc nikotyny po zmieszaniu dwóch liquidów</option>
+								<option value="1">(2) Wynikową moc nikotyny po zmieszaniu kilku liquidów</option>
+								<option value="2">(3) Ilość płynu potrzebnego do uzyskania zadanej mocy</option>
+								<option value="3">(4) Ilość składników potrzebnych do uzyskania konkretnej ilości liquidu o zadanej mocy</option>
+							</select>
+						</fieldset>
+						<div id="forform0">
+						<fieldset>
+							<legend>Liquid bazowy</legend>
+							<label class="col-md-6" for="iloscs0">Ilość liquidu bazowego [ml]:</label>
+							<input type="text" class="text" name="iloscs0" id="iloscs0" />
+							<label class="col-md-6" for="mocs0">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
+							<input type="text" class="text" name="moc0s" id="mocs0" />
+						</fieldset>
+						<fieldset>
+							<legend>Liquid rozcieńczający</legend>
+							<label class="col-md-6" for="iloscd0">Ilość liquidu rozcieńczającego [ml]:</label>
+							<input type="text" class="text" name="iloscd0" id="iloscd0" />
+							<label class="col-md-6" for="mocd0">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
+							<input type="text" class="text" name="mocd0" id="mocd0" />
+						</fieldset>
+						</div>
+						<div id="forform1">
+						<fieldset>
+							<legend>Liquidy w mieszaninie</legend>
+							<select name="liquidy" class="form-select" size="5" multiple="multiple">
+							<option value="">---</option>
+							</select>
+							<input class="btn btn-primary btn-dark" type="button" value="Usuń wybrane" title="Usuń z mieszaniny" onclick="cLiquidCalc.remSelected();"/>
+							<input class="btn btn-primary btn-dark" type="button" value="Usuń wszystkie" title="Usuń wszystkie z mieszaniny" onclick="cLiquidCalc.remAll();"/>
+						</fieldset>
+						<fieldset>
+							<legend>Dodaj liquid do mieszaniny</legend>
+							<label class="col-md-6" for="ilosc">Ilość liquidu [ml]:</label>
+							<input type="text" class="text" name="ilosc" id="ilosc" />
+							<label class="col-md-6" for="moc">Moc liquidu [mg/ml]: <span class="help help0">?</span></label>
+							<input type="text" class="text" name="moc" id="moc" />
+							<input class="btn btn-primary btn-dark" type="button" value="Dodaj" title="Dodaj do mieszaniny" onclick="cLiquidCalc.addSel();"/>
+						</fieldset>
+						</div>
+						<div id="forform2">
+						<fieldset>
+							<legend>Liquid bazowy</legend>
+							<label class="col-md-6" for="ilosc1">Ilość liquidu bazowego [ml]:</label>
+							<input type="text" class="text" name="ilosc1" id="ilosc1" />
+							<label class="col-md-6" for="moc1">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
+							<input type="text" class="text" name="moc1" id="moc1" />
+						</fieldset>
+						<fieldset>
+							<legend>Moce</legend>
+							<label class="col-md-6" for="moc2">Moc oczekiwana [mg/ml]:</label>
+							<input type="text" class="text" name="moc2" id="moc2" />
+							<label class="col-md-6" for="moc3">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
+							<input type="text" class="text" name="moc3" id="moc3" />
+							<label class="col-md-6" for="procent">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1">?</span></label>
+							<input type="text" class="text" name="procent" id="procent" />
+							<label class="col-md-6" for="alko1">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2">?</span></label>
+							<input type="text" class="text" name="alko1" id="alko1" />
+							<label class="col-md-6" for="ilosc1liquid">Uwzględnij aromat do liquidu [ml]:</label>
+							<input type="text" class="text" name="ilosc1liquid" id="ilosc1liquid" />
+						</fieldset>
+						</div>
+						<div id="forform3">
+						<fieldset>
+							<legend>Chcę uzyskać</legend>
+							<label class="col-md-6" for="ilosc4">Ilość liquidu [ml]:</label>
+							<input type="text" class="text" name="ilosc4" id="ilosc4" />
+							<label class="col-md-6" for="moc4">Moc liquidu [mg/ml]:</label>
+							<input type="text" class="text" name="moc4" id="moc4" />
+						</fieldset>
+						<fieldset>
+							<legend>Mam dostępne</legend>
+							<label class="col-md-6" for="moc6">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
+							<input type="text" class="text" name="moc6" id="moc6" />
+							<label class="col-md-6" for="moc7">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
+							<input type="text" class="text" name="moc7" id="moc7" />
+							<label class="col-md-6" for="procent2">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1">?</span></label>
+							<input type="text" class="text" name="procent2" id="procent2" />
+							<label class="col-md-6" for="alko2">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2">?</span></label>
+							<input type="text" class="text" name="alko2" id="alko2" />
+							<label class="col-md-6" for="ilosc2liquid">Uwzględnij aromat do liquidu [ml]:</label>
+							<input type="text" class="text" name="ilosc2liquid" id="ilosc2liquid" />
+						</fieldset>
+						</div>
+						<div id="odpowiedz">
+							<p>Tu pojawi się odpowiedź dla zadanego obliczenia...</p>
+						</div>
+					</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	cLiquidCalc.prepare();
+</script>
 @endsection
