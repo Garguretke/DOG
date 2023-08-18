@@ -14,12 +14,12 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="{{ mix('css/app2.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
-<!--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">-->
     <link href="{{ asset('fa6/css/all.min.css') }}" rel="stylesheet">
-<!--    <link href="{{ mix('css/liqcalc.css') }}" rel="stylesheet">-->
-<!--    <script src="{{ mix('js/bootstrap.js') }}"></script>-->
     <script src="{{ mix('select2/dist/js/select2.min.js') }}"></script>
 	<link href="{{ mix('select2/dist/css/select2.min.css') }}" rel="stylesheet">
+<!--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">-->
+<!--    <link href="{{ mix('css/liqcalc.css') }}" rel="stylesheet">-->
+<!--    <script src="{{ mix('js/bootstrap.js') }}"></script>-->
 </head>
 <body>
     <div id="app">
@@ -81,15 +81,27 @@
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
+                                @if (app()->getLocale() === 'en')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                @elseif (app()->getLocale() === 'pl')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a>
+                                    </li>
+                                @endif
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                @if (app()->getLocale() === 'en')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+                                @elseif (app()->getLocale() === 'pl')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Rejestracja') }}</a>
+                                    </li>
+                                @endif
                             @endif
                         @else
                             <li class="nav-item dropdown">
