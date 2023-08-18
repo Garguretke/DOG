@@ -58,9 +58,10 @@
 			width='200px';
 			padding='10px';
 			fontSize='10px';
+			marginLeft='320px';
 			color='#000';
 			background='#FEFF8F';
-			position='absolute';
+			position='fixed';
 			border='solid 1px #999';
 		}
 			document.body.appendChild(helper);
@@ -312,14 +313,14 @@
 							<legend>Liquid bazowy</legend>
 							<label class="col-md-6" for="iloscs0">Ilość liquidu bazowego [ml]:</label>
 							<input type="text" class="text" name="iloscs0" id="iloscs0" />
-							<label class="col-md-6" for="mocs0">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
+							<label class="col-md-6" for="mocs0">Moc liquidu bazowego [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="moc0s" id="mocs0" />
 						</fieldset>
 						<fieldset>
 							<legend>Liquid rozcieńczający</legend>
 							<label class="col-md-6" for="iloscd0">Ilość liquidu rozcieńczającego [ml]:</label>
 							<input type="text" class="text" name="iloscd0" id="iloscd0" />
-							<label class="col-md-6" for="mocd0">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
+							<label class="col-md-6" for="mocd0">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="mocd0" id="mocd0" />
 						</fieldset>
 						</div>
@@ -336,7 +337,7 @@
 							<legend>Dodaj liquid do mieszaniny</legend>
 							<label class="col-md-6" for="ilosc">Ilość liquidu [ml]:</label>
 							<input type="text" class="text" name="ilosc" id="ilosc" />
-							<label class="col-md-6" for="moc">Moc liquidu [mg/ml]: <span class="help help0">?</span></label>
+							<label class="col-md-6" for="moc">Moc liquidu [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="moc" id="moc" />
 							<input class="btn btn-primary btn-dark" type="button" value="Dodaj" title="Dodaj do mieszaniny" onclick="cLiquidCalc.addSel();"/>
 						</fieldset>
@@ -346,18 +347,18 @@
 							<legend>Liquid bazowy</legend>
 							<label class="col-md-6" for="ilosc1">Ilość liquidu bazowego [ml]:</label>
 							<input type="text" class="text" name="ilosc1" id="ilosc1" />
-							<label class="col-md-6" for="moc1">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
+							<label class="col-md-6" for="moc1">Moc liquidu bazowego [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="moc1" id="moc1" />
 						</fieldset>
 						<fieldset>
 							<legend>Moce</legend>
 							<label class="col-md-6" for="moc2">Moc oczekiwana [mg/ml]:</label>
 							<input type="text" class="text" name="moc2" id="moc2" />
-							<label class="col-md-6" for="moc3">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
+							<label class="col-md-6" for="moc3">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="moc3" id="moc3" />
-							<label class="col-md-6" for="procent">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1">?</span></label>
+							<label class="col-md-6" for="procent">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="procent" id="procent" />
-							<label class="col-md-6" for="alko1">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2">?</span></label>
+							<label class="col-md-6" for="alko1">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="alko1" id="alko1" />
 							<label class="col-md-6" for="ilosc1liquid">Uwzględnij aromat do liquidu [ml]:</label>
 							<input type="text" class="text" name="ilosc1liquid" id="ilosc1liquid" />
@@ -373,13 +374,13 @@
 						</fieldset>
 						<fieldset>
 							<legend>Mam dostępne</legend>
-							<label class="col-md-6" for="moc6">Moc liquidu bazowego [mg/ml]: <span class="help help0">?</span></label>
+							<label class="col-md-6" for="moc6">Moc liquidu bazowego [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="moc6" id="moc6" />
-							<label class="col-md-6" for="moc7">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0">?</span></label>
+							<label class="col-md-6" for="moc7">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="moc7" id="moc7" />
-							<label class="col-md-6" for="procent2">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1">?</span></label>
+							<label class="col-md-6" for="procent2">Chcę dodać glicerynę, by liquid wynikowy miał jej [%]: <span class="help help1 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="procent2" id="procent2" />
-							<label class="col-md-6" for="alko2">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2">?</span></label>
+							<label class="col-md-6" for="alko2">Chcę dodać stężony alkohol etylowy <br />(np. spirytus rektyfikowany), by liquid wynikowy miał go [%]: <span class="help help2 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="text" name="alko2" id="alko2" />
 							<label class="col-md-6" for="ilosc2liquid">Uwzględnij aromat do liquidu [ml]:</label>
 							<input type="text" class="text" name="ilosc2liquid" id="ilosc2liquid" />
