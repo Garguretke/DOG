@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-dark-subtle">{{ __('Dashboard') }}</div>
+                @if (app()->getLocale() === 'en')
+                    <div class="card-header bg-dark-subtle">{{ __('Dashboard') }}</div>
+                @elseif (app()->getLocale() === 'pl')
+                    <div class="card-header bg-dark-subtle">{{ __('Strona główna') }}</div>
+                @endif
 
                 <div class="card-body bg-dark-subtle">
                     @if (session('status'))
@@ -13,8 +17,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                        @if (app()->getLocale() === 'en')
+                            {{ __('You are logged in!') }}
+                        @elseif (app()->getLocale() === 'pl')
+                            {{ __('Zostałeś zalogowany!') }}
+                        @endif
                 </div>
             </div>
         </div>

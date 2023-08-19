@@ -8,7 +8,7 @@
                 @if (app()->getLocale() === 'en')
                     <div class="card-header bg-dark-subtle">{{ __('Reset Password') }}</div>
                 @elseif (app()->getLocale() === 'pl')
-                    <div class="card-header bg-dark-subtle">{{ __('Reset Hasła') }}</div>
+                    <div class="card-header bg-dark-subtle">{{ __('Reset hasła') }}</div>
                 @endif
 
                 <div class="card-body bg-dark-subtle">

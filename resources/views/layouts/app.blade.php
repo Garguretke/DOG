@@ -113,7 +113,11 @@
                                     <a class="dropdown-item bg-dark-subtle" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        @if (app()->getLocale() === 'en')
+                                            {{ __('Logout') }}
+                                        @elseif (app()->getLocale() === 'pl')
+                                            {{ __('Wyloguj się') }}
+                                        @endif
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
