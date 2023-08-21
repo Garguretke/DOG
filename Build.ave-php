@@ -1,0 +1,5 @@
+<?php
+	require_once("$this->path/WebBuilder/LaravelProject.php");
+	$tool = new \App\Tools\LaravelProject($this->ave);
+	$tool->build($this->path);
+?>

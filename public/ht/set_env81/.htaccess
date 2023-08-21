@@ -1,0 +1,3 @@
+<FilesMatch "\.php$">
+SetEnv CGI_HANDLER php81
+</FilesMatch>

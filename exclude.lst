@@ -1,0 +1,6 @@
+.git
+bootstrap/cache
+storage/*
+backup/*
+_Archive
+_deleted/*
