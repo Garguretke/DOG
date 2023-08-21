@@ -58,6 +58,7 @@
 				case 21: return "Archiwum ZIP jest niespójne";
 				case 22: return "Nie można usunąć pliku";
 				case 23: return "Wpis został usunięty";
+				case 2137: return "Insert kremówka";
 				default: return "Wystąpił nieznany błąd (".intval($code).")";
 			}
 		}
@@ -165,16 +166,17 @@
 			return pathinfo($this->path['package'],PATHINFO_BASENAME);
 		}
 
-		public function create_folders() : void {
+		public function create_folders() : array {
 			$errors = [];
 			foreach($this->required_folders as $folder){
 				if(!file_exists("$this->location/$folder")){
 					mkdir("$this->location/$folder",0755,true);
 					if(!file_exists("$this->location/$folder")){
-						array_push($errors,$this->location/$folder);
+						array_push($errors,"$this->location/$folder");
 					}
 				}
 			}
+			return $errors;
 		}
 
 		public function extract_htaccess() : array {
@@ -243,7 +245,7 @@
 				file_put_contents($main_htaccess,$htaccess);
 				return ['error' => false, 'message' => 'OK'];
 			} else {
-				return ['error' => true, 'message' => $this->zip_error()];
+				return ['error' => true, 'message' => $this->zip_error(2137)];
 			}
 		}
 
@@ -278,7 +280,7 @@
 				file_put_contents($this->path['backup']['hash'],$hash);
 				return ['error' => false, 'message' => 'OK'];
 			} else {
-				return ['error' => true, 'message' => $this->zip_error()];
+				return ['error' => true, 'message' => $this->zip_error(2137)];
 			}
 		}
 

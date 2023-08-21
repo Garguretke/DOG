@@ -14,7 +14,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="{{ mix('css/app2.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
-    <link href="{{ asset('fa6/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome6/css/all.min.css') }}" rel="stylesheet">
     <script src="{{ mix('select2/dist/js/select2.min.js') }}"></script>
 	<link href="{{ mix('select2/dist/css/select2.min.css') }}" rel="stylesheet">
 <!--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">-->
