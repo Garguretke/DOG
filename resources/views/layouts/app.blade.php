@@ -12,7 +12,7 @@
     <!-- Fonts & Scripts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link href="{{ mix('css/app2.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
     <link href="{{ asset('fontawesome6/css/all.min.css') }}" rel="stylesheet">
     <script src="{{ mix('select2/dist/js/select2.min.js') }}"></script>
