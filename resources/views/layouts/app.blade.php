@@ -15,11 +15,9 @@
     <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
     <link href="{{ asset('fontawesome6/css/all.min.css') }}" rel="stylesheet">
-    <script src="{{ mix('select2/dist/js/select2.min.js') }}"></script>
-	<link href="{{ mix('select2/dist/css/select2.min.css') }}" rel="stylesheet">
-<!--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">-->
-<!--    <link href="{{ mix('css/liqcalc.css') }}" rel="stylesheet">-->
-<!--    <script src="{{ mix('js/bootstrap.js') }}"></script>-->
+    <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
+	<link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
