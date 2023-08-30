@@ -31,7 +31,52 @@
                 </div>        
 
                 <div class="card-body bg-dark-subtle">
-
+                    <form method="POST" action="{{ route('emeal_products_store') }}">
+                    @csrf
+                        <div class="form-group">
+                            <label for="name">Nazwa:</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        </br>
+                        <div class="form-group">
+                            <label for="quantity">Ilość:</label>
+                            <input type="number" name="quantity" class="form-control" required>
+                        </div>
+                        </br>
+                        <button type="submit" class="btn btn-primary btn-dark">Dodaj produkt</button>
+                    </form>
+                    <hr>
+                    <!--<table class="table" data-toggle="table" data-pagination="true">
+                        <thead>
+                            <tr>
+                                <th data-field="name">Nazwa</th>
+                                <th data-field="quantity">Ilość</th>
+                                <th data-field="created_at">Data dodania</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($products as $product)
+                            <tr>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->created_at }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>-->
+                    <table
+                    id="table"
+                    data-toggle="table"
+                    data-url="{{ route('emeal_products_store') }}"
+                    data-pagination="true">
+                    <thead>
+                        <tr>
+                            <th data-field="name">Nazwa</th>
+                            <th data-field="quantity">Ilość</th>
+                            <th data-field="created_at">Data dodania</th>
+                        </tr>
+                    </thead>
+                    </table>
                 </div>
             </div>
         </div>

@@ -12,9 +12,12 @@
     <!-- Fonts & Scripts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
     <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}"></script>
-    <link href="{{ asset('fontawesome6/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome6/css/all.css') }}" rel="stylesheet">
     <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
 	<link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet">
 

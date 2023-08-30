@@ -47,4 +47,5 @@ Route::get('/sewey', [SeweyController::class, 'sewey'])->name('sewey');
 //eMeal
 Route::get('/emeal', [eMealController::class, 'emeal_index'])->name('emeal_index');
 Route::get('/emeal/products', [eMealController::class, 'emeal_products'])->name('emeal_products');
+Route::post('/emeal/products', [eMealController::class, 'emeal_products_store'])->name('emeal_products_store');
 Route::get('/emeal/recipes', [eMealController::class, 'emeal_recipes'])->name('emeal_recipes');
