@@ -19,11 +19,6 @@ class eMealController extends Controller
         return view('emeal.products', compact('products'));
     }
 
-    public function emeal_recipes()
-    {
-        return view('emeal.recipes');
-    }
-
     public function emeal_products_store(Request $request)
     {
         logger()->debug('eMealController->emeal_products_store');
@@ -33,5 +28,10 @@ class eMealController extends Controller
 
 		return BootstrapTableController::response($bsq,$dane);
 	}
+
+    public function emeal_recipes()
+    {
+        return view('emeal.recipes');
+    }
 }
 

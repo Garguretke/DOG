@@ -13,15 +13,14 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script type="module" src="{{ asset('bootstrap-table/bootstrap-table.js') }}"></script>
-    <link href="{{ asset('bootstrap-table/bootstrap-table.scss') }}" rel="stylesheet">
-    <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}"></script>
-    <link href="{{ asset('fontawesome6/css/all.css') }}" rel="stylesheet">
-    <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
-	<link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+    <script src="{{ asset('/source/js/bootstrap.js') }}"></script>
+    <script type="module" src="{{ asset('/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+    <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('/source/js/app.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('source/css/app2.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/dist/bootstrap-table.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome6/css/all.css') }}">
 
 </head>
 <body>

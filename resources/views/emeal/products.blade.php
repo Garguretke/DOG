@@ -46,7 +46,7 @@
                         <button type="submit" class="btn btn-primary btn-dark">Dodaj produkt</button>
                     </form>
                     <hr>
-                    <!--<table class="table" data-toggle="table" data-pagination="true">
+                    {{-- <table class="table" data-toggle="table" data-pagination="true">
                         <thead>
                             <tr>
                                 <th data-field="name">Nazwa</th>
@@ -63,7 +63,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                    </table>-->
+                    </table> --}}
                     <table
                     id="table"
                     data-toggle="table"
