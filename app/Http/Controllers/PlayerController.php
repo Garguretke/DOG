@@ -7,13 +7,13 @@ use App\Http\Controllers\Controller;
 
 class PlayerController extends Controller
 {
-    public function index($series)
+    public function getIndex($series)
     {
         switch ($series) {
-            case 'shippuuden':
+            case 'player.shippuuden':
                 $tableName = 'shippuuden';
                 break;
-            case 'boruto':
+            case 'player.boruto':
                 $tableName = 'boruto';
                 break;
             default:

@@ -102,7 +102,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown dropdown-hover">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -127,7 +127,17 @@
                 </div>
             </div>
         </nav>
-
+        <style>
+            /* Ustawienie dropdown menu jako niewidoczne */
+            .dropdown-menu {
+                display: none;
+            }
+        
+            /* Pokazanie dropdown menu, gdy nad nim jest myszka */
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+        </style>
         <main >
             @yield('content')
         </main>
