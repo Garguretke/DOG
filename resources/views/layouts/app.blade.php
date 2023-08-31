@@ -13,13 +13,15 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
-    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script type="module" src="{{ asset('bootstrap-table/bootstrap-table.js') }}"></script>
+    <link href="{{ asset('bootstrap-table/bootstrap-table.scss') }}" rel="stylesheet">
     <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <link href="{{ asset('fontawesome6/css/all.css') }}" rel="stylesheet">
     <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
 	<link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
 
 </head>
 <body>
@@ -37,49 +39,38 @@
                     <!-- Left Side Of Navbar -->
                     @auth
                     <ul class="navbar-nav me-auto">
-                        @if (Route::has('sewey'))
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('sewey') }}">{{ __('Sewey') }}</a>
                         </li>
-                        @endif
-                        @if (Route::has('liqcalc'))
-                        <li class="navbar-nav me-auto">
-                            <a class="nav-link" href="{{ route('liqcalc') }}">{{ __('Liquid Calc') }}</a>
-                        </li>
-                        @endif
 
-                        @if (Route::has('qrcode.generator'))
+                        <li class="navbar-nav me-auto">
+                            <a class="nav-link" href="{{ route('liqcalc.getIndex') }}">{{ __('Liquid Calc') }}</a>
+                        </li>
+
                         <li class="navbar-nav me-auto">
                             <a class="nav-link" href="{{ route('qrcode.generator') }}">{{ __('Generator QR') }}</a>
                         </li>
-                        @endif
-
-                        @if (Route::has('emeal_index'))
                         <li class="navbar-nav me-auto">
                             <a class="nav-link" href="{{ route('emeal_index') }}">{{ __('eMeal') }}</a>
                         </li>
-                        @endif
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Player') }}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdown">
-                            @if (Route::has('naruto'))    
+                            <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdown"> 
                             <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'naruto']) }}">
                                 {{ __('Naruto') }}
                             </a>
-                            @endif
-                            @if (Route::has('shippuuden'))
+
                             <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'shippuuden']) }}">
                                 {{ __('Shippuuden') }}
                             </a>
-                            @endif
-                            @if (Route::has('boruto'))
+
                             <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'boruto']) }}">
                                 {{ __('Boruto') }}
                             </a>
-                            @endif
                         </li>
                     </ul>
                     @endauth

@@ -14,7 +14,8 @@ class eMealController extends Controller
 
     public function emeal_products()
     {
-        $products = Product::all();
+        logger()->debug('eMealController->emeal_products');
+        $products = Product::selectRaw('*');
         return view('emeal.products', compact('products'));
     }
 
@@ -23,23 +24,9 @@ class eMealController extends Controller
         return view('emeal.recipes');
     }
 
-    //public function emeal_products_store(Request $request)
-    //{
-    //    $request->validate([
-    //        'name' => 'required|string|max:255',
-    //        'quantity' => 'required|numeric',
-    //    ]);
-    
-    //    Product::create([
-    //        'name' => $request->input('name'),
-    //        'quantity' => $request->input('quantity'),
-    //        // Dodaj inne pola w zależności od potrzeb
-    //    ]);
-    
-    //    return redirect()->route('emeal_products')->with('success', 'Product added successfully.');
-    //}
-
-    public function emeal_products_store(Request $request){
+    public function emeal_products_store(Request $request)
+    {
+        logger()->debug('eMealController->emeal_products_store');
 		$dane = $request->all();
 
 		$bsq = Product::selectRaw('*');

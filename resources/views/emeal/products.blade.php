@@ -68,7 +68,7 @@
                     id="table"
                     data-toggle="table"
                     data-url="{{ route('emeal_products_store') }}"
-                    data-pagination="true">
+                    data-pagination="false">
                     <thead>
                         <tr>
                             <th data-field="name">Nazwa</th>

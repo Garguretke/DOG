@@ -4,7 +4,7 @@
 
 @section('content')
 
-<link href="{{ mix('css/liqcalc.css') }}" rel="stylesheet">
+<link href="{{ asset('css/liqcalc.css') }}" rel="stylesheet">
 
 <script type="text/javascript">
 	var cLiquidCalc={
