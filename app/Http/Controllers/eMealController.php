@@ -7,21 +7,21 @@ use App\Models\Product;
 
 class eMealController extends Controller
 {
-    public function emeal_index()
+    public function getIndex()
     {
         return view('emeal.index');
     }
 
-    public function emeal_products()
+    public function eMealProducts()
     {
-        logger()->debug('eMealController->emeal_products');
+        logger()->debug('eMealController->emeal.products');
         $products = Product::selectRaw('*');
         return view('emeal.products', compact('products'));
     }
 
-    public function emeal_products_store(Request $request)
+    public function eMealProductsStore(Request $request)
     {
-        logger()->debug('eMealController->emeal_products_store');
+        logger()->debug('eMealController->emeal.products_store');
 		$dane = $request->all();
 
 		$bsq = Product::selectRaw('*');
@@ -29,7 +29,7 @@ class eMealController extends Controller
 		return BootstrapTableController::response($bsq,$dane);
 	}
 
-    public function emeal_recipes()
+    public function eMealRecipes()
     {
         return view('emeal.recipes');
     }

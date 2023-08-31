@@ -28,36 +28,29 @@ Auth::routes();
 Route::group(['middleware'=>['auth']], function()
 {
     // Kalkulator
-    Route::get('/liqcalc', 'LiqCalcController@getIndex')->name('liqcalc.getIndex');
+    Route::get('/liqcalc', 'LiqCalcController@getIndex')->name('liqcalc.get-index');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     //Player
-    Route::get("/player/{series}", 'PlayerController@index')->name('player');
-    Route::get('/player/naruto', 'PlayerController@naruto')->name('naruto');
-    Route::get('/player/shippuuden', 'PlayerController@shippuuden')->name('shippuuden');
-    Route::get('/player/boruto', 'PlayerController@boruto')->name('boruto');
+    Route::get("/player/{series}", 'PlayerController@getIndex')->name('player.get-index');
+    Route::get('/player/naruto', 'PlayerController@Naruto')->name('player.naruto');
+    Route::get('/player/shippuuden', 'PlayerController@Shippuuden')->name('player.shippuuden');
+    Route::get('/player/boruto', 'PlayerController@Boruto')->name('player.boruto');
 
     // Generator QR - formularz
-    Route::get('/generator-qr', 'QRCodeController@index')->name('qrcode.generator');
+    Route::get('/generator-qr', 'QRCodeController@getIndex')->name('qrcode.get-index');
 
     // Generator QR - przetwarzanie danych
-    Route::post('/generator-qr', 'QRCodeController@generate')->name('qrcode.generate');
+    Route::post('/generator-qr', 'QRCodeController@Generate')->name('qrcode.generate');
 
     // Sewey
-    Route::get('/sewey', 'SeweyController@sewey')->name('sewey');
+    Route::get('/sewey', 'SeweyController@getIndex')->name('sewey.get-index');
 
     //eMeal
-    Route::get('/emeal', 'eMealController@emeal_index')->name('emeal_index');
-    Route::get('/emeal/products', 'eMealController@emeal_products')->name('emeal_products');
-    Route::get('/emeal/products/loadInfo', 'eMealController@emeal_products_store')->name('emeal_products_store');
+    Route::get('/emeal', 'eMealController@getIndex')->name('emeal.get-index');
+    Route::get('/emeal/products', 'eMealController@eMealProducts')->name('emeal.products');
+    Route::get('/emeal/products/loadInfo', 'eMealController@eMealProductsStore')->name('emeal.products-store');
 
-    Route::get('/emeal/recipes', 'eMealController@emeal_recipes')->name('emeal_recipes');
+    Route::get('/emeal/recipes', 'eMealController@eMealRecipes')->name('emeal.recipes');
 });
-
-//
-
-
-
-//// Kalkulator
-

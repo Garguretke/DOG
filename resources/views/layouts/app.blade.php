@@ -16,7 +16,6 @@
     <script type="module" src="{{ asset('/plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script type="module" src="{{ asset('/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
-    {{-- <script src="{{ asset('/source/js/app.js') }}"></script> --}}
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/dist/bootstrap-table.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
@@ -38,35 +37,35 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('sewey') }}">{{ __('Sewey') }}</a>
+                            <a class="nav-link" href="{{ route('sewey.get-index') }}">{{ __('Sewey') }}</a>
                         </li>
 
                         <li class="navbar-nav me-auto">
-                            <a class="nav-link" href="{{ route('liqcalc.getIndex') }}">{{ __('Liquid Calc') }}</a>
+                            <a class="nav-link" href="{{ route('liqcalc.get-index') }}">{{ __('Liquid Calc') }}</a>
                         </li>
 
                         <li class="navbar-nav me-auto">
-                            <a class="nav-link" href="{{ route('qrcode.generator') }}">{{ __('Generator QR') }}</a>
+                            <a class="nav-link" href="{{ route('qrcode.get-index') }}">{{ __('Generator QR') }}</a>
                         </li>
                         <li class="navbar-nav me-auto">
-                            <a class="nav-link" href="{{ route('emeal_index') }}">{{ __('eMeal') }}</a>
+                            <a class="nav-link" href="{{ route('emeal.get-index') }}">{{ __('eMeal') }}</a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdownPlayer" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <li class="nav-item dropdown dropdown-hover">
+                            <a id="navbarDropdownPlayer" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown-hover" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Player') }}
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdownPlayer">
-                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'naruto']) }}">
+                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player.get-index', ['series' => 'player.naruto']) }}">
                                     {{ __('Naruto') }}
                                 </a>
                         
-                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'shippuuden']) }}">
+                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player.get-index', ['series' => 'player.shippuuden']) }}">
                                     {{ __('Shippuuden') }}
                                 </a>
                         
-                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'boruto']) }}">
+                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player.get-index', ['series' => 'player.boruto']) }}">
                                     {{ __('Boruto') }}
                                 </a>
                             </div>
@@ -102,8 +101,8 @@
                                 @endif
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown dropdown-hover">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 

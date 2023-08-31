@@ -8,12 +8,12 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QRCodeController extends Controller
 {
-    public function index()
+    public function getIndex()
     {
         return view('generator-qr.index');
     }
 
-public function generate(Request $request)
+public function Generate(Request $request)
     {
         // Definicja niestandardowego komunikatu walidacji
         $customMessages = [
@@ -32,7 +32,7 @@ public function generate(Request $request)
 
         // Jeśli dane zostały poprawnie zwalidowane, generujemy kod QR
         $content = $request->input('content');
-        $qrCode = QrCode::format('png')->size(300)->generate($content);
+        $qrCode = QrCode::format('png')->size(300)->Generate($content);
 
         return view('generator-qr.index', compact('qrCode'));
     }

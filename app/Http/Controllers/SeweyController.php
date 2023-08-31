@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SeweyController extends Controller
 {
-    public function sewey()
+    public function getIndex()
     {
         return view('sewey.index');
     }
