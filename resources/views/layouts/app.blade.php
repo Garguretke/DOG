@@ -13,14 +13,14 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('/source/js/bootstrap.js') }}"></script>
+    <script type="module" src="{{ asset('/plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script type="module" src="{{ asset('/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
-    <script src="{{ asset('/source/js/app.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('source/css/app2.css') }}">
+    {{-- <script src="{{ asset('/source/js/app.js') }}"></script> --}}
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/dist/bootstrap-table.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('fontawesome6/css/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome6/css/all.css') }}">
 
 </head>
 <body>
@@ -30,9 +30,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'MercjaDOG') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -55,21 +53,23 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdownPlayer" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Player') }}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdown"> 
-                            <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'naruto']) }}">
-                                {{ __('Naruto') }}
-                            </a>
-
-                            <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'shippuuden']) }}">
-                                {{ __('Shippuuden') }}
-                            </a>
-
-                            <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'boruto']) }}">
-                                {{ __('Boruto') }}
-                            </a>
+                            
+                            <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdownPlayer">
+                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'naruto']) }}">
+                                    {{ __('Naruto') }}
+                                </a>
+                        
+                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'shippuuden']) }}">
+                                    {{ __('Shippuuden') }}
+                                </a>
+                        
+                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player', ['series' => 'boruto']) }}">
+                                    {{ __('Boruto') }}
+                                </a>
+                            </div>
                         </li>
                     </ul>
                     @endauth
