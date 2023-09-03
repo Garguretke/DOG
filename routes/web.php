@@ -30,7 +30,7 @@ Route::group(['middleware'=>['auth']], function()
     // Kalkulator
     Route::get('/liqcalc', 'LiqCalcController@getIndex')->name('liqcalc.get-index');
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', 'HomeController@getIndex')->name('home');
 
     //Player
     Route::get("/player/{series}", 'PlayerController@getIndex')->name('player.get-index');
@@ -53,4 +53,12 @@ Route::group(['middleware'=>['auth']], function()
     Route::get('/emeal/products/loadInfo', 'eMealController@eMealProductsStore')->name('emeal.products-store');
 
     Route::get('/emeal/recipes', 'eMealController@eMealRecipes')->name('emeal.recipes');
+    Route::get('/emeal/recipes', 'eMealController@index')->name('emeal.recipes');
+    Route::get('/emeal/recipes/create', 'eMealController@create')->name('emeal.recipes-create');
+    Route::post('/emeal/recipes', 'eMealController@store')->name('emeal.recipes-store');
+    Route::get('/emeal/recipes/{recipe}', 'eMealController@show')->name('emeal.recipes-show');
+    Route::get('/emeal/recipes/{recipe}/edit', 'eMealController@edit')->name('emeal.recipes-edit');
+    Route::put('/emeal/recipes/{recipe}', 'eMealController@update')->name('emeal.recipes-update');
+    Route::delete('/emeal/recipes/{recipe}', 'eMealController@destroy')->name('emeal.recipes-destroy');
+    Route::post('/emeal/recipes/{recipe}/addProduct', 'eMealController@addProduct')->name('emeal.recipes-addProduct');
 });

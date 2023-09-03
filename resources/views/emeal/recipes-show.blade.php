@@ -31,15 +31,15 @@
                 </div>        
 
                 <div class="card-body bg-dark-subtle">
-                    <h1>Lista Przepisów</h1>
+                    <h1>Przepis: {{ $recipe->name }}</h1>
+                    <p>Opis: {{ $recipe->description }}</p>
+                    <h2>Składniki:</h2>
                     <ul>
-                        @foreach($recipes as $recipe)
-                        <li>
-                            <a href="{{ route('emeal.recipes-show', $recipe->id) }}">{{ $recipe->name }}</a>
-                        </li>
+                        @foreach($recipe->products as $product)
+                        <li>{{ $product->name }} (ilość: {{ $product->pivot->quantity }})</li>
                         @endforeach
                     </ul>
-                    <a href="{{ route('emeal.recipes-create') }}" class="btn btn-primary">Dodaj nowy przepis</a>
+                    <a href="{{ route('emeal.recipes-edit', $recipe->id) }}" class="btn btn-primary">Edytuj Przepis</a>
                 </div>
             </div>
         </div>

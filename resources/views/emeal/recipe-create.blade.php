@@ -31,15 +31,19 @@
                 </div>        
 
                 <div class="card-body bg-dark-subtle">
-                    <h1>Lista Przepisów</h1>
-                    <ul>
-                        @foreach($recipes as $recipe)
-                        <li>
-                            <a href="{{ route('emeal.recipes-show', $recipe->id) }}">{{ $recipe->name }}</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                    <a href="{{ route('emeal.recipes-create') }}" class="btn btn-primary">Dodaj nowy przepis</a>
+                    <h1>Dodaj Nowy Przepis</h1>
+                    <form method="POST" action="{{ route('emeal.recipes-store') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name">Nazwa Przepisu:</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Opis:</label>
+                            <textarea name="description" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Dodaj Przepis</button>
+                    </form>
                 </div>
             </div>
         </div>

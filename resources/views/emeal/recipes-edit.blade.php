@@ -31,15 +31,31 @@
                 </div>        
 
                 <div class="card-body bg-dark-subtle">
-                    <h1>Lista Przepisów</h1>
-                    <ul>
-                        @foreach($recipes as $recipe)
-                        <li>
-                            <a href="{{ route('emeal.recipes-show', $recipe->id) }}">{{ $recipe->name }}</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                    <a href="{{ route('emeal.recipes-create') }}" class="btn btn-primary">Dodaj nowy przepis</a>
+                    <h1>{{ __('Edit Recipe') }}: {{ $recipe->name }}</h1>
+                    <form method="POST" action="{{ route('emeal.recipes-update', $recipe->id) }}">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="name">{{ __('Nazwa Przepisu') }}:</label>
+                            <input type="text" name="name" class="form-control" value="{{ $recipe->name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">{{ __('Opis') }}:</label>
+                            <textarea name="description" class="form-control">{{ $recipe->description }}</textarea>
+                        </div>
+
+                        <!-- Dodawanie produktów do przepisu -->
+                        <div class="form-group">
+                            <label for="products">{{ __('Produkty') }}:</label>
+                            <select name="products[]" class="form-control" multiple>
+                                @foreach ($products as $product)
+                                <option value="{{ $product->id }}" @if ($recipe->products->contains($product->id)) selected @endif>{{ $product->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">{{ __('Zaktualizuj Przepis') }}</button>
+                    </form>
                 </div>
             </div>
         </div>
