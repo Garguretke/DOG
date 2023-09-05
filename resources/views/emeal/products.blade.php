@@ -51,7 +51,7 @@
                     data-pagination="false">
                     <thead>
                         <tr>
-                            <th style= "width:30%" data-field="name">Nazwa</th>
+                            <th data-field="name">Nazwa</th>
                             <th data-field="quantity">Ilość</th>
                         </tr>
                     </thead>

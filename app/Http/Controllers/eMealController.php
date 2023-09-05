@@ -77,7 +77,7 @@ class eMealController extends Controller
 
     public function edit(Recipe $recipe)
     {
-        $products = Product::selectRaw('*'); // Przykład pobrania wszystkich produktów z bazy danych
+        $products = Product::all(); // Przykład pobrania wszystkich produktów z bazy danych
         return view('emeal.recipes-edit', compact('recipe', 'products'));
     }    
 
