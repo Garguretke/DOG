@@ -50,6 +50,7 @@ Route::group(['middleware'=>['auth']], function()
     //eMeal
     Route::get('/emeal', 'eMealController@getIndex')->name('emeal.get-index');
     Route::get('/emeal/products', 'eMealController@eMealProducts')->name('emeal.products');
+    Route::post('/emeal/products/add', 'eMealController@eMealAddProducts')->name('emeal.products-add');
     Route::get('/emeal/products/loadInfo', 'eMealController@eMealProductsStore')->name('emeal.products-store');
 
     Route::get('/emeal/recipes', 'eMealController@eMealRecipes')->name('emeal.recipes');

@@ -28,23 +28,26 @@
                             </ul>
                         </div>
                     </nav>
-                </div>        
+                </div>
+                <form id="addProducteMeal" method="POST" action="{{ route('emeal.products-add') }}">
+                    @csrf
+                </form>        
 
                 <div class="card-body bg-dark-subtle">
-                    <form method="POST" action="{{ route('emeal.products-store') }}">
-                    @csrf
+                    {{-- <form method="POST" action="{{ route('emeal.products-add') }}">
+                    @csrf --}}
                         <div class="form-group">
                             <label for="name">Nazwa:</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input form="addProducteMeal" type="text" name="name" class="form-control" required>
                         </div>
                         </br>
                         <div class="form-group">
                             <label for="quantity">Ilość:</label>
-                            <input type="number" name="quantity" class="form-control" required>
+                            <input form="addProducteMeal" type="number" name="quantity" class="form-control" required>
                         </div>
                         </br>
-                        <button type="submit" class="btn btn-primary btn-dark">Dodaj produkt</button>
-                    </form>
+                        <button form="addProducteMeal" type="submit" class="btn btn-primary btn-dark">Dodaj produkt</button>
+                    {{-- </form> --}}
                     <hr>
                     {{-- <table class="table" data-toggle="table" data-pagination="true">
                         <thead>

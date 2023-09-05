@@ -13,6 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('/source/js/csrf.js') }}"></script>
     <script type="module" src="{{ asset('/plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script type="module" src="{{ asset('/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>

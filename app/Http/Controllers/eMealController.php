@@ -16,8 +16,17 @@ class eMealController extends Controller
     public function eMealProducts()
     {
         logger()->debug('eMealController->emeal.products');
-        $products = Product::selectRaw('*');
-        return view('emeal.products', compact('products'));
+        // $products = Product::selectRaw('*');
+        return view('emeal.products');
+    }
+
+    public function eMealAddProducts(Request $request)
+    {
+        $post = new Product();
+        $post->name = $request->name;
+        $post->quantity = $request->quantity;
+        $post->save();
+        return redirect('/emeal/products')->with('status', 'Blog Post Form Data Has Been inserted');
     }
 
     public function eMealProductsStore(Request $request)
