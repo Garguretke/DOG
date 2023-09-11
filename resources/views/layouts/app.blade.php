@@ -19,6 +19,11 @@
     <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/dist/bootstrap-table.min.css') }}">
+    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/resizable/bootstrap-table-resizable.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/cookie/bootstrap-table-cookie.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome6/css/all.css') }}">
 
