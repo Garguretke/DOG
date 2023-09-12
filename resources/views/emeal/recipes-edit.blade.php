@@ -44,15 +44,12 @@
                             <textarea name="description" class="form-control">{{ $recipe->description }}</textarea>
                         </div>
 
-                        <!-- Dodawanie produktów do przepisu -->
-                        <div class="form-group">
-                            <label for="products">{{ __('Produkty') }}:</label>
-                            <select name="products[]" class="form-control" multiple>
-                                @foreach ($products as $product)
-                                <option value="{{ $product->id }}" @if ($recipe->products->contains($product->id)) selected @endif>{{ $product->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <!-- Tutaj przekazujemy dane JavaScript do przycisku modalu -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
+                            Dodaj Produkt do Przepisu
+                        </button>
+
+                        @include('emeal.recipes-modal-add')
 
                         <button type="submit" class="btn btn-primary">{{ __('Zaktualizuj Przepis') }}</button>
                     </form>

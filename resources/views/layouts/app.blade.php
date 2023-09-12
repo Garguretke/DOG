@@ -9,26 +9,25 @@
 
     <title>{{ config('app.name', 'MercjaDOG') }}</title>
 
-    <!-- Fonts & Scripts -->
+    <!-- Stylesheets -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('/source/js/csrf.js') }}"></script>
-    <script type="module" src="{{ asset('/plugins/bootstrap/js/bootstrap.js') }}"></script>
-    <script type="module" src="{{ asset('/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
-    <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito">
+    <link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/dist/bootstrap-table.min.css') }}">
-    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/resizable/bootstrap-table-resizable.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/cookie/bootstrap-table-cookie.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome6/css/all.css') }}">
 
 </head>
 <body>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('/plugins/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+    <script src="{{ asset('/source/js/csrf.js') }}"></script>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">

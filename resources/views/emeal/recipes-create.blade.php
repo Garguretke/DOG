@@ -42,6 +42,14 @@
                             <label for="description">Opis:</label>
                             <textarea name="description" class="form-control"></textarea>
                         </div>
+
+                        <!-- Tutaj przekazujemy dane JavaScript do przycisku modalu -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
+                            Dodaj Produkt do Przepisu
+                        </button>
+
+                        @include('emeal.recipes-modal-add')
+
                         <button type="submit" class="btn btn-primary">Dodaj Przepis</button>
                     </form>
                 </div>

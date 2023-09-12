@@ -50,9 +50,11 @@ class eMealController extends Controller
         return view('emeal.recipes', compact('recipes'));
     }
 
-    public function create()
+    public function create(Recipe $recipe)
     {
-        return view('emeal.recipe-create');
+        $recipe = new Recipe(); // Tworzenie nowej instancji przepisu
+        $products = Product::all();
+        return view('emeal.recipes-create', compact('recipe', 'products'));
     }
 
     public function store(Request $request)
@@ -105,16 +107,19 @@ class eMealController extends Controller
     public function addProduct(Request $request, Recipe $recipe)
     {
         $request->validate([
-            'product_id' => 'required|exists:products,id',
+            'product' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
+            'recipe_id' => 'required|exists:recipes,id',
         ]);
-
-        $product = Product::find($request->input('product_id'));
+    
+        $product = Product::find($request->input('product'));
         $quantity = $request->input('quantity');
-
-        $recipe->addProduct($product, $quantity);
-
-        return redirect()->route('emeal.recipes-show', $recipe->id)->with('success', 'Product added to recipe successfully.');
+        $recipe = Recipe::find($request->input('recipe_id'));
+    
+        // Użyj relacji, aby dodać produkt do przepisu w tabeli product_recipe
+        $recipe->products()->attach($product, ['quantity' => $quantity]);
+    
+        return redirect()->route('emeal.recipes-edit', $recipe->id)->with('success', 'Product added to recipe successfully.');
     }
 
 }
