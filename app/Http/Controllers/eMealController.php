@@ -20,13 +20,13 @@ class eMealController extends Controller
         return view('emeal.products');
     }
 
-    public function eMealAddProducts(Request $request)
+    public function eMealAddProducts(Request $request, $recipe)
     {
         $post = new Product();
         $post->name = $request->name;
         $post->quantity = $request->quantity;
         $post->save();
-        return redirect('/emeal/products')->with('status', 'Blog Post Form Data Has Been inserted');
+        return redirect('/emeal/products');
     }
 
     public function eMealProductsStore(Request $request)
@@ -104,22 +104,21 @@ class eMealController extends Controller
         return redirect()->route('emeal.recipes')->with('success', 'Recipe deleted successfully.');
     }
 
-    public function addProduct(Request $request, Recipe $recipe)
+    public function addProductsToRecipe(Request $request, $recipeId)
     {
-        $request->validate([
-            'product' => 'required|exists:products,id',
-            'quantity' => 'required|integer|min:1',
-            'recipe_id' => 'required|exists:recipes,id',
-        ]);
-    
-        $product = Product::find($request->input('product'));
+        // Pobieramy dane z formularza
+        $productId = $request->input('product');
         $quantity = $request->input('quantity');
-        $recipe = Recipe::find($request->input('recipe_id'));
-    
-        // Użyj relacji, aby dodać produkt do przepisu w tabeli product_recipe
-        $recipe->products()->attach($product, ['quantity' => $quantity]);
-    
-        return redirect()->route('emeal.recipes-edit', $recipe->id)->with('success', 'Product added to recipe successfully.');
+        
+        // Tworzymy nowy rekord w tabeli 'product_recipe'
+        $productRecipe = new ProductRecipe();
+        $productRecipe->recipe_id = $recipeId;
+        $productRecipe->product_id = $productId;
+        $productRecipe->quantity = $quantity;
+        $productRecipe->save();
+        
+        // Przekierowujemy użytkownika z powrotem do edycji przepisu
+        return redirect()->route('emeal.recipes-edit', $recipeId)->with('success', 'Produkt został dodany do przepisu.');
     }
 
 }

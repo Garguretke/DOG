@@ -61,7 +61,7 @@ Route::group(['middleware'=>['auth']], function()
     Route::get('/emeal/recipes/{recipe}/edit', 'eMealController@edit')->name('emeal.recipes-edit');
     Route::put('/emeal/recipes/{recipe}', 'eMealController@update')->name('emeal.recipes-update');
     Route::delete('/emeal/recipes/{recipe}', 'eMealController@destroy')->name('emeal.recipes-destroy');
-    Route::post('/emeal/recipes/{recipe}/addProduct', 'eMealController@addProduct')->name('emeal.recipes-addProduct');
+    Route::post('/emeal/recipes/{recipe}/addProduct', 'eMealController@addProductsToRecipe')->name('emeal.recipes-addProduct');
     Route::post('/emeal/recipes/{recipe}/update-product', 'eMealController@updateProduct')->name('emeal.recipes-update-product');
 
 });
