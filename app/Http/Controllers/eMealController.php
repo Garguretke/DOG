@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Recipe;
+use App\Models\ProductRecipe;
 
 class eMealController extends Controller
 {
@@ -20,7 +21,7 @@ class eMealController extends Controller
         return view('emeal.products');
     }
 
-    public function eMealAddProducts(Request $request, $recipe)
+    public function eMealAddProducts(Request $request)
     {
         $post = new Product();
         $post->name = $request->name;
@@ -107,16 +108,16 @@ class eMealController extends Controller
     public function addProductsToRecipe(Request $request, $recipeId)
     {
         // Pobieramy dane z formularza
-        $productId = $request->input('product');
+        $productId = $request->input('product_id');
         $quantity = $request->input('quantity');
-        
+
         // Tworzymy nowy rekord w tabeli 'product_recipe'
         $productRecipe = new ProductRecipe();
         $productRecipe->recipe_id = $recipeId;
         $productRecipe->product_id = $productId;
         $productRecipe->quantity = $quantity;
         $productRecipe->save();
-        
+
         // Przekierowujemy użytkownika z powrotem do edycji przepisu
         return redirect()->route('emeal.recipes-edit', $recipeId)->with('success', 'Produkt został dodany do przepisu.');
     }

@@ -49,10 +49,11 @@
                             Dodaj Produkt do Przepisu
                         </button>
 
-                        @include('emeal.recipes-modal-add')
+                        
 
                         <button type="submit" class="btn btn-primary">{{ __('Zaktualizuj Przepis') }}</button>
                     </form>
+                    @include('emeal.recipes-modal-add')
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@
         <input type="number" name="quantity" class="form-control" required>
       </div>
 
-        <button type="submit" class="btn btn-primary btn-dark">Dodaj produkt</button>
+        <input type="submit" form="addProduct-Recipe-eMeal" class="btn btn-primary btn-dark" value= "Dodaj produkt">
         </form>
       </div>
       <div class="modal-footer">
