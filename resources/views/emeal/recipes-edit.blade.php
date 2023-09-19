@@ -44,6 +44,19 @@
                             <textarea name="description" class="form-control">{{ $recipe->description }}</textarea>
                         </div>
 
+                        <table
+                        id="table"
+                        data-toggle="table"
+                        data-url="{{ route('emeal.products-recipe-store') }}"
+                        data-pagination="false">
+                        <thead>
+                            <tr>
+                                <th data-field="product_id">Nazwa</th>
+                                <th data-field="quantity">Ilość</th>
+                            </tr>
+                        </thead>
+                        </table>
+
                         <!-- Tutaj przekazujemy dane JavaScript do przycisku modalu -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
                             Dodaj Produkt do Przepisu

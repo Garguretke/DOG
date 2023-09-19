@@ -122,4 +122,13 @@ class eMealController extends Controller
         return redirect()->route('emeal.recipes-edit', $recipeId)->with('success', 'Produkt został dodany do przepisu.');
     }
 
+    public function eMealProductsRecipeStore(Request $request)
+    {
+		$dane = $request->all();
+
+		$bsq = ProductRecipe::selectRaw('*');
+
+		return BootstrapTableController::response($bsq,$dane);
+	}
+
 }

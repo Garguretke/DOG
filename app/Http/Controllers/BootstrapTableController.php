@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class BootstrapTableController extends Controller
 {
-    public static function response(Builder $query, array &$data) : JsonResponse 
+    public static function response(Builder $query, array $data) : JsonResponse 
     {
         logger()->debug('BootstrapTableController->response');
 

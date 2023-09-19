@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -27,7 +26,7 @@
         <input type="number" name="quantity" class="form-control" required>
       </div>
 
-        <input type="submit" form="addProduct-Recipe-eMeal" class="btn btn-primary btn-dark" value= "Dodaj produkt">
+        <input type="submit" form="addProduct-Recipe-eMeal" class="btn btn-primary btn-dark" value= "Dodaj produkt"></input>
         </form>
       </div>
       <div class="modal-footer">
