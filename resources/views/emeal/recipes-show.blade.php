@@ -39,7 +39,7 @@
                         <li>{{ $product->name }} (ilość: {{ $product->pivot->quantity }})</li>
                         @endforeach
                     </ul>
-                    <a href="{{ route('emeal.recipes-edit', $recipe->id) }}" class="btn btn-primary">Edytuj Przepis</a>
+                    <a href="{{ route('emeal.recipes-edit', $recipe->id) }}" class="btn btn-primary btn-dark">Edytuj Przepis</a>
                 </div>
             </div>
         </div>

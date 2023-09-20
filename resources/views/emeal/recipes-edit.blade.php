@@ -31,7 +31,7 @@
                 </div>        
 
                 <div class="card-body bg-dark-subtle">
-                    <h1>{{ __('Edit Recipe') }}: {{ $recipe->name }}</h1>
+                    <h3>{{ __('Edit Recipe') }}: {{ $recipe->name }}</h3>
                     <form method="POST" action="{{ route('emeal.recipes-update', $recipe->id) }}">
                         @csrf
                         @method('PUT')
@@ -58,13 +58,13 @@
                         </table>
 
                         <!-- Tutaj przekazujemy dane JavaScript do przycisku modalu -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
+                        <button type="button" class="btn btn-primary btn-dark" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
                             Dodaj Produkt do Przepisu
                         </button>
 
                         
 
-                        <button type="submit" class="btn btn-primary">{{ __('Zaktualizuj Przepis') }}</button>
+                        <button type="submit" class="btn btn-primary btn-dark">{{ __('Zaktualizuj Przepis') }}</button>
                     </form>
                     @include('emeal.recipes-modal-add')
                 </div>

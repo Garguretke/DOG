@@ -44,13 +44,13 @@
                         </div>
 
                         <!-- Tutaj przekazujemy dane JavaScript do przycisku modalu -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
+                        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
                             Dodaj Produkt do Przepisu
-                        </button>
+                        </button> --}}
 
-                        @include('emeal.recipes-modal-add')
+                        {{-- @include('emeal.recipes-modal-add') --}}
 
-                        <button type="submit" class="btn btn-primary">Dodaj Przepis</button>
+                        <button type="submit" class="btn btn-primary btn-dark">Dodaj Przepis</button>
                     </form>
                 </div>
             </div>

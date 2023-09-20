@@ -34,12 +34,12 @@
                     <h1>Lista Przepisów</h1>
                     <ul>
                         @foreach($recipes as $recipe)
-                        <li>
-                            <a href="{{ route('emeal.recipes-show', $recipe->id) }}">{{ $recipe->name }}</a>
-                        </li>
+                        <div class="list-group">
+                            <a class="col-6 list-group-item list-group-item-action list-group-item-dark" href="{{ route('emeal.recipes-show', $recipe->id) }}">{{ $recipe->name }}</a>
+                        </div>
                         @endforeach
                     </ul>
-                    <a href="{{ route('emeal.recipes-create') }}" class="btn btn-primary">Dodaj nowy przepis</a>
+                    <a href="{{ route('emeal.recipes-create') }}" class="btn btn-primary btn-dark">Dodaj nowy przepis</a>
                 </div>
             </div>
         </div>
