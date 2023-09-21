@@ -142,10 +142,61 @@
             .nav-item:hover .dropdown-menu {
                 display: block;
             }
+
+            .footera {
+                margin: 0 10px;
+                border-radius: 50%;
+                box-sizing: border-box;
+                width: 100px;
+                height: 100px;
+                float: center;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                transition: 0.5s;
+                background: rgba(0, 0, 0, 0);
+                color: var(--color);
+                font-size: 2.5em;
+                --webkit-box-reflect: below 5px linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+            }
+
+            .footera:hover {
+                background: var(--color);
+                color: #fff;
+                box-shadow: 0 0 5px var(--color),
+                    0 0 25px var(--color),
+                    0 0 50px var(--color),
+                    0 0 200px var(--color);
+            }
         </style>
-        <main >
+        <main>
             @yield('content')
         </main>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class="footerbrands">
+        <a class="footera" href="#" style="--color: #0072b1">
+            <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a class="footera" href="#" style="--color: #171515">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        <a class="footera" href="#" style="--color: #5865F2">
+            <i class="fa-brands fa-discord"></i>
+        </a>
+        <a class="footera" href="#" style="--color: #1DA1F2">
+            <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a class="footera" href="#" style="--color: #E1306C">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a class="footera" href="#" style="--color: #4267B2">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
     </div>
 </body>
 </html>
