@@ -111,11 +111,17 @@ class eMealController extends Controller
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity');
 
+        $productRecipe = ProductRecipe::where('recipe_id', $recipeId)->where('product_id', $productId)->first();
         // Tworzymy nowy rekord w tabeli 'product_recipe'
-        $productRecipe = new ProductRecipe();
-        $productRecipe->recipe_id = $recipeId;
-        $productRecipe->product_id = $productId;
-        $productRecipe->quantity = $quantity;
+        if(is_null($productRecipe)){
+            $productRecipe = new ProductRecipe();
+            $productRecipe->recipe_id = $recipeId;
+            $productRecipe->product_id = $productId;
+            $productRecipe->quantity = $quantity;
+        }
+        else {
+            $productRecipe->quantity += $quantity;
+        }
         $productRecipe->save();
 
         // Przekierowujemy użytkownika z powrotem do edycji przepisu
