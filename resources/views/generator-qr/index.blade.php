@@ -11,9 +11,11 @@
                 <div class="card-body bg-dark-subtle">
                     <form action="{{ route('qrcode.generate') }}" method="post">
                         @csrf
-                        <label for="content">Wprowadź tekst:</label>
-                        <input type="text" name="content" id="content" value="{{ old('content') }}">
-                        <button type="submit" class="btn btn-primary btn-dark">Generuj kod QR</button>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Wprowadź tekst:</span>
+                            <input class="form-control" type="text" name="content" id="content" value="{{ old('content') }}">
+                            <button type="submit" class="btn btn-primary btn-sm">Generuj kod QR</button>
+                        </div>
 
                         @error('content')
                             <div class="error">{{ $message }}</div>

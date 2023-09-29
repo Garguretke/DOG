@@ -7,20 +7,19 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-dark-subtle">{{ __('Player') }}</div>
+                <div class="card-header">{{ __('Player') }}</div>
 
-                <div class="card-body bg-dark-subtle">
-					<div id="episodeButtons">
-						<button id="previousButton" class="btn btn-primary btn-dark" onclick="loadPreviousEpisode()">Poprzedni odcinek</button>
-						<button id="nextButton" class="btn btn-primary btn-dark" onclick="loadNextEpisode()">Następny odcinek</button>
-					</div>
-
-					<div id="epselect">
-						<select id="episodeSelect" class="select2" onchange="changeEpisode()">
-						@foreach ($episodes as $episode)
-						<option value="{{ $episode->url }}">{{ $episode->name }}</option>
-						@endforeach
-						</select>
+                <div class="card-body mb-3">
+					<div id="epselect episodeButtons">
+						<div class="mb-3">
+							<button id="previousButton" class="btn btn-primary btn-sm" onclick="loadPreviousEpisode()"><i class="fal fa-backward"></i></button>
+							<select id="episodeSelect" class="select2" onchange="changeEpisode()">
+							@foreach ($episodes as $episode)
+							<option value="{{ $episode->url }}">{{ $episode->name }}</option>
+							@endforeach
+							</select>
+							<button id="nextButton" class="btn btn-primary btn-sm" onclick="loadNextEpisode()"><i class="fal fa-forward"></i></button>
+						</div>
 					</div>
 
 					<div id="video">
@@ -32,7 +31,7 @@
 					</div>
 
 					<div id="linkDiv">
-						<a id="linkButton" class="btn btn-primary btn-dark" href="{{ $episodes[0]->url }}" target="_blank">Przejdź do odcinka</a>
+						<a id="linkButton" class="btn btn-primary btn-sm" href="{{ $episodes[0]->url }}" target="_blank">Przejdź do odcinka</a>
 					</div>
                 </div>
             </div>
@@ -54,6 +53,7 @@
 			updateVideoFrame();
 			updateEpisodeSelect();
 			updateLinkButton();
+			updateSelect2();
 		}
 	}
 

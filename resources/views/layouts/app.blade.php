@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
     <!-- Stylesheets -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito">
-    <link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/dist/bootstrap-table.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome6/css/all.css') }}">
@@ -29,7 +29,7 @@
     <script src="{{ asset('/source/js/csrf.js') }}"></script>
 
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'MercjaDOG') }}
@@ -61,16 +61,16 @@
                                 {{ __('Player') }}
                             </a>
                             
-                            <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdownPlayer">
-                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player.get-index', ['series' => 'player.naruto']) }}">
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPlayer">
+                                <a class="dropdown-item" href="{{ route('player.get-index', ['series' => 'player.naruto']) }}">
                                     {{ __('Naruto') }}
                                 </a>
                         
-                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player.get-index', ['series' => 'player.shippuuden']) }}">
+                                <a class="dropdown-item" href="{{ route('player.get-index', ['series' => 'player.shippuuden']) }}">
                                     {{ __('Shippuuden') }}
                                 </a>
                         
-                                <a class="dropdown-item bg-dark-subtle" href="{{ route('player.get-index', ['series' => 'player.boruto']) }}">
+                                <a class="dropdown-item" href="{{ route('player.get-index', ['series' => 'player.boruto']) }}">
                                     {{ __('Boruto') }}
                                 </a>
                             </div>
@@ -111,8 +111,8 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end bg-dark-subtle" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item bg-dark-subtle" href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         @if (app()->getLocale() === 'en')
@@ -143,7 +143,7 @@
                 display: block;
             }
 
-            .footera {
+            .socialmedia {
                 margin: 0 10px;
                 border-radius: 50%;
                 box-sizing: border-box;
@@ -161,13 +161,13 @@
                 --webkit-box-reflect: below 5px linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
             }
 
-            .footera:hover {
+            .socialmedia:hover {
                 background: var(--color);
                 color: #fff;
                 box-shadow: 0 0 5px var(--color),
                     0 0 25px var(--color),
                     0 0 50px var(--color),
-                    0 0 200px var(--color);
+                    0 0 100px var(--color);
             }
         </style>
         <main>
@@ -178,25 +178,27 @@
     </br>
     </br>
     </br>
-    <div class="footerbrands">
-        <a class="footera" href="#" style="--color: #0072b1">
-            <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a class="footera" href="#" style="--color: #171515">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a class="footera" href="#" style="--color: #5865F2">
-            <i class="fa-brands fa-discord"></i>
-        </a>
-        <a class="footera" href="#" style="--color: #1DA1F2">
-            <i class="fa-brands fa-twitter"></i>
-        </a>
-        <a class="footera" href="#" style="--color: #E1306C">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a class="footera" href="#" style="--color: #4267B2">
-            <i class="fa-brands fa-facebook-f"></i>
-        </a>
-    </div>
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+        <div class="container text-center px-4 px-md-3 text-body-secondary">
+            <a class="socialmedia" href="#" target=”_blank” style="--color: #0072b1">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a class="socialmedia" href="https://github.com/Garguretke" target=”_blank” style="--color: #171515">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a class="socialmedia" href="#" target=”_blank” style="--color: #5865F2">
+                <i class="fa-brands fa-discord"></i>
+            </a>
+            <a class="socialmedia" href="#" target=”_blank” style="--color: #000000">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a class="socialmedia" href="#" target=”_blank” style="--color: #E1306C">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a class="socialmedia" href="#" target=”_blank” style="--color: #4267B2">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
