@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-dark-subtle">
+                <div class="card-header">
                     <nav class="navbar navbar-expand-md navbar-dark-subtle">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto">
@@ -29,7 +29,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="card-body bg-dark-subtle">
+                <div class="card-body mb-3">
                     <div class="form-group">
                         <label for="name">Nazwa:</label>
                         <input form="addProducteMeal" type="text" name="name" class="form-control" required>

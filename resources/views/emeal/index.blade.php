@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-dark-subtle">
+                <div class="card-header ">
                     <nav class="navbar navbar-expand-md navbar-dark-subtle">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto">
@@ -30,7 +30,7 @@
                     </nav>
                 </div>        
 
-                <div class="card-body bg-dark-subtle">
+                <div class="card-body  mb-3">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Launch demo modal

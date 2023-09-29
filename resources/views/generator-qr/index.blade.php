@@ -6,9 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-dark-subtle">{{ __('Generator QR Code') }}</div>
+                <div class="card-header">{{ __('Generator QR Code') }}</div>
 
-                <div class="card-body bg-dark-subtle">
+                <div class="card-body mb-3">
                     <form action="{{ route('qrcode.generate') }}" method="post">
                         @csrf
                         <div class="input-group mb-3">

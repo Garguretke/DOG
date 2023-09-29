@@ -6,12 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 @if (app()->getLocale() === 'en')
-                    <div class="card-header bg-dark-subtle">{{ __('Login') }}</div>
+                    <div class="card-header">{{ __('Login') }}</div>
                 @elseif (app()->getLocale() === 'pl')
-                    <div class="card-header bg-dark-subtle">{{ __('Logowanie') }}</div>
+                    <div class="card-header">{{ __('Logowanie') }}</div>
                 @endif
 
-                <div class="card-body bg-dark-subtle">
+                <div class="card-body mb-3">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

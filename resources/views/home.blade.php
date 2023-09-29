@@ -6,12 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 @if (app()->getLocale() === 'en')
-                    <div class="card-header bg-dark-subtle">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('Dashboard') }}</div>
                 @elseif (app()->getLocale() === 'pl')
-                    <div class="card-header bg-dark-subtle">{{ __('Strona główna') }}</div>
+                    <div class="card-header">{{ __('Strona główna') }}</div>
                 @endif
 
-                <div class="card-body bg-dark-subtle">
+                <div class="card-body mb-3">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

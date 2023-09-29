@@ -12,7 +12,7 @@
                 @endif
 
 
-                <div class="card-body">
+                <div class="card-body mb-3">
                     @if (session('resent'))
                         @if (app()->getLocale() === 'en')
                             <div class="alert alert-success" role="alert">

@@ -295,18 +295,19 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-dark-subtle">{{ __('Kalkulator mocy liquidu') }}</div>
+                <div class="card-header">{{ __('Kalkulator mocy liquidu') }}</div>
 				
-                <div class="card-body bg-dark-subtle">
+                <div class="card-body mb-3">
 					<form method="get" action="#">
 						<h5>Co chcesz policzyć?</h5>
-							<select class="form-select form-select-sm" id="policz" name="policz" onchange="cLiquidCalc.changeMode(this.value);">
+							<select class="form-select form-select-sm mb-3" id="policz" name="policz" onchange="cLiquidCalc.changeMode(this.value);">
 								<option value="0">(1) Wynikową moc nikotyny po zmieszaniu dwóch liquidów</option>
 								<option value="1">(2) Wynikową moc nikotyny po zmieszaniu kilku liquidów</option>
 								<option value="2">(3) Ilość płynu potrzebnego do uzyskania zadanej mocy</option>
 								<option value="3">(4) Ilość składników potrzebnych do uzyskania konkretnej ilości liquidu o zadanej mocy</option>
 							</select>
-						<div id="forform0">
+						<div id="forform0" class="mb-3">
+						<fieldset>
 							<h5>Liquid bazowy</h5>
 							<label class="col-md-6" for="iloscs0">Ilość liquidu bazowego [ml]:</label>
 							<input type="text" class="form-control w-25" name="iloscs0" id="iloscs0" />
@@ -318,8 +319,9 @@
 							<input type="text" class="form-control w-25" name="iloscd0" id="iloscd0" />
 							<label class="col-md-6" for="mocd0">Moc liquidu rozcieńczającego [mg/ml]: <span class="help help0 btn btn-info btn-dark">?</span></label>
 							<input type="text" class="form-control w-25" name="mocd0" id="mocd0" />
+						</fieldset>
 						</div>
-						<div id="forform1">
+						<div id="forform1" class="mb-3">
 						<fieldset>
 							<h5>Liquidy w mieszaninie</h5>
 							<select name="liquidy" id="liquidy" class="form-select w-25" size="5" multiple="multiple">
@@ -337,7 +339,7 @@
 							<input class="btn btn-primary btn-sm" type="button" value="Dodaj" title="Dodaj do mieszaniny" onclick="cLiquidCalc.addSel();"/>
 						</fieldset>
 						</div>
-						<div id="forform2">
+						<div id="forform2" class="mb-3">
 						<fieldset>
 							<h5>Liquid bazowy</h5>
 							<label class="col-md-6" for="ilosc1">Ilość liquidu bazowego [ml]:</label>
@@ -359,7 +361,7 @@
 							<input type="text" class="form-control w-25" name="ilosc1liquid" id="ilosc1liquid" />
 						</fieldset>
 						</div>
-						<div id="forform3">
+						<div id="forform3" class="mb-3">
 						<fieldset>
 							<h5>Chcę uzyskać</h5>
 							<label class="col-md-6" for="ilosc4">Ilość liquidu [ml]:</label>
