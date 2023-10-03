@@ -34,11 +34,11 @@
                     <h1>Dodaj Nowy Przepis</h1>
                     <form method="POST" action="{{ route('emeal.recipes-store') }}">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="name">Nazwa Przepisu:</label>
                             <input type="text" name="name" class="form-control" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="description">Opis:</label>
                             <textarea name="description" class="form-control"></textarea>
                         </div>
@@ -50,7 +50,7 @@
 
                         {{-- @include('emeal.recipes-modal-add') --}}
 
-                        <button type="submit" class="btn btn-primary btn-dark">Dodaj Przepis</button>
+                        <button type="submit" class="btn btn-primary">Dodaj Przepis</button>
                     </form>
                 </div>
             </div>

@@ -40,7 +40,7 @@
                         <input form="addProducteMeal" type="number" name="quantity" class="form-control" required>
                     </div>
                     </br>
-                    <button form="addProducteMeal" type="submit" class="btn btn-primary btn-dark">Dodaj produkt</button>
+                    <button form="addProducteMeal" type="submit" class="btn btn-primary">Dodaj produkt</button>
 
                     <hr>
 

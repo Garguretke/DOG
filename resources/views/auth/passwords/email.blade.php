@@ -6,12 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 @if (app()->getLocale() === 'en')
-                    <div class="card-header bg-dark-subtle">{{ __('Reset Password') }}</div>
+                    <div class="card-header">{{ __('Reset Password') }}</div>
                 @elseif (app()->getLocale() === 'pl')
-                    <div class="card-header bg-dark-subtle">{{ __('Reset hasła') }}</div>
+                    <div class="card-header">{{ __('Reset hasła') }}</div>
                 @endif
 
-                <div class="card-body bg-dark-subtle">
+                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -43,11 +43,11 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 @if (app()->getLocale() === 'en')
-                                    <button type="submit" class="btn btn-primary btn-dark">
+                                    <button type="submit" class="btn btn-primary">
                                         {{ __('Send Password Reset Link') }}
                                     </button>
                                 @elseif (app()->getLocale() === 'pl')
-                                    <button type="submit" class="btn btn-primary btn-dark">
+                                    <button type="submit" class="btn btn-primary">
                                         {{ __('Wyślij link') }}
                                     </button>
                                 @endif

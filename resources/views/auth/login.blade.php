@@ -72,22 +72,22 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 @if (app()->getLocale() === 'en')
-                                    <button type="submit" class="btn btn-primary btn-dark">
+                                    <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}
                                     </button>
                                 @elseif (app()->getLocale() === 'pl')
-                                    <button type="submit" class="btn btn-primary btn-dark">
+                                    <button type="submit" class="btn btn-primary">
                                         {{ __('Zaloguj') }}
                                     </button>
                                 @endif
 
                                 @if (Route::has('password.request'))
                                     @if (app()->getLocale() === 'en')
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-primary" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @elseif (app()->getLocale() === 'pl')
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-primary" href="{{ route('password.request') }}">
                                             {{ __('Zapomniałeś hasła?') }}
                                         </a>
                                     @endif

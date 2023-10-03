@@ -35,16 +35,16 @@
                     <form method="POST" action="{{ route('emeal.recipes-update', $recipe->id) }}">
                         @csrf
                         @method('PUT')
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="name">{{ __('Nazwa Przepisu') }}:</label>
                             <input type="text" name="name" class="form-control" value="{{ $recipe->name }}" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="description">{{ __('Opis') }}:</label>
                             <textarea name="description" class="form-control">{{ $recipe->description }}</textarea>
                         </div>
 
-                        <table
+                        {{-- <table
                         id="table"
                         data-toggle="table"
                         data-url="{{ route('emeal.products-recipe-store') }}"
@@ -55,16 +55,16 @@
                                 <th data-field="quantity">Ilość</th>
                             </tr>
                         </thead>
-                        </table>
+                        </table> --}}
 
-                        <!-- Tutaj przekazujemy dane JavaScript do przycisku modalu -->
-                        <button type="button" class="btn btn-primary btn-dark" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
-                            Dodaj Produkt do Przepisu
-                        </button>
+                            <!-- Tutaj przekazujemy dane JavaScript do przycisku modalu -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" data-recipe="{{ $recipe->id }}">
+                                Dodaj Produkt do Przepisu
+                            </button>
 
-                        
+                            
 
-                        <button type="submit" class="btn btn-primary btn-dark">{{ __('Zaktualizuj Przepis') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Zaktualizuj Przepis') }}</button>
                     </form>
                     @include('emeal.recipes-modal-add')
                 </div>

@@ -29,7 +29,7 @@
                             {{ __('If you did not receive the email') }},
                             <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                                 @csrf
-                                <button type="submit" class="btn btn-link btn-dark p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
                             </form>
                         @elseif (app()->getLocale() === 'pl')
                             {{ __('Zanim kontynuujesz sprawdź swoją skrzynkę, wysłaliśmy do Ciebie link weryfikacyjny.') }}

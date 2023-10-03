@@ -39,7 +39,7 @@
                         </div>
                         @endforeach
                     </ul>
-                    <a href="{{ route('emeal.recipes-create') }}" class="btn btn-primary btn-dark">Dodaj nowy przepis</a>
+                    <a href="{{ route('emeal.recipes-create') }}" class="btn btn-primary">Dodaj nowy przepis</a>
                 </div>
             </div>
         </div>

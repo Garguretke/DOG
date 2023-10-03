@@ -82,14 +82,14 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-xl-10">
+                            <div class="col-md-6 offset-xl-4">
                                 @if (app()->getLocale() === 'en')
-                                    <button type="submit" class="btn btn-primary btn-dark">
+                                    <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
                                 @elseif (app()->getLocale() === 'pl')
-                                    <button type="submit" class="btn btn-primary btn-dark">
-                                        {{ __('Rejestracja') }}
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Zarejestruj') }}
                                     </button>
                                 @endif
                             </div>
