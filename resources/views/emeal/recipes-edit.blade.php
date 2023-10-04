@@ -9,7 +9,7 @@
                     <nav class="navbar navbar-expand-md navbar-dark-subtle">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto">
-                                @if (Route::has('emeal.get-index'))
+                        		@if (Route::has('emeal.get-index'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('emeal.get-index') }}">{{ __('eMeal') }}</a>
                                 </li>
