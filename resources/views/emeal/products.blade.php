@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <nav class="navbar navbar-expand-md navbar-dark-subtle">
@@ -29,17 +29,15 @@
                         </div>
                     </nav>
                 </div>
-                <div class="card-body mb-3">
-                    <div class="form-group">
+                <div class="card-body">
+                    <div class="form-group mb-3">
                         <label for="name">Nazwa:</label>
                         <input form="addProducteMeal" type="text" name="name" class="form-control" required>
                     </div>
-                    </br>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="quantity">Ilość:</label>
                         <input form="addProducteMeal" type="number" name="quantity" class="form-control" required>
                     </div>
-                    </br>
                     <button form="addProducteMeal" type="submit" class="btn btn-primary">Dodaj produkt</button>
 
                     <hr>

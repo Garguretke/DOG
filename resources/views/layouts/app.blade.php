@@ -192,7 +192,7 @@
     </br>
     </br>
     </br>
-    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <footer class="bd-footer py-4 py-md-5 bg-body-tertiary position-relative bottom-0 start-0 end-0">
         <div class="container text-center px-4 px-md-3 text-body-secondary">
             <a class="socialmedia" href="#" target=”_blank” style="--color: #0072b1">
                 <i class="fa-brands fa-linkedin-in"></i>
