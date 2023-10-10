@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Nunito">
     <link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/dist/bootstrap-table.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-table/bootstrap-table.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome6/css/all.css') }}">
 
 </head>
@@ -25,7 +25,7 @@
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+    <script src="{{ asset('/plugins/bootstrap-table/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('/source/js/csrf.js') }}"></script>
 
     <div id="app">
