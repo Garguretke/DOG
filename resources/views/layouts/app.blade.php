@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome6/css/all.css') }}">
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -188,11 +188,7 @@
             @yield('content')
         </main>
     </div>
-    </br>
-    </br>
-    </br>
-    </br>
-    <footer class="bd-footer py-4 py-md-5 bg-body-tertiary position-relative bottom-0 start-0 end-0">
+    <footer class="bd-footer py-4 py-md-5 mt-auto bg-body-tertiary">
         <div class="container text-center px-4 px-md-3 text-body-secondary">
             <a class="socialmedia" href="#" target=”_blank” style="--color: #0072b1">
                 <i class="fa-brands fa-linkedin-in"></i>
