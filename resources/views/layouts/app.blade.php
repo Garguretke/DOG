@@ -42,23 +42,23 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('sewey.get-index') }}">{{ __('Sewey') }}</a>
+                            <a class="nav-link" href="{{ route('sewey.get-index') }}"><i class="fal fa-circle-7 fa-xl"></i></a>
                         </li>
 
                         <li class="navbar-nav me-auto">
-                            <a class="nav-link" href="{{ route('liqcalc.get-index') }}">{{ __('Liquid Calc') }}</a>
+                            <a class="nav-link" href="{{ route('liqcalc.get-index') }}"><i class="fal fa-flask fa-xl"></i></a>
                         </li>
 
                         <li class="navbar-nav me-auto">
-                            <a class="nav-link" href="{{ route('qrcode.get-index') }}">{{ __('Generator QR') }}</a>
+                            <a class="nav-link" href="{{ route('qrcode.get-index') }}"><i class="fal fa-qrcode fa-xl"></i></a>
                         </li>
                         <li class="navbar-nav me-auto">
-                            <a class="nav-link" href="{{ route('emeal.get-index') }}">{{ __('eMeal') }}</a>
+                            <a class="nav-link" href="{{ route('emeal.get-index') }}"><i class="fal fa-burger-soda fa-xl"></i></a>
                         </li>
 
                         <li class="nav-item dropdown dropdown-hover">
                             <a id="navbarDropdownPlayer" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown-hover" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ __('Player') }}
+                                <i class="fal fa-tv-retro fa-xl"></i>
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPlayer">
