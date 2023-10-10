@@ -169,6 +169,20 @@
                     0 0 50px var(--color),
                     0 0 100px var(--color);
             }
+
+			::-webkit-scrollbar {
+				width: 10px;
+				height: 10px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: #888;
+				border-radius: 50px;
+			}
+
+			:::-webkit-scrollbar-track {
+				background: transparent;
+			}
         </style>
         <main>
             @yield('content')

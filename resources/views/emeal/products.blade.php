@@ -52,7 +52,7 @@
                     <thead>
                         <tr>
                             <th data-field="name">Nazwa</th>
-                            <th data-field="quantity">Ilość</th>
+                            {{-- <th data-field="quantity">Ilość</th> --}}
                         </tr>
                     </thead>
                     </table>
