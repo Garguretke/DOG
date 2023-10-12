@@ -45,15 +45,19 @@
                             <a class="nav-link" href="{{ route('sewey.get-index') }}"><i class="fal fa-circle-7 fa-xl"></i></a>
                         </li>
 
-                        <li class="navbar-nav me-auto">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('liqcalc.get-index') }}"><i class="fal fa-flask fa-xl"></i></a>
                         </li>
 
-                        <li class="navbar-nav me-auto">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('qrcode.get-index') }}"><i class="fal fa-qrcode fa-xl"></i></a>
                         </li>
-                        <li class="navbar-nav me-auto">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('emeal.get-index') }}"><i class="fal fa-burger-soda fa-xl"></i></a>
+                        </li>
+						
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('ranking.get-index') }}"><i class="fal fa-ranking-star fa-xl"></i></a>
                         </li>
 
                         <li class="nav-item dropdown dropdown-hover">

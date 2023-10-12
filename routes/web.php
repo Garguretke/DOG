@@ -65,4 +65,7 @@ Route::group(['middleware'=>['auth']], function()
     Route::post('/emeal/recipes/{recipe}/update-product', 'eMealController@updateProduct')->name('emeal.recipes-update-product');
     Route::get('/emeal/recipes/loadInfo', 'eMealController@eMealProductsRecipeStore')->name('emeal.products-recipe-store');
 
+	//Ranking
+	Route::get('/ranking', 'RankingController@getIndex')->name('ranking.get-index');
+
 });
