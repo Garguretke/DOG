@@ -5,31 +5,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <nav class="navbar navbar-expand-md navbar-dark-subtle">
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto">
-                                @if (Route::has('emeal.get-index'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('emeal.get-index') }}">{{ __('eMeal') }}</a>
-                                </li>
-                                @endif
-                                @if (Route::has('emeal.products'))
-                                <li class="navbar-nav me-auto">
-                                    <a class="nav-link" href="{{ route('emeal.products') }}">{{ __('Produkty') }}</a>
-                                </li>
-                                @endif
-
-                                @if (Route::has('emeal.recipes'))
-                                <li class="navbar-nav me-auto">
-                                    <a class="nav-link" href="{{ route('emeal.recipes') }}">{{ __('Przepisy') }}</a>
-                                </li>
-                                @endif
-                            </ul>
-                        </div>
-                    </nav>
+					<select id="rankingSelect" class="form-select form-select-sm" aria-label="select-ranking-menu" onchange="changeRanking()">
+						@foreach ($rankings as $ranking)
+						<option value="{{ $ranking->id }}">{{ $ranking->name }}</option>
+						@endforeach
+					</select>
                 </div>        
 
                 <div class="card-body  mb-3">
@@ -44,7 +27,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             </div>
@@ -52,7 +35,7 @@
                             ...
                             </div>
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
@@ -63,4 +46,11 @@
         </div>
     </div>
 </div>
+
+<script>
+		function changeRanking() {
+
+	}
+</script>
+
 @endsection

@@ -15,13 +15,13 @@
                                 </li>
                                 @endif
                                 @if (Route::has('emeal.products'))
-                                <li class="navbar-nav me-auto">
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('emeal.products') }}">{{ __('Produkty') }}</a>
                                 </li>
                                 @endif
 
                                 @if (Route::has('emeal.recipes'))
-                                <li class="navbar-nav me-auto">
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('emeal.recipes') }}">{{ __('Przepisy') }}</a>
                                 </li>
                                 @endif
