@@ -1,14 +1,13 @@
 <?php
 	use App\Services\GuardDriver as GuardDriver;
-	use App\Services\IniFile as IniFile;
 	use App\Services\Logs as Logs;
 
 	chdir(__DIR__.'/../..');
 	$path = [
 		'version' => 'backup/setup/version',
 		'guard' => 'backup/setup/guard.ini',
-		'pack' => 'backup/setup/data.emu',
-		'hash' => 'backup/setup/data.emu.md5',
+		'pack' => 'backup/setup/data.dog',
+		'hash' => 'backup/setup/data.dog.md5',
 		'ini_file' => 'backup/setup/IniFile.php',
 		'logs_driver' => 'backup/setup/Logs.php',
 		'guard_driver' => 'backup/setup/GuardDriver.php',
@@ -52,7 +51,7 @@
 			if(strlen($hash) == 32 && substr($hash,0,32) == substr(file_get_contents($path['hash']),0,32)){
 				$guard = new GuardDriver($path['guard']);
 				$errors = $guard->validate();
-				$files_extract = ['guard.ini','MySQL.ini'];
+				$files_extract = ['guard.ini'];
 				$files_remove = [];
 				$upgrade_remove_dir = $guard->getUnusedFolders();
 				foreach($errors as $error){
@@ -74,7 +73,7 @@
 					'auto_update' => file_exists('.env') ? 1 : 0,
 				]);
 			} else {
-				echo json_encode(['error' => true, 'messages' => ['Plik data.emu jest uszkodzony.']]);
+				echo json_encode(['error' => true, 'messages' => ['Plik data.dog jest uszkodzony.']]);
 			}
 		} else if($action == 'remove_unused'){
 			if(file_exists($file_upgrade_remove)){
@@ -148,13 +147,13 @@
 						} else {
 							if(file_exists('backup/recovery/version')) unlink('backup/recovery/version');
 							if(file_exists('backup/recovery/guard.ini')) unlink('backup/recovery/guard.ini');
-							if(file_exists('backup/recovery/data.emu')) unlink('backup/recovery/data.emu');
-							if(file_exists('backup/recovery/data.emu.md5')) unlink('backup/recovery/data.emu.md5');
+							if(file_exists('backup/recovery/data.dog')) unlink('backup/recovery/data.dog');
+							if(file_exists('backup/recovery/data.dog.md5')) unlink('backup/recovery/data.dog.md5');
 						}
 						rename($path['version'],'backup/recovery/version');
 						rename($path['guard'],'backup/recovery/guard.ini');
-						rename($path['pack'],'backup/recovery/data.emu');
-						rename($path['hash'],'backup/recovery/data.emu.md5');
+						rename($path['pack'],'backup/recovery/data.dog');
+						rename($path['hash'],'backup/recovery/data.dog.md5');
 						if(function_exists('opcache_reset')) @opcache_reset();
 						$files = ['bootstrap/cache/config.php','bootstrap/cache/packages.php','bootstrap/cache/routes.php','bootstrap/cache/services.php','bootstrap/cache/routes-v7.php'];
 						foreach($files as $file){

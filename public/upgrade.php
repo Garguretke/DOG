@@ -1,7 +1,7 @@
 <?php
 	declare(strict_types=1);
 
-	if(file_exists('../data.emu')){
+	if(file_exists('../data.dog')){
 		if(file_exists('../extract.php')){
 			require_once('../extract.php');
 		} else {
@@ -15,17 +15,15 @@
 
 	chdir(__DIR__.'/..');
 
-	const APP_NAME = 'eMU';
+	const APP_NAME = 'MercjaDOG';
 	const PHP_REQUIRED = '8.1, 8.2';
-	const SLUG_VERSION = 4;
 
 	$path = [
 		'guard' => 'backup/setup/guard.ini',
-		'pack' => 'backup/setup/data.emu',
-		'hash' => 'backup/setup/data.emu.md5',
+		'pack' => 'backup/setup/data.dog',
+		'hash' => 'backup/setup/data.dog.md5',
 		'ini_file' => 'backup/setup/IniFile.php',
 		'guard_driver' => 'backup/setup/GuardDriver.php',
-		'slug_driver' => 'backup/setup/SlugDriver.php',
 		'logs_driver' => 'backup/setup/Logs.php',
 		'version' => 'backup/setup/version',
 	];
@@ -51,9 +49,10 @@
 
 	require_once($path['ini_file']);
 	use App\Services\IniFile as IniFile;
-	use App\Services\SlugDriver as SlugDriver;
 
 	class UpdaterEMU {
+
+		public string $location;
 
 		public function __construct(string $location = __DIR__){
 			$this->location = $location;
@@ -67,11 +66,11 @@
 		public function parse_size_value(string $value) : int {
 			if(preg_match('/^(\d+)(.)$/',$value,$matches)){
 				if($matches[2] == 'G'){
-					return $matches[1] * 1024 * 1024 * 1024;
+					return (int)$matches[1] * 1024 * 1024 * 1024;
 				} else if($matches[2] == 'M'){
-					return $matches[1] * 1024 * 1024;
+					return (int)$matches[1] * 1024 * 1024;
 				} else if($matches[2] == 'K'){
-					return $matches[1] * 1024;
+					return (int)$matches[1] * 1024;
 				}
 			}
 			return $matches[1];
@@ -211,12 +210,6 @@
 		$app_version_pack = '0.0.0.0';
 	}
 
-	if(file_exists('application.ver')){
-		$app_version_type = preg_replace('/\s+/','',file_get_contents('application.ver'));
-	} else {
-		$app_version_type = 'eMU';
-	}
-
 	if(file_exists('version')){
 		$app_version_installed = preg_replace('/\s+/','',file_get_contents('version'));
 	}
@@ -256,44 +249,16 @@
 		$init_errors = array_merge($init_errors,$validation['errors']);
 
 		if(file_exists('.env')){
-			require_once($path['slug_driver']);
-
-			$slug = SlugDriver::getSlug($env->get('APP_SERIAL'));
-			if(!isset($slug['date'])){
-				array_push($init_errors,"Wczytywanie pliku asysty nie powiodło się.<br>Prosimy o kontakt z pomocą techniczną.");
-			} else {
-				$date_now = new DateTime();
-				$date_license = new DateTime($slug['date']);
-				if($date_now > $date_license){
-					array_push($init_errors,"Asysta wygasła, ważność asysty zawarta w pliku ".$slug['date'].".<br>Prosimy o kontakt z biurem obsługi klienta.");
-				}
-				if(!(isset($slug['version']) && $slug['version'] == SLUG_VERSION)){
-					array_push($init_errors,"Wersja pliku asysty jest niekompatybilna wykryta V".($slug['version'] ?? 0)." oczekiwana V".SLUG_VERSION.".<br>Prosimy o kontakt z biurem obsługi klienta.</small>");
-				}
-				if(($slug['test_version'] ?? 0) == 0 && file_exists('is_beta')){
-					return base64_decode("Asysta nie upoważnia do korzystania z wersji testowej.<br>Prosimy o kontakt z pomocą techniczną.");
-				}
-			}
 			if($version_number_installed == 0){
-				array_push($init_errors,"Nie udało się zidentyfikować programu eMU we wskazanym katalogu.");
-			} else if($app_version_type != 'eMU'){
-				array_push($init_errors,"Nieprawidłowy typ programu. Odczytany: $app_version_type Oczekiwano: eMU");
-			} else if($version_number_installed < 1010202){
-				array_push($init_errors,"Zainstalowana wersja eMU jest starsza niż v1.1.2.2 wymagana kontrola działu technicznego.");
-			} else if($version_number_installed < 1020600){
-				array_push($init_errors,"Zainstalowana wersja eMU jest starsza niż v1.2.6.0 wymagana aktualizacja eMU v1.6.0.X.");
+				array_push($init_errors,"Nie udało się zidentyfikować programu MercjaDOG we wskazanym katalogu.");
 			} else if($version_number_installed >= 2000000){
 				array_push($init_errors,"Odczytana wersja programu eMU wykracza poza zakres.");
-			}
-		} else {
-			if(!file_exists('license.emu')){
-				array_push($init_errors,"Plik license.emu nie istnieje.");
 			}
 		}
 		if($version_number_pack == 0){
 			array_push($init_errors,"Paczka nie zawiera poprawnej informacji wersji.");
-		} else if($version_number_pack < 1040705 || $version_number_pack >= 2000000){
-			array_push($init_errors,"Wykryta paczka nie jest zgodna z nowym systemem aktualizacji. Wymagana wersja v1.4.7.5+ oraz poniżej wersji v2.0.0.0");
+		} else if($version_number_pack < 1000000 || $version_number_pack >= 2000000){
+			array_push($init_errors,"Wykryta paczka nie jest zgodna z nowym systemem aktualizacji. Wymagana wersja v1.0.0.0+ oraz poniżej wersji v2.0.0.0");
 		}
 	} else {
 		array_push($init_errors,"Brak aktualizacji do zainstalowania.");
@@ -333,7 +298,6 @@
 								<td><?php echo (($app_version_pack == '0.0.0.0') ? 'Brak' : $app_version_pack); ?><br>&nbsp;</td>
 								<td><?php echo str_replace(preg_replace('/^(\d{1,2})\.(\d{1,2})\.(\d{1,2})/', '', PHP_VERSION), "", PHP_VERSION); ?><br>&nbsp;</td>
 								<td><?php echo PHP_REQUIRED; ?><br>&nbsp;</td>
-								<td>V<?php echo SLUG_VERSION; ?><br>&nbsp;</td>
 							</tr>
 						</table>
 					</center>

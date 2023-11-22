@@ -1,8 +1,6 @@
 <?php
 	declare(strict_types=1);
 
-	if(!defined('STDIN')) define('STDIN', fopen('php://stdin', 'r'));
-
 	class ExtractorEMU {
 
 		public string $location = '';
@@ -71,11 +69,11 @@
 		public function parse_size_value(string $value) : int {
 			if(preg_match('/^(\d+)(.)$/',$value,$matches)){
 				if($matches[2] == 'G'){
-					return $matches[1] * 1024 * 1024 * 1024;
+					return (int)$matches[1] * 1024 * 1024 * 1024;
 				} else if($matches[2] == 'M'){
-					return $matches[1] * 1024 * 1024;
+					return (int)$matches[1] * 1024 * 1024;
 				} else if($matches[2] == 'K'){
-					return $matches[1] * 1024;
+					return (int)$matches[1] * 1024;
 				}
 			}
 			return $matches[1];
@@ -150,7 +148,6 @@
 					'hash' => $this->location.'/backup/setup/data.dog.md5',
 					'guard_file' => $this->location.'/backup/setup/guard.ini',
 					'guard_driver' => $this->location.'/backup/setup/GuardDriver.php',
-					'slug_driver' => $this->location.'/backup/setup/SlugDriver.php',
 					'ini_file' => $this->location.'/backup/setup/IniFile.php',
 					'logs_driver' => $this->location.'/backup/setup/Logs.php',
 					'version_file' => $this->location.'/backup/setup/version',
@@ -256,7 +253,6 @@
 				$files = [
 					$this->path['backup']['guard_file'],
 					$this->path['backup']['guard_driver'],
-					$this->path['backup']['slug_driver'],
 					$this->path['backup']['ini_file'],
 					$this->path['backup']['logs_driver'],
 					$this->path['backup']['version_file'],
@@ -266,11 +262,10 @@
 					if(file_exists($file)) unlink($file);
 				}
 				$zip->extractTo($this->location,['public/upgrade/bootstrap.min.css','public/upgrade/driver.php','public/upgrade/jquery-3.6.1.min.js','public/upgrade/upgrade.css','public/upgrade/upgrade.js','public/upgrade.php','public/.htaccess','public/favicon2022.ico']);
-				$zip->extractTo($this->path['backup']['folder'],['guard.ini','app/Services/GuardDriver.php','app/Services/SlugDriver.php','app/Services/IniFile.php','app/Services/Logs.php','version']);
+				$zip->extractTo($this->path['backup']['folder'],['guard.ini','app/Services/GuardDriver.php','app/Services/IniFile.php','app/Services/Logs.php','version']);
 				$zip->close();
 
 				rename($this->path['backup']['folder'].'/app/Services/GuardDriver.php',$this->path['backup']['folder'].'/GuardDriver.php');
-				rename($this->path['backup']['folder'].'/app/Services/SlugDriver.php',$this->path['backup']['folder'].'/SlugDriver.php');
 				rename($this->path['backup']['folder'].'/app/Services/IniFile.php',$this->path['backup']['folder'].'/IniFile.php');
 				rename($this->path['backup']['folder'].'/app/Services/Logs.php',$this->path['backup']['folder'].'/Logs.php');
 				rmdir($this->path['backup']['folder'].'/app/Services');

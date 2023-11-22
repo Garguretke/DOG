@@ -1,0 +1,174 @@
+<form action="" id="form-install" method="POST">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
+		<div style="background-color:#FFFFFF;padding:15px 30px 15px 30px;min-height: 310px">
+			<h3>Konfiguracja aplikacji</h3>
+			<div class="form-group">
+				<label>Adres URL aplikacji</label>
+				<input type="text" class="form-control" name="APP_URL" title="Pełny bez slasha na końcu" placeholder="Adres URL aplikacji" autocomplete="off" required>
+			</div>
+			<div class="form-group">
+				<label>Domena aplikacji (opcjonalnie)</label>
+				<input type="text" class="form-control" name="SESSION_DOMAIN" title="Pozostaw puste gdy localhost" placeholder="Domena aplikacji np. example.com" autocomplete="off">
+			</div>
+			<!-- <div class="form-group">
+				<label>Serial</label>
+				<input type="text" class="form-control" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" name="serial" title="32 znakowy ciąg dołączony z plikiem license.emu" autocomplete="off" required>
+			</div> -->
+		</div>
+		<br>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
+		<div style="background-color:#FFFFFF;padding:15px 30px 15px 30px;min-height: 310px">
+			<h3>Konfiguracja bazy danych</h3>
+			<input name="DB_CONNECTION" type="hidden" value="mysql" required>
+			<div class="form-group" style="display:flex">
+				<div style="width:75%">
+					<label>Adres IP</label>
+					<input type="text" class="form-control" name="DB_HOST" value="localhost" placeholder="Adres IP" autocomplete="off" required>
+				</div>
+				<div style="width:25%">
+					<label>Port</label>
+					<input type="number" class="form-control" name="DB_PORT" min="1" max="100000" value="3306" placeholder="Port" autocomplete="off" required>
+				</div>
+			</div>
+			<div class="form-group" style="display:flex">
+				<div style="width:50%">
+					<label>Nazwa bazy</label>
+					<input type="text" class="form-control" name="DB_DATABASE" placeholder="Nazwa bazy" autocomplete="off" required>
+				</div>
+				<div style="width:50%">
+					<label>Użytkownik</label>
+					<input type="text" class="form-control" name="DB_USERNAME" placeholder="Użytkownik" autocomplete="off" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Hasło</label>
+				<input type="password" class="form-control" name="DB_PASSWORD" placeholder="Hasło" autocomplete="off">
+			</div>
+		</div>
+		<br>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
+		<div style="background-color:#FFFFFF;padding:15px 30px 15px 30px;min-height: 310px">
+			<h3>Konto administratora</h3>
+			<div class="form-group">
+				<label>Adres e-mail</label>
+				<input type="email" class="form-control" placeholder="E-mail" name="email" autocomplete="off" value="admin@void.api" required>
+			</div>
+			<div class="form-group">
+				<label>Hasło</label>
+				<input minlength="6" maxlength="64" type="password" class="form-control" placeholder="Hasło" name="password" autocomplete="off">
+			</div>
+			<div class="form-group">
+				<label>Powtórz hasło</label>
+				<input minlength="6" maxlength="64" type="password" class="form-control" placeholder="Powtórz hasło" name="password_confirm" autocomplete="off">
+			</div>
+		</div>
+		<br>
+	</div>
+	<!-- <div class="col-xs-12 text-center">
+		<div style="background-color:#FFFFFF;padding:15px 30px 15px 30px">
+			<h3>Dodatkowe parametry</h3>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+					<div class="form-group text-center">
+						<label>Wysyłaj raporty błędów automatycznie (zalecane)</label>
+						<select class="form-control" name="send_crash_report" required>
+							<option value="">Brak</option>
+							<option value="0">NIE</option>
+							<option value="1">TAK</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+					<div class="form-group text-center">
+						<label>Obsługa systemu ERP</label>
+						<select class="form-control" name="erp_system_type" required>
+							<option value="0" selected>Brak</option>
+							<option value="1">COMARCH ERP OPTIMA</option>
+							<option value="2">COMARCH ERP XL</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+	</div> -->
+	<div class="col-xs-12 text-center">
+		<div style="padding:15px 30px 15px 30px">
+			<div class="form-group">
+				<input type="button" name="check_connect" class="btn btn-primary installSaveButton center-block" value="ZAINSTALUJ">
+			</div>
+			<div class="form-group" id="alertLogowanieID" style="display:none">
+				<div class="alert alert-danger" role="alert">
+					<strong>Błąd!</strong> <span id="trescBledu"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<script>
+	var app_url = window.location.href.replace('/setup.php','');
+	$('input[name="APP_URL"]').val(app_url);
+	if(app_url.indexOf('localhost') == -1){
+		var app_domain = app_url;
+		app_domain = app_domain.replace('http://','');
+		app_domain = app_domain.replace('https://','');
+		var end = app_domain.indexOf('/');
+		if(end != -1){
+			app_domain = app_domain.substr(0,end);
+		}
+		$('input[name="SESSION_DOMAIN"]').val(app_domain);
+	}
+
+	$(".installSaveButton").on('click',function(e){
+		if(!$("#form-install").first()[0].checkValidity()){
+			$("#form-install").first()[0].reportValidity();
+			return;
+		}
+		$("#alertLogowanieID").hide();
+		$(".installSaveButton").prop("disabled", true);
+		var formInst = $('#form-install').serializeArray();
+		formInst.push({
+			name: "check_connect",
+			value: true
+		});
+		$.ajax({
+			url: "setup.php",
+			type: 'POST',
+			data: formInst,
+			dataType: 'json',
+			success: function (odpowiedz){
+				if(!odpowiedz.success){
+					$("#alertLogowanieID").show();
+					$(".installSaveButton").prop("disabled", false);
+					$("#trescBledu").html(odpowiedz.error);
+					return;
+				}
+				location.reload();
+			},
+			error: function (odpowiedz, exception){
+				$("#alertLogowanieID").show();
+				$(".installSaveButton").prop("disabled", false);
+				var msg = '';
+				if(odpowiedz.status === 0) {
+					msg = 'Not connect.\n Verify Network.';
+				} else if(odpowiedz.status == 404) {
+					msg = 'Requested page not found. [404]';
+				} else if(odpowiedz.status == 500) {
+					msg = 'Internal Server Error [500].';
+				} else if(exception === 'parsererror') {
+					msg = 'Requested JSON parse failed.';
+				} else if(exception === 'timeout') {
+					msg = 'Time out error.';
+				} else if(exception === 'abort') {
+					msg = 'Ajax request aborted.';
+				} else {
+					msg = 'Uncaught Error.\n' + odpowiedz.responseText;
+				}
+				$("#trescBledu").html(msg);
+			}
+		});
+	});
+</script>

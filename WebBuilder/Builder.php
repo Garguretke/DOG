@@ -225,7 +225,7 @@
 		//	$this->ave->rrmdir($nas_output);
 		//	$destination_folder = $this->ave->get_file_path("$nas_output/$this->app_version");
 		//	if(!file_exists($destination_folder)) $this->ave->mkdir($destination_folder);
-		//	$this->ave->rename($this->ave->get_file_path("$output_folder/data.emu"), $this->ave->get_file_path("$destination_folder/data.emu"));
+		//	$this->ave->rename($this->ave->get_file_path("$output_folder/data.dog"), $this->ave->get_file_path("$destination_folder/data.dog"));
 		//	$this->ave->rename($this->ave->get_file_path("$output_folder/extract.php"), $this->ave->get_file_path("$destination_folder/extract.php"));
 		//	if(file_exists($output_folder)) $this->ave->rrmdir($output_folder);
 
@@ -241,7 +241,7 @@
 		//	$this->ave->rrmdir($nas_output);
 		//	$destination_folder = $this->ave->get_file_path("$nas_output/$this->app_version");
 		//	if(!file_exists($destination_folder)) $this->ave->mkdir($destination_folder);
-		//	$this->ave->rename($this->ave->get_file_path("$output_folder/data.emu"), $this->ave->get_file_path("$destination_folder/data.emu"));
+		//	$this->ave->rename($this->ave->get_file_path("$output_folder/data.dog"), $this->ave->get_file_path("$destination_folder/data.dog"));
 		//	$this->ave->rename($this->ave->get_file_path("$output_folder/extract.php"), $this->ave->get_file_path("$destination_folder/extract.php"));
 
 		//	$emu_package_path = $this->ave->get_file_path("//NAS-PROG/Dane/Wersje/Wersje dla Klientów/$app_name/WebPanel/$this->app_version");

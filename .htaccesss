@@ -1,0 +1,50 @@
+<IfModule mod_rewrite.c>
+	<IfModule mod_negotiation.c>
+		Options -MultiViews
+	</IfModule>
+
+	RewriteEngine On
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^storage(.*)$ storage/app/public/$1 [L,QSA]
+	RewriteRule ^(storage)($|/) - [L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^ht(.*)$ public/ht/$1 [L,QSA]
+	RewriteRule ^(public/ht)($|/) - [L]
+
+	RewriteCond %{REQUEST_FILENAME} -d [OR]
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteRule ^ ^$1 [N]
+
+	RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
+	RewriteRule ^(.*)$ public/$1
+
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^ server.php
+
+	RewriteRule ^.env - [F,L,NC]
+
+</IfModule>
+
+<Files "public">
+	Order Allow,Deny
+	Allow from all
+</Files>
+
+<FilesMatch "\.(htm|html|php)$">
+	<IfModule mod_expires.c>
+		ExpiresActive Off
+	</IfModule>
+	<IfModule mod_headers.c>
+		FileETag None
+		Header unset ETag
+		Header unset Pragma
+		Header unset Cache-Control
+		Header unset Last-Modified
+		Header set Pragma "no-cache"
+		Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+		Header set Expires "Thu, 1 Jan 1970 00:00:00 GMT"
+	</IfModule>
+</FilesMatch>
