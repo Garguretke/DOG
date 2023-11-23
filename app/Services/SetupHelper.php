@@ -122,7 +122,7 @@ class SetupHelper {
 		}
 		$verNumber = ($version[0] * 10000 + $version[1] * 100 + $version[2]);
 		if($verNumber < 80100 || $verNumber > 80299){
-			$content = '<div class="row"><br><br><br><br><center><font size="14"><b>The PHP version detected is incompatible.<br>Required PHP version: '.PHP_REQUIRED.'</b></font></center></div>';
+			$content = '<div class="row"><br><br><br><br><center><font size="14"><b>Detected PHP version is incompatible.<br>Required PHP version: '.PHP_REQUIRED.'</b></font></center></div>';
 		} else if(isset($formData['errorGlobalny'])){
 			$content = '<div class="row"><br><br><br><br><center><font size="14"><b>'.$formData['errorGlobalny'].'</b></font></center></div>';
 		} else {
@@ -139,7 +139,7 @@ class SetupHelper {
 			}
 			if(!$install){
 				$content .= '<div class="col-xs-12">';
-				$content .= '<h4>Uwaga !</h4>';
+				$content .= '<h4>Warning!</h4>';
 				$content .= '<p>Before starting the update, it is recommended to make a backup copy of the database.</p>';
 				$content .= '</div>';
 			}

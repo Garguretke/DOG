@@ -1,6 +1,6 @@
 $(function(){
 
-	var files_remove = 0, file_extract = 0, folders_remove, website_lock_time = 10, auto_update = 0;
+	var files_remove = 0, file_extract = 0, folders_remove, website_lock_time = 5, auto_update = 0;
 
 	function dli(value,str1,str2,str3){
 		return ((value == 1) ? (str1) : (((value % 10 > 1) && (value % 10 < 5) && !((value % 100 >= 10) && (value % 100 <= 21))) ? (str2) : (str3)));

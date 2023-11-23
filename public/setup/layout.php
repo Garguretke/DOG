@@ -39,10 +39,10 @@
 				<div id="app_content">{{content}}</div>
 			</center>
 			<div style="position:absolute;top:10px;left:10px;display:flex">
-				<input type="button" class="btn btn-primary" id="setup_button_panel" value="Strona główna" style="width:120px">
-				<a href="logs.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Logi</a>
-				<a href="recovery.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Odzyskiwanie</a>
-				<a href="upgrade.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Aktualizacja</a>
+				<input type="button" class="btn btn-primary" id="setup_button_panel" value="Main page" style="width:120px">
+				<a href="logs.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Logs</a>
+				<a href="recovery.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Recovery</a>
+				<a href="upgrade.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Update</a>
 			</div>
 		</div>
 	</body>

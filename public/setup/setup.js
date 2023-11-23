@@ -9,7 +9,7 @@ function Setup_UpdateCount(){
 	if(migration_total > 0){
 		var percent = (migration_current / migration_total) * 100;
 		document.title = "MercjaDOG Installer - "+percent.toFixed(2)+" %";
-		$("#migrations_counter").html(migration_current+" z "+migration_total+" postęp "+percent.toFixed(2)+" %");
+		$("#migrations_counter").html(migration_current+" of "+migration_total+" progress "+percent.toFixed(2)+" %");
 	} else {
 		document.title = "MercjaDOG Installer";
 		$("#migrations_counter").html("");

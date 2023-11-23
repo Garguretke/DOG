@@ -7,6 +7,7 @@
 //use App\Http\Controllers\QRCodeController;
 //use App\Http\Controllers\SeweyController;
 //use App\Http\Controllers\eMealController;
+use App\Services\IniFile;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,27 @@
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+$path = realpath(__DIR__.'/..');
+
+if(file_exists("$path/.env")){
+	$env = new IniFile("$path/.env");
+} else {
+	$env = new IniFile();
+}
+
+$url = str_replace(['https://','http://'], '', $env->get('APP_URL',''));
+$pos = strpos($url,'/');
+if($pos !== false) $url = substr($url,$pos);
+if($url != '/' && $pos !== false){
+	Route::get($url, function () {
+		return view('layouts.app');
+	});
+} else {
+	Route::get('/', function () {
+		return view('layouts.app');
+	});	
+}
 
 Route::get('/', function () {
     return view('layouts.app');
