@@ -281,7 +281,7 @@
 				<div class="col-xs-12">
 					<br>
 					<h1 class="text-center">
-						<?php echo APP_NAME; ?> <span id="app_title"><br>Updating app files</span>
+						<?php echo APP_NAME; ?> <span id="app_title"> Updating app files</span>
 					</h1>
 					<br><br><br>
 					<center>

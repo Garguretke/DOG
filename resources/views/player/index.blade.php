@@ -27,11 +27,19 @@
 					</div>
 
 					<div id="contentplayer">
-						<p>Odtwarzacz nie ładuje się? Kliknij przycisk poniżej.</p>
+						@if (app()->getLocale() === 'en')
+							<p>Player not loading? Click the button below.</p>
+						@elseif (app()->getLocale() === 'pl')
+							<p>Odtwarzacz nie ładuje się? Kliknij przycisk poniżej.</p>
+						@endif
 					</div>
 
 					<div id="linkDiv">
-						<a id="linkButton" class="btn btn-primary btn-sm" href="{{ $episodes[0]->url }}" target="_blank">Przejdź do odcinka</a>
+						@if (app()->getLocale() === 'en')
+							<a id="linkButton" class="btn btn-primary btn-sm" href="{{ $episodes[0]->url }}" target="_blank">Go to the episode</a>
+						@elseif (app()->getLocale() === 'pl')
+							<a id="linkButton" class="btn btn-primary btn-sm" href="{{ $episodes[0]->url }}" target="_blank">Przejdź do odcinka</a>
+						@endif
 					</div>
                 </div>
             </div>
@@ -63,7 +71,7 @@
 			updateVideoFrame();
 			updateEpisodeSelect();
 			updateLinkButton();
-			updateSelect2(); // Dodane wywołanie funkcji aktualizującej Select2
+			updateSelect2();
 		}
 	}
 

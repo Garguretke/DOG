@@ -20,7 +20,7 @@
 							
                             <input class="form-control" type="text" name="content" id="content" value="{{ old('content') }}">
 							@if (app()->getLocale() === 'en')
-                            	<button type="submit" class="btn btn-primary btn-sm">Generuj kod QR</button>
+								<button type="submit" class="btn btn-primary btn-sm">Generate QR code</button>
 							@elseif (app()->getLocale() === 'pl')
 								<button type="submit" class="btn btn-primary btn-sm">Generuj kod QR</button>
 							@endif
