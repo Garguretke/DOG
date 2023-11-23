@@ -32,32 +32,32 @@
 
 		public function zip_error(int $code) : string {
 			switch($code){
-				case 0: return "Brak błędu";
-				case 1: return "Wielodyskowe archiwa zip nie są obsługiwane";
-				case 2: return "Zmiana nazwy pliku tymczasowego nie powiodła się";
-				case 3: return "Zamykanie archiwum zip nie powiodło się";
-				case 4: return "Błąd Seek";
-				case 5: return "Błąd odczytu";
-				case 6: return "Błąd zapisu";
-				case 7: return "CRC nie powiodło się";
-				case 8: return "Archiwum zip zostało zamknięte";
-				case 9: return "Brak takiego pliku";
-				case 10: return "Plik już istnieje";
-				case 11: return "Nie można otworzyć pliku";
-				case 12: return "Nie udało się utworzyć pliku tymczasowego";
-				case 13: return "Błąd Zlib";
-				case 14: return "Błąd rezerwacji miejsca na dysku";
-				case 15: return "Wpis został zmieniony";
-				case 16: return "Metoda kompresji nie jest obsługiwana";
-				case 17: return "Nieoczekiwany EOF";
-				case 18: return "Błędny argument";
-				case 19: return "To nie jest archiwum zip";
-				case 20: return "Błąd wewnętrzny";
-				case 21: return "Archiwum ZIP jest niespójne";
-				case 22: return "Nie można usunąć pliku";
-				case 23: return "Wpis został usunięty";
+				case 0: return "No error";
+				case 1: return "Multidisk zip archives are not supported";
+				case 2: return "Renaming temporary file failed";
+				case 3: return "Failed to close zip archive";
+				case 4: return "Seek Error";
+				case 5: return "Read error";
+				case 6: return "Write error";
+				case 7: return "CRC failed";
+				case 8: return "The zip archive has been closed";
+				case 9: return "No such file";
+				case 10: return "File already exists";
+				case 11: return "The file cannot be opened";
+				case 12: return "Failed to create temporary file";
+				case 13: return "Zlib error";
+				case 14: return "Disk space reservation error";
+				case 15: return "The entry has been changed";
+				case 16: return "The compression method is not supported";
+				case 17: return "Unexpected EOF";
+				case 18: return "Flawed argument";
+				case 19: return "This is not a zip archive";
+				case 20: return "Internal error";
+				case 21: return "ZIP archive is inconsistent";
+				case 22: return "The file could not be deleted";
+				case 23: return "The entry has been deleted";
 				case 2137: return "Insert kremówka";
-				default: return "Wystąpił nieznany błąd (".intval($code).")";
+				default: return "An unknown error has occurred (".intval($code).")";
 			}
 		}
 
@@ -87,26 +87,26 @@
 
 			if($PHP_VERSION_NUMBER < 80100 || $PHP_VERSION_NUMBER > 80299) array_push($errors,"Nieprawidłowa wersja PHP wymagana 8.1");
 
-			if($this->parse_size_value(ini_get('memory_limit')) < 128 * 1024 * 1024) array_push($errors,"Ustawienie parametru memory_limit minimalne 128M wykryte ".ini_get('memory_limit'));
-			if($this->parse_size_value(ini_get('post_max_size')) < 64 * 1024 * 1024) array_push($errors,"Ustawienie parametru post_max_size minimalne 64M wykryte ".ini_get('post_max_size'));
-			if($this->parse_size_value(ini_get('upload_max_filesize')) < 20 * 1024 * 1024) array_push($errors,"Ustawienie parametru upload_max_filesize minimalne 20M wykryte ".ini_get('upload_max_filesize'));
-			if(ini_get('max_execution_time') < 180) array_push($errors,"Ustawienie parametru max_execution_time minimalne 180 wykryte ".ini_get('max_execution_time'));
+			if($this->parse_size_value(ini_get('memory_limit')) < 128 * 1024 * 1024) array_push($errors,"memory_limit parameter setting required minimum 128M detected ".ini_get('memory_limit'));
+			if($this->parse_size_value(ini_get('post_max_size')) < 64 * 1024 * 1024) array_push($errors,"post_max_size parameter setting required minimum 64M detected ".ini_get('post_max_size'));
+			if($this->parse_size_value(ini_get('upload_max_filesize')) < 20 * 1024 * 1024) array_push($errors,"upload_max_filesize parameter setting required minimum 20M detected ".ini_get('upload_max_filesize'));
+			if(ini_get('max_execution_time') < 180) array_push($errors,"max_execution_time parameter setting required minimum 180 detected ".ini_get('max_execution_time'));
 
-			if(!in_array("tokenizer",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Tokenizer");
-			if(!in_array("bcmath",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: BCMath");
-			if(!in_array("ctype",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Ctype");
-			if(!in_array("fileinfo",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Fileinfo");
-			if(!in_array("curl",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: cURL");
-			if(!in_array("dom",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: dom");
-			if(!in_array("gd",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: gd");
-			if(!in_array("json",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: JSON");
-			if(!in_array("mbstring",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Mbstring");
-			if(!in_array("openssl",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: OpenSSL");
-			if(!in_array("PDO",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: PDO");
-			if(!in_array("zip",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: ZipArchive Extension");
-			if(!in_array("xml",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: XML");
-			if(!in_array("soap",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Soap");
-			if(!in_array("imap",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: IMAP");
+			if(!in_array("tokenizer",$extensions)) array_push($errors,"Missing required extension: Tokenizer");
+			if(!in_array("bcmath",$extensions)) array_push($errors,"Missing required extension: BCMath");
+			if(!in_array("ctype",$extensions)) array_push($errors,"Missing required extension: Ctype");
+			if(!in_array("fileinfo",$extensions)) array_push($errors,"Missing required extension: Fileinfo");
+			if(!in_array("curl",$extensions)) array_push($errors,"Missing required extension: cURL");
+			if(!in_array("dom",$extensions)) array_push($errors,"Missing required extension: dom");
+			if(!in_array("gd",$extensions)) array_push($errors,"Missing required extension: gd");
+			if(!in_array("json",$extensions)) array_push($errors,"Missing required extension: JSON");
+			if(!in_array("mbstring",$extensions)) array_push($errors,"Missing required extension: Mbstring");
+			if(!in_array("openssl",$extensions)) array_push($errors,"Missing required extension: OpenSSL");
+			if(!in_array("PDO",$extensions)) array_push($errors,"Missing required extension: PDO");
+			if(!in_array("zip",$extensions)) array_push($errors,"Missing required extension: ZipArchive Extension");
+			if(!in_array("xml",$extensions)) array_push($errors,"Missing required extension: XML");
+			if(!in_array("soap",$extensions)) array_push($errors,"Missing required extension: Soap");
+			if(!in_array("imap",$extensions)) array_push($errors,"Missing required extension: IMAP");
 
 			if(file_exists('public/uploads')) array_push($errors,"Wykryto stary folder załączników /public/uploads Wymagane manualne przeniesienie zawartości do /storage/app/public");
 
@@ -133,7 +133,7 @@
 			}
 
 			$permissions = $createFileCheck && $deleteFileCheck;
-			if(!$permissions) array_push($errors,"Brak uprawnień zapisu na dysku");
+			if(!$permissions) array_push($errors,"No disk write permissions");
 
 			return $errors;
 		}
@@ -346,7 +346,7 @@
 			<div class="row">
 				<?php if(!$extractor->package_exists()){ ?>
 					<div class="col-xs-12">
-						<div class="alert alert-danger" role="alert"><strong>Błąd</strong> Nie znaleziono pliku <?php echo $extractor->get_package_name(); ?></div>
+						<div class="alert alert-danger" role="alert"><strong>Błąd</strong> File not found <?php echo $extractor->get_package_name(); ?></div>
 					</div>
 				<?php } else { ?>
 					<?php if(isset($validate_htaccess['error']) && $validate_htaccess['error']){ ?>
@@ -355,7 +355,7 @@
 						<?php if(!empty($validate_host)){ ?>
 							<?php foreach($validate_host as $error){ ?>
 								<div class="col-xs-12">
-									<div class="alert alert-danger" role="alert"><strong>Błąd walidacji hostingu</strong> <?php echo $error; ?></div>
+									<div class="alert alert-danger" role="alert"><strong>Hosting validation error</strong> <?php echo $error; ?></div>
 								</div>
 							<?php } ?>
 						<?php } else { ?>
@@ -363,18 +363,18 @@
 							<?php if(!empty($errors)){ ?>
 								<?php foreach($errors as $error){ ?>
 									<div class="col-xs-12">
-										<div class="alert alert-danger" role="alert"><strong>Błąd tworzenia folderu</strong> <?php echo $error; ?></div>
+										<div class="alert alert-danger" role="alert"><strong>Creating folder error</strong> <?php echo $error; ?></div>
 									</div>
 								<?php } ?>
 							<?php } else { ?>
 								<?php $installer = $extractor->extract_installer(); ?>
 								<?php if($installer['error']){ ?>
 									<div class="col-xs-12">
-										<div class="alert alert-danger" role="alert"><strong>Błąd wypakowywania instalatora</strong> <?php echo $installer['message']; ?></div>
+										<div class="alert alert-danger" role="alert"><strong>Installer unpacking error</strong> <?php echo $installer['message']; ?></div>
 									</div>
 								<?php } else { ?>
 									<div class="col-xs-12">
-										<div class="alert alert-success" role="alert"><strong>Informacja</strong> Proszę czekać</div>
+										<div class="alert alert-success" role="alert"><strong>Info</strong> Please wait</div>
 									</div>
 									<meta http-equiv="refresh" content="5; url=upgrade.php" />
 								<?php } ?>

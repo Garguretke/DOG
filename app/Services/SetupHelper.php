@@ -156,20 +156,20 @@ class SetupHelper {
 			if(strcmp("782D1983CC0ABED4104D2AC0B783ED0CAED326023EA3C0F867338E525FAF32DA",strtoupper(hash("sha256",$post['login']."_".$post['password']))) == 0){
 				return ['autorization' => true, 'type' => 'konto systemowe', 'user' => null];
 			}
-			if(Auth::validate(['name' => $post['login'], 'role' => 'ADMIN', 'password' => $post['password']])){
+			if(Auth::validate(['name' => $post['login'], 'password' => $post['password']])){
 				return ['autorization' => true, 'type' => 'konto administracyjne', 'user' => User::where('name',$post['login'])->first()->id];
 			}
-			if(Auth::validate(['name' => $post['login'], 'role' => 'DEV', 'password' => $post['password']])){
-				return ['autorization' => true, 'type' => 'konto administracyjne', 'user' => User::where('name',$post['login'])->first()->id];
-			}
-			if(Auth::validate(['email' => $post['login'], 'role' => 'ADMIN', 'password' => $post['password']])){
+			// if(Auth::validate(['name' => $post['login'], 'role' => 'DEV', 'password' => $post['password']])){
+				// return ['autorization' => true, 'type' => 'konto administracyjne', 'user' => User::where('name',$post['login'])->first()->id];
+			// }
+			if(Auth::validate(['email' => $post['login'], 'password' => $post['password']])){
 				return ['autorization' => true, 'type' => 'konto administracyjne', 'user' => User::where('email',$post['login'])->first()->id];
 			}
-			if(Auth::validate(['email' => $post['login'], 'role' => 'DEV', 'password' => $post['password']])){
-				return ['autorization' => true, 'type' => 'konto administracyjne', 'user' => User::where('email',$post['login'])->first()->id];
-			}
-		} else if(isset($get['dev']) && $get['dev'] == '7q4po57iubsvDE9Y'){
-			return ['autorization' => true, 'type' => 'guzik programisty', 'user' => null];
+			// if(Auth::validate(['email' => $post['login'], 'role' => 'DEV', 'password' => $post['password']])){
+				// return ['autorization' => true, 'type' => 'konto administracyjne', 'user' => User::where('email',$post['login'])->first()->id];
+			// }
+		// } else if(isset($get['dev']) && $get['dev'] == '7q4po57iubsvDE9Y'){
+			// return ['autorization' => true, 'type' => 'guzik programisty', 'user' => null];
 		} else if(isset($get['auto_update']) && $get['auto_update'] == 'true' && file_exists("../auto_update")){
 			return ['autorization' => true, 'type' => 'plik auto aktualizacji', 'user' => null];
 		}

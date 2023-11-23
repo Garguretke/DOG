@@ -24,6 +24,7 @@ class GuardDriver {
 	private array $files_to_scan = [
 		'bootstrap/app.php',
 		'bootstrap/autoload.php',
+		'MySQL.ini',
 		'version',
 		'artisan',
 		'composer.json',
