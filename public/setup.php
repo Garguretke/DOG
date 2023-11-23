@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 		try {
 			$setup = new SetupDriver();
 
-			$serial = $_POST['serial'];
+			// $serial = $_POST['serial'];
 			$email = $_POST['email'];
 
 			$passwordAdmin = $_POST['password'];
@@ -110,9 +110,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 				'app_url' => $_POST['APP_URL'],
 				'session_domain' => $_POST['SESSION_DOMAIN'],
 				'email' => $email,
-				'serial' => $serial,
-				'send_crash_report' => $_POST['send_crash_report'],
-				'erp_system_type' => $_POST['erp_system_type'],
+				// 'serial' => $serial,
+				// 'send_crash_report' => $_POST['send_crash_report'],
+				// 'erp_system_type' => $_POST['erp_system_type'],
 			]);
 
 			$logs->write("Inicjacja wstępna");

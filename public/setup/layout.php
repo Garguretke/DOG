@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="./public/setup/setup.css?ver=<?php echo rand(1000,9999); ?>">
 		<script src="./public/upgrade/jquery-3.6.1.min.js"></script>
 		<script src="./public/setup/setup.js?ver=<?php echo rand(1000,9999); ?>"></script>
-		<title><?php echo APP_NAME; ?> Instalator</title>
+		<title><?php echo APP_NAME; ?> Installer</title>
 		<link rel="shortcut icon" href="favicon2022.ico">
 	</head>
 	<body class="disable-text-select">
@@ -15,15 +15,15 @@
 				<div class="col-xs-12">
 					<br>
 					<h1 class="text-center">
-						<?php echo APP_NAME; ?> <span id="app_title">Instalator</span>
+						<?php echo APP_NAME; ?> <span id="app_title">Installer</span>
 					</h1>
 					<br><br><br>
 					<center>
 						<table id="version_table">
 							<tr>
-								<th>Wersja aplikacji</th>
-								<th>Wykryta wersja PHP</th>
-								<th>Wymagana wersja PHP</th>
+								<th>App version</th>
+								<th>PHP version detected</th>
+								<th>PHP version required</th>
 							</tr>
 							<tr>
 								<td><?php echo $GLOBALS['app_version']; ?><br>&nbsp;</td>

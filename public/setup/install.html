@@ -1,13 +1,13 @@
 <form action="" id="form-install" method="POST">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
 		<div style="background-color:#FFFFFF;padding:15px 30px 15px 30px;min-height: 310px">
-			<h3>Konfiguracja aplikacji</h3>
+			<h3>App configuration</h3>
 			<div class="form-group">
-				<label>Adres URL aplikacji</label>
+				<label>App URL adress</label>
 				<input type="text" class="form-control" name="APP_URL" title="Pełny bez slasha na końcu" placeholder="Adres URL aplikacji" autocomplete="off" required>
 			</div>
 			<div class="form-group">
-				<label>Domena aplikacji (opcjonalnie)</label>
+				<label>App domain (optional)</label>
 				<input type="text" class="form-control" name="SESSION_DOMAIN" title="Pozostaw puste gdy localhost" placeholder="Domena aplikacji np. example.com" autocomplete="off">
 			</div>
 			<!-- <div class="form-group">
@@ -19,12 +19,12 @@
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
 		<div style="background-color:#FFFFFF;padding:15px 30px 15px 30px;min-height: 310px">
-			<h3>Konfiguracja bazy danych</h3>
+			<h3>Database configuration</h3>
 			<input name="DB_CONNECTION" type="hidden" value="mysql" required>
 			<div class="form-group" style="display:flex">
 				<div style="width:75%">
-					<label>Adres IP</label>
-					<input type="text" class="form-control" name="DB_HOST" value="localhost" placeholder="Adres IP" autocomplete="off" required>
+					<label>IP address</label>
+					<input type="text" class="form-control" name="DB_HOST" value="localhost" placeholder="IP address" autocomplete="off" required>
 				</div>
 				<div style="width:25%">
 					<label>Port</label>
@@ -33,35 +33,35 @@
 			</div>
 			<div class="form-group" style="display:flex">
 				<div style="width:50%">
-					<label>Nazwa bazy</label>
-					<input type="text" class="form-control" name="DB_DATABASE" placeholder="Nazwa bazy" autocomplete="off" required>
+					<label>Database name</label>
+					<input type="text" class="form-control" name="DB_DATABASE" placeholder="Database name" autocomplete="off" required>
 				</div>
 				<div style="width:50%">
-					<label>Użytkownik</label>
-					<input type="text" class="form-control" name="DB_USERNAME" placeholder="Użytkownik" autocomplete="off" required>
+					<label>Database user</label>
+					<input type="text" class="form-control" name="DB_USERNAME" placeholder="Database user" autocomplete="off" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label>Hasło</label>
-				<input type="password" class="form-control" name="DB_PASSWORD" placeholder="Hasło" autocomplete="off">
+				<label>Password</label>
+				<input type="password" class="form-control" name="DB_PASSWORD" placeholder="Password" autocomplete="off">
 			</div>
 		</div>
 		<br>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
 		<div style="background-color:#FFFFFF;padding:15px 30px 15px 30px;min-height: 310px">
-			<h3>Konto administratora</h3>
+			<h3>Admin account</h3>
 			<div class="form-group">
-				<label>Adres e-mail</label>
+				<label>E-mail address</label>
 				<input type="email" class="form-control" placeholder="E-mail" name="email" autocomplete="off" value="admin@void.api" required>
 			</div>
 			<div class="form-group">
-				<label>Hasło</label>
-				<input minlength="6" maxlength="64" type="password" class="form-control" placeholder="Hasło" name="password" autocomplete="off">
+				<label>Password</label>
+				<input minlength="6" maxlength="64" type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
 			</div>
 			<div class="form-group">
-				<label>Powtórz hasło</label>
-				<input minlength="6" maxlength="64" type="password" class="form-control" placeholder="Powtórz hasło" name="password_confirm" autocomplete="off">
+				<label>Repeat password</label>
+				<input minlength="6" maxlength="64" type="password" class="form-control" placeholder="Repeat password" name="password_confirm" autocomplete="off">
 			</div>
 		</div>
 		<br>
@@ -97,11 +97,11 @@
 	<div class="col-xs-12 text-center">
 		<div style="padding:15px 30px 15px 30px">
 			<div class="form-group">
-				<input type="button" name="check_connect" class="btn btn-primary installSaveButton center-block" value="ZAINSTALUJ">
+				<input type="button" name="check_connect" class="btn btn-primary installSaveButton center-block" value="INSTALL">
 			</div>
 			<div class="form-group" id="alertLogowanieID" style="display:none">
 				<div class="alert alert-danger" role="alert">
-					<strong>Błąd!</strong> <span id="trescBledu"></span>
+					<strong>Error!</strong> <span id="trescBledu"></span>
 				</div>
 			</div>
 		</div>

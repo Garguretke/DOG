@@ -36,7 +36,7 @@
 		" ?p - With plugins",
 		" ??r - With dumpautoload",
 	]);
-	$line = $this->ave->get_input(" Typ paczki: ");
+	$line = $this->ave->get_input(" Package type: ");
 
 	$this->params = [
 		'mode' => strtolower($line[0] ?? '?'),
@@ -147,7 +147,7 @@
 	}*/
 
 	if(in_array($this->params['mode'],['0','1','6'])){
-		$this->ave->echo(" Czyszczenie cache");
+		$this->ave->echo(" Clearing cache");
 		$this->ave->delete_files('bootstrap/cache', ['php']);
 
 		$this->artisan("down");
@@ -176,6 +176,7 @@
 
 	if(in_array($this->params['mode'],['0','1'])){
 		$this->artisan("guard:generate");
+		$this->artisan("schema:generate");		
 		//file_put_contents($this->ave->get_file_path("$this->temp_folder/auto_update"), "");
 		$this->ave->copy($this->ave->get_file_path("$this->path/.htaccess"), $this->ave->get_file_path("$this->temp_folder/.htaccess"));
 		//if($this->params['mode'] == '0'){
@@ -183,7 +184,7 @@
 		//}
 
 		$this->ave->clear();
-		$this->ave->echo(" Pakowanie");
+		$this->ave->echo(" Packing");
 
 		$output_folder = $this->ave->get_file_path("$this->path/../build/$app_name-WebPanel/$this->app_version");
 		$zip_file = $this->ave->get_file_path("$output_folder/data.dog");
@@ -206,8 +207,8 @@
 			"$this->path/server.php",
 			"$this->path/composer.json",
 			"$this->path/guard.ini",
-/*			"$this->path/MySQL.ini",
-			"$this->path/backup-ftp.php",*/
+			"$this->path/MySQL.ini",
+			// "$this->path/backup-ftp.php",
 			"$this->path/version",
 			"$this->path/webpack.mix.js",
 			"$this->path/package.json",
@@ -424,7 +425,7 @@
 		$this->artisan("schema:generate");
 	}
 	if($this->params['mode'] == '5'){
-		$this->ave->echo("Tworzenie wymaganych folderów aplikacji");
+		$this->ave->echo("Creation of the required application folders is in progress");
 		$this->ave->delete_files('bootstrap/cache', ['php']);
 		$folders = [
 			"$this->path/backup/setup",
@@ -444,5 +445,5 @@
 		}
 	}
 
-	$this->ave->pause("Operacja zakończona, kliknij enter aby zamknąć");
+	$this->ave->pause("Operation completed, click enter to close");
 ?>
