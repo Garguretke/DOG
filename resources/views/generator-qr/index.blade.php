@@ -12,9 +12,18 @@
                     <form action="{{ route('qrcode.generate') }}" method="post">
                         @csrf
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Wprowadź tekst:</span>
+							@if (app()->getLocale() === 'en')
+                            	<span class="input-group-text">Insert value:</span>
+							@elseif (app()->getLocale() === 'pl')							
+                            	<span class="input-group-text">Wprowadź tekst:</span>
+							@endif
+							
                             <input class="form-control" type="text" name="content" id="content" value="{{ old('content') }}">
-                            <button type="submit" class="btn btn-primary btn-sm">Generuj kod QR</button>
+							@if (app()->getLocale() === 'en')
+                            	<button type="submit" class="btn btn-primary btn-sm">Generuj kod QR</button>
+							@elseif (app()->getLocale() === 'pl')
+								<button type="submit" class="btn btn-primary btn-sm">Generuj kod QR</button>
+							@endif
                         </div>
 
                         @error('content')
