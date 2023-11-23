@@ -5,7 +5,7 @@
 		if(file_exists('../extract.php')){
 			require_once('../extract.php');
 		} else {
-			die("Nie mozna uruchomić narzędzia !<br><br>"."Plik extract.php nie istnieje.");
+			die("The tool cannot be started!<br><br>"."File extract.php does not exist.");
 		}
 		return;
 	}
@@ -38,13 +38,13 @@
 	if($has_update){
 		foreach($path as $p){
 			if(!file_exists($p)){
-				array_push($init_errors,"Plik $p nie istnieje.");
+				array_push($init_errors,"File $p does not exist.");
 			}
 		}
 	}
 
 	if(!file_exists($path['ini_file'])){
-		die("Nie mozna uruchomić narzędzia !<br><br>"."Plik ".$path['ini_file']." nie istnieje.");
+		die("The tool cannot be started!<br><br>"."File ".$path['ini_file']." does not exist.");
 	}
 
 	require_once($path['ini_file']);
@@ -95,64 +95,64 @@
 
 			if($PHP_VERSION_NUMBER < 80100 || $PHP_VERSION_NUMBER > 80299) array_push($errors,"Nieprawidłowa wersja PHP wymagana 8.1, 8.2");
 
-			if($this->parse_size_value(ini_get('memory_limit')) < 128 * 1024 * 1024) array_push($errors,"Ustawienie parametru memory_limit minimalne 128M wykryte ".ini_get('memory_limit'));
-			if($this->parse_size_value(ini_get('post_max_size')) < 64 * 1024 * 1024) array_push($errors,"Ustawienie parametru post_max_size minimalne 64M wykryte ".ini_get('post_max_size'));
-			if($this->parse_size_value(ini_get('upload_max_filesize')) < 20 * 1024 * 1024) array_push($errors,"Ustawienie parametru upload_max_filesize minimalne 20M wykryte ".ini_get('upload_max_filesize'));
-			if(ini_get('max_execution_time') < 180) array_push($errors,"Ustawienie parametru max_execution_time minimalne 180 wykryte ".ini_get('max_execution_time'));
+			if($this->parse_size_value(ini_get('memory_limit')) < 128 * 1024 * 1024) array_push($errors,"memory_limit parameter setting required minimum 128M detected ".ini_get('memory_limit'));
+			if($this->parse_size_value(ini_get('post_max_size')) < 64 * 1024 * 1024) array_push($errors,"post_max_size parameter setting required minimum 64M detected ".ini_get('post_max_size'));
+			if($this->parse_size_value(ini_get('upload_max_filesize')) < 20 * 1024 * 1024) array_push($errors,"upload_max_filesize parameter setting required minimum 20M detected ".ini_get('upload_max_filesize'));
+			if(ini_get('max_execution_time') < 180) array_push($errors,"max_execution_time parameter setting required minimum 180 detected ".ini_get('max_execution_time'));
 
-			if(!in_array("tokenizer",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Tokenizer");
-			if(!in_array("bcmath",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: BCMath");
-			if(!in_array("ctype",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Ctype");
-			if(!in_array("fileinfo",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Fileinfo");
-			if(!in_array("curl",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: cURL");
-			if(!in_array("dom",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: dom");
-			if(!in_array("gd",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: gd");
-			if(!in_array("json",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: JSON");
-			if(!in_array("mbstring",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Mbstring");
-			if(!in_array("openssl",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: OpenSSL");
-			if(!in_array("PDO",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: PDO");
-			if(!in_array("zip",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: ZipArchive Extension");
-			if(!in_array("xml",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: XML");
-			if(!in_array("soap",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: Soap");
-			if(!in_array("imap",$extensions)) array_push($errors,"Brak wymaganego rozszerzenia: IMAP");
+			if(!in_array("tokenizer",$extensions)) array_push($errors,"Missing required extension: Tokenizer");
+			if(!in_array("bcmath",$extensions)) array_push($errors,"Missing required extension: BCMath");
+			if(!in_array("ctype",$extensions)) array_push($errors,"Missing required extension: Ctype");
+			if(!in_array("fileinfo",$extensions)) array_push($errors,"Missing required extension: Fileinfo");
+			if(!in_array("curl",$extensions)) array_push($errors,"Missing required extension: cURL");
+			if(!in_array("dom",$extensions)) array_push($errors,"Missing required extension: dom");
+			if(!in_array("gd",$extensions)) array_push($errors,"Missing required extension: gd");
+			if(!in_array("json",$extensions)) array_push($errors,"Missing required extension: JSON");
+			if(!in_array("mbstring",$extensions)) array_push($errors,"Missing required extension: Mbstring");
+			if(!in_array("openssl",$extensions)) array_push($errors,"Missing required extension: OpenSSL");
+			if(!in_array("PDO",$extensions)) array_push($errors,"Missing required extension: PDO");
+			if(!in_array("zip",$extensions)) array_push($errors,"Missing required extension: ZipArchive Extension");
+			if(!in_array("xml",$extensions)) array_push($errors,"Missing required extension: XML");
+			if(!in_array("soap",$extensions)) array_push($errors,"Missing required extension: Soap");
+			if(!in_array("imap",$extensions)) array_push($errors,"Missing required extension: IMAP");
 
 			if(function_exists('apache_get_modules')){
 				$modules = apache_get_modules();
-				if(!in_array('mod_rewrite',$modules)) array_push($errors,"Brak wymaganego modułu mod_rewrite");
-				if(!in_array('mod_headers',$modules)) array_push($errors,"Brak wymaganego modułu mod_headers");
+				if(!in_array('mod_rewrite',$modules)) array_push($errors,"A required module is missing: mod_rewrite");
+				if(!in_array('mod_headers',$modules)) array_push($errors,"A required module is missing: mod_headers");
 			}
 
 			if(!is_null($env)){
-				if(strpos($env->get('APP_URL'), "http://") === false && strpos($env->get('APP_URL'), "https://") === false) array_push($warnings,"Wartość w pliku .env APP_URL jest nieprawidłowa: Brak zdefiniowanego protokołu http(s)://");
-				if($env->get('APP_FORCE_SSL',false) && strpos($env->get('APP_URL'), "https://") === false) array_push($warnings,"Wartość w pliku .env APP_URL jest nieprawidłowa: Wymuszenie https wymaga by wartość APP_URL zawierała https://");
-				if($env->get('APP_ENV','local') != 'local') array_push($warnings,"Wartość w pliku .env APP_ENV jest nieprawidłowa: Oczekiwana wartość local");
-				if(!$env->get('APP_ACCESS_API',true)) array_push($warnings,"Dostęp do strony przez API jest zablokowany");
+				if(strpos($env->get('APP_URL'), "http://") === false && strpos($env->get('APP_URL'), "https://") === false) array_push($warnings,"The value in the APP_URL .env file is invalid: No http(s):// protocol defined");
+				if($env->get('APP_FORCE_SSL',false) && strpos($env->get('APP_URL'), "https://") === false) array_push($warnings,"The APP_URL value in the .env file is invalid: Force https requires the APP_URL value to contain https://");
+				if($env->get('APP_ENV','local') != 'local') array_push($warnings,"The APP_ENV value in the .env file is invalid: Expected value 'local'");
+				if(!$env->get('APP_ACCESS_API',true)) array_push($warnings,"Access to the website via API is blocked");
 				$is_beta = file_exists(__DIR__.'/../is_beta');
 				if(!$is_beta){
-					if(is_null($env->get('SESSION_DOMAIN','_blank'))) array_push($warnings,"Nie skonfigurowano domeny dla cookies (Ustawienia > Sesja > Domena aplikacji)");
-					if(!$env->get('APP_FORCE_SSL',false)) array_push($warnings,"Tryb 'Wymuś SSL' nie jest włączony");
-					if(!$env->get('APP_COMMANDER_MAIN',true)) array_push($warnings,"Tryb 'Logi systemowe (Aplikacja)' jest wyłączony");
-					if(!$env->get('APP_COMMANDER_API',true)) array_push($warnings,"Tryb 'Logi systemowe (API)' jest wyłączony");
-					if(!$env->get('APP_COMMANDER_JAVASCRIPT',true)) array_push($warnings,"Tryb 'Logi systemowe (JavaScript)' jest wyłączony");
-					if($env->get('APP_SEND_QUERY_ON_BST',false)) array_push($warnings,"Tryb 'Wysyłaj zapytanie na BST' jest włączony");
-					if($env->get('APP_DUCK_TEST_MODE',false)) array_push($warnings,"Tryb testowy dla Tryb kaczka jest włączony");
-					if($env->get('APP_FUNCTION_PERFORMANCE_LOG',false)) array_push($warnings,"Dziennik wydajności funkcji jest włączony");
-					if($env->get('APP_PLUGIN_DEVELOPER',false)) array_push($warnings,"Pluginy działają w trybie developera");
-					if($env->get('APP_EXPERIMENTAL',false)) array_push($warnings,"Funkcje eksperymentalne są włączone");
-					if($env->get('APP_DEBUG',false)) array_push($warnings,"Tryb debug jest włączony");
-					if($env->get('APP_DEBUG_REQUEST_USER',false)) array_push($warnings,"Tryb 'Request log (User)' jest włączony");
-					if($env->get('APP_DEBUG_REQUEST_API',false)) array_push($warnings,"Tryb 'Request log (API)' jest włączony");
-					if($env->get('APP_LOG_LEVEL','info') != 'info') array_push($warnings,"Wartość w pliku .env APP_LOG_LEVEL ".$env->get('APP_LOG_LEVEL','info')." jest niezalecana: Zalecana wartość info");
+					if(is_null($env->get('SESSION_DOMAIN','_blank'))) array_push($warnings,"No cookie domain configured (Settings > Session > Application domain)");
+					if(!$env->get('APP_FORCE_SSL',false)) array_push($warnings,"'Force SSL' mode is not enabled");
+					if(!$env->get('APP_COMMANDER_MAIN',true)) array_push($warnings,"'System logs (Application)' mode is disabled");
+					if(!$env->get('APP_COMMANDER_API',true)) array_push($warnings,"'System logs (API)' mode is disabled");
+					if(!$env->get('APP_COMMANDER_JAVASCRIPT',true)) array_push($warnings,"'System logs (JavaScript)' mode is disabled");
+					if($env->get('APP_SEND_QUERY_ON_BST',false)) array_push($warnings,"'Send request to BST' mode is enabled");
+					if($env->get('APP_DUCK_TEST_MODE',false)) array_push($warnings,"Test mode for Duck Mode is enabled");
+					if($env->get('APP_FUNCTION_PERFORMANCE_LOG',false)) array_push($warnings,"The feature performance log is enabled");
+					if($env->get('APP_PLUGIN_DEVELOPER',false)) array_push($warnings,"Plugins run in developer mode");
+					if($env->get('APP_EXPERIMENTAL',false)) array_push($warnings,"Experimental features are enabled");
+					if($env->get('APP_DEBUG',false)) array_push($warnings,"Debug mode is enabled");
+					if($env->get('APP_DEBUG_REQUEST_USER',false)) array_push($warnings,"'Request log (User)' mode is enabled");
+					if($env->get('APP_DEBUG_REQUEST_API',false)) array_push($warnings,"'Request log (API)' mode is enabled");
+					if($env->get('APP_LOG_LEVEL','info') != 'info') array_push($warnings,"The value APP_LOG_LEVEL=".$env->get('APP_LOG_LEVEL','info')." in the .env file is not recommended: Recommended value 'info'");
 				}
 			}
 
-			if(!in_array("imagick",$extensions)) array_push($warnings,"Brak zalecanego rozszerzenia: Imagick (ImageMagick)");
-			if(!function_exists('opcache_get_status')) array_push($warnings,"Brak zalecanego rozszerzenia: OPcache");
+			if(!in_array("imagick",$extensions)) array_push($warnings,"Missing required extension: Imagick (ImageMagick)");
+			if(!function_exists('opcache_get_status')) array_push($warnings,"Missing required extension: OPcache");
 
-			if($this->check_collision()) array_push($warnings,"Nad katalogiem aplikacji wykryto plik .htaccess może to powodować problemy z funkcjonowaniem aplikacji.<br>Upewnij się że nad katalogiem aplikacji nie jest zainstalowany inny program np. WordPress");
+			if($this->check_collision()) array_push($warnings,"An .htaccess file was detected above the application directory, which may cause problems with the operation of the application.<br>Make sure that no other program is installed above the application directory, e.g. WordPress");
 
 			if(function_exists('opcache_get_status')){
-				if($this->parse_size_value(ini_get('memory_limit')) < 256 * 1024 * 1024) array_push($warnings,"Ustawienie parametru memory_limit dla aktywnego OPcache zalecane 256M wykryte ".ini_get('memory_limit'));
+				if($this->parse_size_value(ini_get('memory_limit')) < 256 * 1024 * 1024) array_push($warnings,"The recommended value for the memory_limit parameter for active OPcache is 256M, detected ".ini_get('memory_limit'));
 			}
 
 			$apacheCheck = false;
@@ -162,15 +162,15 @@
 			if(in_array("litespeed",$extensions)) $apacheCheck = true;
 			if(in_array("cgi-fcgi",$extensions)) $apacheCheck = true;
 			if(!$apacheCheck){
-				array_push($warnings,"Serwer API nie został rozpoznany oczekiwano: apache2handler, apache2filter, apache, litespeed, cgi-fcgi");
+				array_push($warnings,"API server not recognized, expected: apache2handler, apache2filter, apache, litespeed, cgi-fcgi");
 			}
 
 			$system_type = php_uname('s');
 			if(!in_array($system_type,['Linux','FreeBSD'])){
-				array_push($warnings,"Środowisko pracy '$system_type' nie jest zalecane, zalecane środowisko pracy 'Linux'");
+				array_push($warnings,"'$system_type' operating environment is not recommended, 'Linux' operating environment is recommended");
 			}
 
-			if(file_exists('public/uploads')) array_push($errors,"Wykryto stary folder załączników /public/uploads Wymagane manualne przeniesienie zawartości do /storage/app/public");
+			if(file_exists('public/uploads')) array_push($errors,"Old attachment folder /public/uploads detected. Manual content transfer required to /storage/app/public");
 
 			$file = "$this->location/permission_check";
 
@@ -195,7 +195,7 @@
 			}
 
 			$permissions = $createFileCheck && $deleteFileCheck;
-			if(!$permissions) array_push($errors,"Brak uprawnień zapisu na dysku");
+			if(!$permissions) array_push($errors,"No disk write permissions");
 
 			return [
 				'errors' => $errors,
@@ -250,18 +250,18 @@
 
 		if(file_exists('.env')){
 			if($version_number_installed == 0){
-				array_push($init_errors,"Nie udało się zidentyfikować programu MercjaDOG we wskazanym katalogu.");
+				array_push($init_errors,"The MercjaDOG program could not be identified in the specified directory.");
 			} else if($version_number_installed >= 2000000){
-				array_push($init_errors,"Odczytana wersja programu eMU wykracza poza zakres.");
+				array_push($init_errors,"The MercjaDOG program version read is out of scope.");
 			}
 		}
 		if($version_number_pack == 0){
-			array_push($init_errors,"Paczka nie zawiera poprawnej informacji wersji.");
+			array_push($init_errors,"The package does not contain the correct version information.");
 		} else if($version_number_pack < 1000000 || $version_number_pack >= 2000000){
-			array_push($init_errors,"Wykryta paczka nie jest zgodna z nowym systemem aktualizacji. Wymagana wersja v1.0.0.0+ oraz poniżej wersji v2.0.0.0");
+			array_push($init_errors,"The detected package is not compatible with the new update system. Requires version v1.0.0.0+ and below version v2.0.0.0");
 		}
 	} else {
-		array_push($init_errors,"Brak aktualizacji do zainstalowania.");
+		array_push($init_errors,"There are no updates to install.");
 	}
 ?>
 <!DOCTYPE html>
@@ -273,7 +273,7 @@
 		<script src="./public/upgrade/jquery-3.6.1.min.js"></script>
 		<script src="./public/upgrade/upgrade.js?ver=<?php echo rand(1000,9999); ?>"></script>
 		<link rel="shortcut icon" href="favicon2022.ico">
-		<title><?php echo APP_NAME; ?> Aktualizacja</title>
+		<title><?php echo APP_NAME; ?> Update</title>
 	</head>
 	<body class="disable-text-select">
 		<div class="container">
@@ -281,17 +281,16 @@
 				<div class="col-xs-12">
 					<br>
 					<h1 class="text-center">
-						<?php echo APP_NAME; ?> <span id="app_title">Aktualizacja plików strony</span>
+						<?php echo APP_NAME; ?> <span id="app_title"><br>Updating app files</span>
 					</h1>
 					<br><br><br>
 					<center>
 						<table id="version_table">
 							<tr>
-								<th>Wersja aplikacji</th>
-								<th>Wersja paczki</th>
-								<th>Wykryta wersja PHP</th>
-								<th>Wymagana wersja PHP</th>
-								<th>Wymagana wersja asysty</th>
+								<th>App version</th>
+								<th>Package version</th>
+								<th>PHP version detected</th>
+								<th>PHP version required</th>
 							</tr>
 							<tr>
 								<td><?php echo $app_version_installed; ?><br>&nbsp;</td>
@@ -309,31 +308,31 @@
 					<?php if(!empty($init_errors)){ ?>
 						<?php foreach($init_errors as $error){ ?>
 							<div class="col-xs-12">
-								<div class="alert alert-danger" role="alert"><strong>Błąd</strong> <?php echo $error; ?></div>
+								<div class="alert alert-danger" role="alert"><strong>Error</strong> <?php echo $error; ?></div>
 							</div>
 						<?php } ?>
 					<?php } else { ?>
 						<?php foreach($validation['warnings'] as $warning){ ?>
 							<div class="col-xs-12">
-								<div class="alert alert-warning" role="alert"><strong>Ostrzeżenie</strong> <?php echo $warning; ?></div>
+								<div class="alert alert-warning" role="alert"><strong>Warning</strong> <?php echo $warning; ?></div>
 							</div>
 						<?php } ?>
 						<div class="form-group">
-							<button type="button" id="btn_init_extract" class="btn btn-success center-block">Rozpocznij</button>
+							<button type="button" id="btn_init_extract" class="btn btn-success center-block">Get started</button>
 						</div>
 						<div id="errors"></div><br>
 						<div class="col-xs-12">
-							<h4>Uwaga !</h4>
-							<p>Wszystkie nierozpoznane pliki w katalogach: app, config, database, resources, routes, vendor oraz public zostaną przeniesione do folderu _deleted i zostaną usunięte po 14 dniach.</p>
+							<h4>Warning !</h4>
+							<p>All unrecognized files in the app, config, database, resources, routes, vendor and public directories will be moved to the _deleted folder and will be deleted after 14 days.</p>
 						</div>
 					<?php } ?>
 				</div>
 			</center>
 			<div style="position:absolute;top:10px;left:10px;display:flex">
-				<input type="button" class="btn btn-primary" id="upgrade_button_panel" value="Strona główna" style="width:120px">
-				<a href="logs.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Logi</a>
-				<a href="recovery.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Odzyskiwanie</a>
-				<a href="setup.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Instalator</a>
+				<input type="button" class="btn btn-primary" id="upgrade_button_panel" value="Main page" style="width:120px">
+				<a href="logs.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Logs</a>
+				<a href="recovery.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Recovery</a>
+				<a href="setup.php" target="_blank" class="btn btn-primary center-block" style="width:120px;margin-left:10px">Installer</a>
 			</div>
 		</div>
 		<script type="text/javascript">

@@ -85,7 +85,7 @@
 			$PHP_VERSION_NUMBER = $this->get_php_version();
 			$extensions = get_loaded_extensions();
 
-			if($PHP_VERSION_NUMBER < 80100 || $PHP_VERSION_NUMBER > 80299) array_push($errors,"Nieprawidłowa wersja PHP wymagana 8.1");
+			if($PHP_VERSION_NUMBER < 80100 || $PHP_VERSION_NUMBER > 80299) array_push($errors,"Incorrect PHP version, required 8.1");
 
 			if($this->parse_size_value(ini_get('memory_limit')) < 128 * 1024 * 1024) array_push($errors,"memory_limit parameter setting required minimum 128M detected ".ini_get('memory_limit'));
 			if($this->parse_size_value(ini_get('post_max_size')) < 64 * 1024 * 1024) array_push($errors,"post_max_size parameter setting required minimum 64M detected ".ini_get('post_max_size'));
@@ -108,7 +108,7 @@
 			if(!in_array("soap",$extensions)) array_push($errors,"Missing required extension: Soap");
 			if(!in_array("imap",$extensions)) array_push($errors,"Missing required extension: IMAP");
 
-			if(file_exists('public/uploads')) array_push($errors,"Wykryto stary folder załączników /public/uploads Wymagane manualne przeniesienie zawartości do /storage/app/public");
+			if(file_exists('public/uploads')) array_push($errors,"Old attachment folder /public/uploads detected. Manual content transfer required to /storage/app/public");
 
 			$file = "$this->location/permission_check";
 

@@ -28,7 +28,7 @@ class GuardDriver {
 		'version',
 		'artisan',
 		'composer.json',
-/*		'backup-ftp.php',*/
+		// 'backup-ftp.php',
 		'server.php',
 		'webpack.mix.js',
 		'package.json',

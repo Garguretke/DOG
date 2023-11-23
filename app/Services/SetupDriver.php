@@ -160,7 +160,7 @@ class SetupDriver {
 	public function EnvCreate(array $data) : void {
 		try {
 			$this->env = new IniFile($this->env_path, true);
-			if(!$this->env->isValid()) throw new Exception("Tworzenie pliku .env nie powiodło się");
+			if(!$this->env->isValid()) throw new Exception("Failed to create .env file");
 			$this->env->update([
 				'APP_ENV' => "local",
 				'APP_DEBUG' => false,
@@ -181,7 +181,7 @@ class SetupDriver {
 				'MAIL_ENCRYPTION' => "tls",
 				'MAIL_COPY_MAIL' => "",
 				'MAIL_FROM_ADDRESS' => $data['email'],
-				'MAIL_FROM_NAME' => "eMU",
+				'MAIL_FROM_NAME' => "MercjaDOG",
 				'MAIL_SEND_CC' => 0,
 				'APP_FORCE_SSL' => false,
 				'SESSION_LIFETIME' => 60,
@@ -242,19 +242,19 @@ class SetupDriver {
 			}
 		}
 
-		$msg = "Walidacja plików strony: $damaged uszkodzonych, $missing brakujących, $unknown nierozpoznanych";
+		$msg = "Page file validation: $damaged damaged, $missing missing, $unknown unknown";
 		logger()->error("SetupDriver -> ".$msg);
 
 		if(!empty($validation)){
 			$file_name = 'validator-'.date("Y-m-d_His").'.log';
 			$logs = new Logs("storage/logs/$file_name",false);
-			$logs->write(date("Y-m-d H:i:s")." Weryfikacja spójności plików");
-			$logs->write("Status: $damaged uszkodzonych, $missing brakujących, $unknown nierozpoznanych");
-			$logs->write("\r\nUszkodzone:");
+			$logs->write(date("Y-m-d H:i:s")." File integrity verification");
+			$logs->write("Status: $damaged damaged, $missing missing, $unknown unknown");
+			$logs->write("\r\nDamaged:");
 			$logs->write($errors['damaged'] ?? []);
-			$logs->write("\r\nBrakujące:");
+			$logs->write("\r\nMissing:");
 			$logs->write($errors['missing'] ?? []);
-			$logs->write("\r\nNierozpoznane:");
+			$logs->write("\r\nUnknown:");
 			$logs->write($errors['unknown'] ?? []);
 			$logs->write("\r\n\r\n");
 		}

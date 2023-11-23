@@ -88,28 +88,28 @@ class SetupHelper {
 
 	public static function showInstallUpdateJqueryForm(array $formData = [], array $listaAktualizacji = []) : void {
 		$content = '<div class="row"><div class="col-xs-12 text-center">';
-		$content .= '<h4 style="font-weight:normal">Wczytywanie aktualizacji <span id="migrations_counter"></span></h4>';
+		$content .= '<h4 style="font-weight:normal">Loading updates <span id="migrations_counter"></span></h4>';
 		$content .= '<div class="form-group"><textarea id="listaMigracjiID" disabled>';
 		$listaAktualizacjiJquery = [];
 		if(count($listaAktualizacji) > 0){
 			foreach($listaAktualizacji as $migrationInfo){
 				array_push($listaAktualizacjiJquery, $migrationInfo);
-				$content .= "Migracja: ".$migrationInfo['migrationName']."\n";
+				$content .= "Migration: ".$migrationInfo['migrationName']."\n";
 			}
 		}
 		$content .= '</textarea></div>';
 		if(!isset($formData['error'])){
-			$content .= '<div class="form-group"><button type="submit" id="btn_update" class="btn btn-success center-block">Rozpocznij</button></div>';
+			$content .= '<div class="form-group"><button type="submit" id="btn_update" class="btn btn-success center-block">Get started</button></div>';
 			$content .= '<script>emu_migrations = '.json_encode($listaAktualizacjiJquery).'</script>';
 		}
 		$content .= '</div></div>';
 		$content .= '<div class="row">';
 		if(isset($formData['error'])){
-			$content .= '<div class="alert alert-danger" role="alert"><strong>Uwaga!</strong> '.$formData['error'].'</div>';
+			$content .= '<div class="alert alert-danger" role="alert"><strong>Warning!</strong> '.$formData['error'].'</div>';
 		}
 		$content .= '<div class="col-xs-12">';
-		$content .= '<h4>Uwaga !</h4>';
-		$content .= '<p>Przed przystąpieniem do aktualizacji zaleca się wykonanie kopii zapasowej bazy danych.</p>';
+		$content .= '<h4>Warning !</h4>';
+		$content .= '<p>Before starting the update, it is recommended to make a backup copy of the database.</p>';
 		$content .= '</div>';
 		$content .= '</div>';
 		echo str_replace('{{content}}', $content, SetupHelper::makePageLayout());
@@ -122,7 +122,7 @@ class SetupHelper {
 		}
 		$verNumber = ($version[0] * 10000 + $version[1] * 100 + $version[2]);
 		if($verNumber < 80100 || $verNumber > 80299){
-			$content = '<div class="row"><br><br><br><br><center><font size="14"><b>Wykryta wersja PHP jest niekompatybilna<br>wymagana wersja PHP: '.PHP_REQUIRED.'</b></font></center></div>';
+			$content = '<div class="row"><br><br><br><br><center><font size="14"><b>The PHP version detected is incompatible.<br>Required PHP version: '.PHP_REQUIRED.'</b></font></center></div>';
 		} else if(isset($formData['errorGlobalny'])){
 			$content = '<div class="row"><br><br><br><br><center><font size="14"><b>'.$formData['errorGlobalny'].'</b></font></center></div>';
 		} else {
@@ -135,12 +135,12 @@ class SetupHelper {
 			$content .= '</div>';
 			$content .= '<div class="row">';
 			if(isset($formData['errorLogowania'])){
-				$content .= '<div class="alert alert-danger" role="alert"><strong>Uwaga!</strong> '.$formData['errorLogowania'].'</div>';
+				$content .= '<div class="alert alert-danger" role="alert"><strong>Warning!</strong> '.$formData['errorLogowania'].'</div>';
 			}
 			if(!$install){
 				$content .= '<div class="col-xs-12">';
 				$content .= '<h4>Uwaga !</h4>';
-				$content .= '<p>Przed przystąpieniem do aktualizacji zaleca się wykonanie kopii zapasowej bazy danych</p>';
+				$content .= '<p>Before starting the update, it is recommended to make a backup copy of the database.</p>';
 				$content .= '</div>';
 			}
 			$content .= '</div>';
@@ -171,7 +171,7 @@ class SetupHelper {
 		// } else if(isset($get['dev']) && $get['dev'] == '7q4po57iubsvDE9Y'){
 			// return ['autorization' => true, 'type' => 'guzik programisty', 'user' => null];
 		} else if(isset($get['auto_update']) && $get['auto_update'] == 'true' && file_exists("../auto_update")){
-			return ['autorization' => true, 'type' => 'plik auto aktualizacji', 'user' => null];
+			return ['autorization' => true, 'type' => 'auto update file', 'user' => null];
 		}
 		return ['autorization' => false, 'type' => '', 'user' => null];
 	}

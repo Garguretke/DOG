@@ -8,10 +8,10 @@ function Setup_GetTimeStamp(){
 function Setup_UpdateCount(){
 	if(migration_total > 0){
 		var percent = (migration_current / migration_total) * 100;
-		document.title = "eMU Instalator - "+percent.toFixed(2)+" %";
+		document.title = "MercjaDOG Installer - "+percent.toFixed(2)+" %";
 		$("#migrations_counter").html(migration_current+" z "+migration_total+" postęp "+percent.toFixed(2)+" %");
 	} else {
-		document.title = "eMU Instalator";
+		document.title = "MercjaDOG Installer";
 		$("#migrations_counter").html("");
 	}
 }
@@ -22,7 +22,7 @@ function Setup_AppendLog(text){
 }
 
 function Setup_LoadMigration(){
-	Setup_AppendLog('Rozpoczynanie wczytywania migracji: '+emu_migrations[migration_current].migrationName);
+	Setup_AppendLog('Start loading migrations: '+emu_migrations[migration_current].migrationName);
 	$.ajax({
 		url: "setup.php",
 		type: 'POST',
@@ -33,26 +33,26 @@ function Setup_LoadMigration(){
 		dataType: 'json',
 		success: function (response){
 			if(!response.success){
-				$("#btn_update").html('Rozpocznij').prop("disabled", false);
+				$("#btn_update").html('Get started').prop("disabled", false);
 				Setup_AppendLog(response.error);
 				return;
 			}
-			Setup_AppendLog('Zakończono wczytywanie migracji: '+emu_migrations[migration_current].migrationName);
+			Setup_AppendLog('Migration loading completed: '+emu_migrations[migration_current].migrationName);
 			migration_current++;
 			Setup_UpdateCount();
 			if(migration_current < migration_total){
 				Setup_LoadMigration();
 			} else {
-				Setup_AppendLog('Odblokowanie dostępu do strony');
+				Setup_AppendLog('Unblocking access to the website');
 				Setup_ToggleAccess();
-				$("#btn_update").html('Zakończono').removeClass('btn-success').addClass('btn-danger');
+				$("#btn_update").html('Finished').removeClass('btn-success').addClass('btn-danger');
 				$('#setup_button_panel').prop('disabled',false);
 			}
 		},
 		error: function (xhr, status, error){
 			$("#alertLogowanieID").css("display", "unset");
-			$("#btn_update").html('Rozpocznij').prop("disabled", false);
-			Setup_AppendLog('Błąd wczytywania migracji: '+emu_migrations[migration_current].migrationName);
+			$("#btn_update").html('Get started').prop("disabled", false);
+			Setup_AppendLog('Migration loading error: '+emu_migrations[migration_current].migrationName);
 			Setup_AppendLog(xhr.responseText);
 		}
 	});
@@ -95,7 +95,7 @@ function Setup_ToggleAccess(){
 $(function(){
 
 	$("#btn_update").on('click',function(e){
-		$(this).html('Aktualizacja w toku').prop("disabled",true);
+		$(this).html('Update in progress').prop("disabled",true);
 		$("#listaMigracjiID").val("");
 		$('#setup_button_panel').prop('disabled',true);
 		Setup_LoadMigration(emu_migrations);

@@ -9,7 +9,7 @@ class GuardGenerate extends Command {
 
 	protected $signature = 'guard:generate';
 
-	protected $description = 'Generowanie sum kontrolnych plików';
+	protected $description = 'Generating file checksums';
 
 	protected $guard;
 

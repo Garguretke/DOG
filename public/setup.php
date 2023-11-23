@@ -7,7 +7,7 @@ const PHP_REQUIRED = '8.1, 8.2';
 const SETUP_LOG_FILE = "../storage/logs/setup.log";
 
 $version_file = "../version";
-if(!file_exists($version_file)) die("Nie udało się odczytać wersji programu: Plik version nie istnieje.");
+if(!file_exists($version_file)) die("Failed to read program version: The 'version' file does not exist.");
 
 $handle = fopen($version_file,"r");
 $app_version = preg_replace('/\s+/', '', fread($handle, filesize($version_file)));
@@ -29,12 +29,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 		try {
 			$form_data['success'] = true;
 			$logs = new Logs(SETUP_LOG_FILE);
-			$logs->write("Rozpoczynanie wczytywania migracji: ".$_POST['migracjaDana']['filepath']);
+			$logs->write("Start loading migrations: ".$_POST['migracjaDana']['filepath']);
 			if(($err = $kernel->call('migrate', ['--path' => str_replace('../', './', $_POST['migracjaDana']['filepath'])])) !== 0){
-				$logs->write("Bład migracji: ".$_POST['migracjaDana']['filepath'].' '.$err);
-				throw new Exception('Bład migracji: ['.$_POST['migracjaDana']['filepath'].'] '.$err);
+				$logs->write("Migration error: ".$_POST['migracjaDana']['filepath'].' '.$err);
+				throw new Exception('Migration error: ['.$_POST['migracjaDana']['filepath'].'] '.$err);
 			}
-			$logs->write("Zakończono wczytywanie migracji: ".$_POST['migracjaDana']['filepath']);
+			$logs->write("Migration loading completed: ".$_POST['migracjaDana']['filepath']);
 			$form_data['migration'] = $_POST['migracjaDana']['migrationName'];
 			echo json_encode($form_data);
 		}
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 		$last_verification = $setup->env->get('APP_NEXT_VERIFICATION',Carbon::now()->addDays(-7)->format("Y-m-d H:i:s"));
 		if($now->gt(Carbon::parse($last_verification))){
 			$logs = new Logs(SETUP_LOG_FILE);
-			$logs->write("Uruchomienie weryfikacji spójności plików");
+			$logs->write("File integrity verification has been run");
 			$setup->env->update(['APP_NEXT_VERIFICATION' => $now->addDays(1)->format("Y-m-d H:i:s")], true);
 			$setup->checkValidateFiles();
 		}
@@ -67,11 +67,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 		if(pathinfo(getcwd(),PATHINFO_FILENAME) != 'public') chdir('public');
 		$setup = new SetupDriver();
 		$logs = new Logs(SETUP_LOG_FILE);
-		$logs->write("Odblokowanie dostępu do strony");
+		$logs->write("Unblocking access to the website");
 		$setup->toggleAccess(true);
-		$logs->write("Weryfikacja .env");
+		$logs->write(".env verification in progress");
 		$setup->checkRequired($app_version);
-		$logs->write("Odświeżenie cache");
+		$logs->write("Cache refresh in progress");
 		SetupHelper::refreschCache($kernel,null,'setup.php',$setup->IsCommanderExists(),$setup->IsUserCacheExists());
 		if(file_exists("../auto_update")) unlink("../auto_update");
 		return;
@@ -88,18 +88,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 			$passwordAdmin = $_POST['password'];
 			$passwordConfirm = $_POST['password_confirm'];
 
-			if(empty($passwordAdmin) || empty($passwordConfirm)) throw new Exception("Należy podać nowe początkowe hasło administratora.");
-			if(strcmp($passwordAdmin, $passwordConfirm) !== 0) throw new Exception("Podane hasła nie są identyczne.");
-			if(strlen($passwordAdmin) < 6) throw new Exception("Hasło musi mieć conajmniej 6 znaków.");
+			if(empty($passwordAdmin) || empty($passwordConfirm)) throw new Exception("You must provide a new initial administrator password.");
+			if(strcmp($passwordAdmin, $passwordConfirm) !== 0) throw new Exception("The passwords provided are not identical.");
+			if(strlen($passwordAdmin) < 6) throw new Exception("The password must be at least 6 characters long.");
 
-			$logs->write("Wykonywanie testu połączenia z bazą danych");
+			$logs->write("Performing a database connection test.");
 			if(!$setup->connectSQL($_POST['DB_HOST'], $_POST['DB_DATABASE'], $_POST['DB_USERNAME'], $_POST['DB_PASSWORD'], intval($_POST['DB_PORT']), $_POST['DB_CONNECTION'])){
-				throw new Exception("Błąd połączenia z bazą danych.");
+				throw new Exception("Database connection error.");
 			}
 
-			if($setup->EnvExists()) throw new Exception("Plik konfiguracyjny .env już istnieje!");
+			if($setup->EnvExists()) throw new Exception("The .env configuration file already exists!");
 
-			$logs->write("Utworzenie pliku .env");
+			$logs->write("Creating an .env file");
 			$setup->EnvCreate([
 				'db_hostname' => $_POST['DB_HOST'],
 				'db_port' => $_POST['DB_PORT'],
@@ -115,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 				// 'erp_system_type' => $_POST['erp_system_type'],
 			]);
 
-			$logs->write("Inicjacja wstępna");
+			$logs->write("Initial initiation");
 			$kernel->call('config:clear', []);
 			$kernel->call('key:generate', []);
 			$kernel->call('config:clear', []);
@@ -126,15 +126,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 			];
 
 			foreach($migrationsInstall as $migration){
-				$logs->write("Rozpoczynanie wczytywania migracji: ".$migration);
+				$logs->write("Start loading migrations ".$migration);
 				if(($err = $kernel->call('migrate', ['--path' => $migration])) !== 0){
-					$logs->write("Bład migracji: ".$migration.' '.$err);
-					throw new Exception('Bład migracji: ['.$migration.'] '.$err);
+					$logs->write("Migration error: ".$migration.' '.$err);
+					throw new Exception('Migration error: ['.$migration.'] '.$err);
 				}
-				$logs->write("Zakończono wczytywanie migracji: ".$migration);
+				$logs->write("Migration loading completed: ".$migration);
 			}
 
-			$logs->write("Utworzenie użytkowników systemowych");
+			$logs->write("Creating system users");
 
 			$user = new User();
 			$user->name = 'admin';
@@ -151,7 +151,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 			echo json_encode($form_data);
 		}
 		catch(Exception $e){
-			$logs->write("Usunięcie pliku .env");
+			$logs->write("Deleting the .env file");
 			$setup->EnvRemove();
 			$form_data['success'] = false;
 			$form_data['error'] = $e->getMessage();
@@ -169,41 +169,41 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 		try {
 			$setup = new SetupDriver();
 			if(!$setup->versionValid($app_version)){
-				$logs->write("Zablokowanie dostępu do strony");
+				$logs->write("Blocking access to the website");
 				$setup->toggleAccess(false);
-				return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Informacja<br><small>Wersja programu ma niepoprawny format</small>"]);
+				return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Info<br><small>The program version has an incorrect format.</small>"]);
 			} else if($setup->versionToInt($setup->env->get('APP_VERSION','0.0.0.0')) > $setup->versionToInt($app_version) && !isset($_GET['downgrade'])){
-				$logs->write("Zablokowanie dostępu do strony");
+				$logs->write("Blocking access to the website");
 				$setup->toggleAccess(false);
-				return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Informacja<br><small>Próbujesz uruchomić starszą wersję eMU niż została już zainicjowana, wykryta v$app_version oczekiwana v".$setup->env->get('APP_VERSION')."</small>"]);
+				return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Info<br><small>You are trying to run an older version of MercjaDOG than has already been initialized, detected v$app_version expected v".$setup->env->get('APP_VERSION').".</small>"]);
 			} else {
-				$logs->write("Weryfikacja .env");
+				$logs->write(".env verification in progress");
 				$setup->checkRequired($app_version);
-				$logs->write("Pobieranie listy aktualizacji");
+				$logs->write("Downloading the update list");
 				$listaAktualizacji = $setup->CheckForUpdates();
-				$logs->write("Odświeżenie cache");
+				$logs->write("Cache refresh");
 				SetupHelper::refreschCache($kernel,$auth['user'],$auth['type'],$setup->IsCommanderExists(),$setup->IsUserCacheExists());
 				if(file_exists('../upgrade-remove-dir.json') || file_exists('../upgrade-remove.json') || file_exists('../upgrade-extract.json')){
-					$logs->write("Zablokowanie dostępu do strony");
+					$logs->write("Blocking access to the website");
 					$setup->toggleAccess(false);
-					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Informacja<br><small>Proces aktualizacji plików strony jest w toku</small>"]);
+					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Info<br><small>The process of updating site files is in progress.</small>"]);
 				} else if(!file_exists('../guard.ini') && !file_exists('../_Builder')){
-					$logs->write("Zablokowanie dostępu do strony");
+					$logs->write("Blocking access to the website");
 					$setup->toggleAccess(false);
-					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Informacja<br><small>Nie znaleziono pliku guard.ini</small>"]);
+					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Info<br><small>guard.ini file not found.</small>"]);
 				} else if(!file_exists('../MySQL.ini') && !file_exists('../_Builder')){
-					$logs->write("Zablokowanie dostępu do strony");
+					$logs->write("Blocking access to the website");
 					$setup->toggleAccess(false);
-					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Informacja<br><small>Nie znaleziono pliku MySQL.ini</small>"]);
+					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Info<br><small>MySQL.ini file not found.</small>"]);
 				} else if(count($listaAktualizacji) == 0){
 					if(!$setup->hasAccess()){
-						$logs->write("Odblokowanie dostępu do strony");
+						$logs->write("Unblocking access to the website");
 						$setup->toggleAccess(true);
 					}
 					if(file_exists("../auto_update")) unlink("../auto_update");
-					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Informacja<br><small>Masz już najnowszą aktualizacje</small>"], true);
+					return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Info<br><small>You already have the latest update.</small>"], true);
 				} else {
-					$logs->write("Zablokowanie dostępu do strony");
+					$logs->write("Blocking access to the website");
 					$setup->toggleAccess(false);
 					return SetupHelper::showInstallUpdateJqueryForm([], $listaAktualizacji);
 				}
@@ -213,7 +213,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 			return SetupHelper::showInstallUpdateJqueryForm(['error' => $e->getMessage()]);
 		}
 	} else {
-		return SetupHelper::showInstallForm(false, ['errorLogowania' => "Nieprawidłowe hasło"]);
+		return SetupHelper::showInstallForm(false, ['errorLogowania' => "Invalid password"]);
 	}
 } else {
 	try {
@@ -225,7 +225,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' || ($_SERVER['REQUEST_METHOD'] === 'GET
 		}
 	}
 	catch(Exception $e){
-		return SetupHelper::showInstallForm(false, ['errorGlobalny' => "Brak możliwości aktualizacji.<br><small>".$e->getMessage().'</small>']);
+		return SetupHelper::showInstallForm(false, ['errorGlobalny' => "No update possible.<br><small>".$e->getMessage().'</small>']);
 	}
 }
 ?>

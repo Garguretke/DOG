@@ -12,13 +12,13 @@ $(function(){
 			output += '<div class="col-xs-12"><div class="alert alert-danger" role="alert"><strong>Błąd</strong> '+element+'</div></div>';
 		});
 		$('#errors').html(output);
-		$('#btn_init_extract').html('Rozpocznij').prop('disabled',false);
+		$('#btn_init_extract').html('Get started').prop('disabled',false);
 		$('#upgrade_button_panel').prop('disabled',false);
-		website_lock_time = 10;
+		website_lock_time = 5;
 	}
 
 	function Extractor_RemoveUnusedFiles(){
-		$('#btn_init_extract').html('Usuwam '+files_remove+' '+dli(files_remove,"plik","pliki","plików"));
+		$('#btn_init_extract').html('Deleting '+files_remove+' '+dli(files_remove,"file","files","files"));
 		$.post('upgrade/driver.php',{
 			'action' : 'remove_unused'
 		}).done(function(response){
@@ -30,15 +30,15 @@ $(function(){
 					Extractor_RemoveUnusedFolders();
 				}
 			} catch (error){
-				Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+				Extractor_DisplayErrors(['Error performing operation']);
 			}
 		}).fail(function(xhr, status, error){
-			Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+			Extractor_DisplayErrors(['Error performing operation']);
 		});
 	}
 
 	function Extractor_RemoveUnusedFolders(){
-		$('#btn_init_extract').html('Usuwam '+folders_remove+' '+dli(folders_remove,"folder","foldery","folderów"));
+		$('#btn_init_extract').html('Deleting '+folders_remove+' '+dli(folders_remove,"folder","folders","folders"));
 		$.post('upgrade/driver.php',{
 			'action' : 'remove_unused_dir'
 		}).done(function(response){
@@ -50,15 +50,15 @@ $(function(){
 					Extractor_ExtractFiles();
 				}
 			} catch (error){
-				Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+				Extractor_DisplayErrors(['Error performing operation']);
 			}
 		}).fail(function(xhr, status, error){
-			Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+			Extractor_DisplayErrors(['Error performing operation']);
 		});
 	}
 
 	function Extractor_ExtractFiles(){
-		$('#btn_init_extract').html('Rozpakowuje '+files_extract+' '+dli(files_extract,"plik","pliki","plików"));
+		$('#btn_init_extract').html('Unpacking '+files_extract+' '+dli(files_extract,"file","files","files"));
 		$.post('upgrade/driver.php',{
 			'action' : 'extract'
 		}).done(function(response){
@@ -76,15 +76,15 @@ $(function(){
 					window.location.href = app_url;
 				}
 			} catch (error){
-				Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+				Extractor_DisplayErrors(['Error performing operation']);
 			}
 		}).fail(function(xhr, status, error){
-			Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+			Extractor_DisplayErrors(['Error performing operation']);
 		});
 	}
 
 	function Extractor_InitExtract(){
-		$('#btn_init_extract').html('Skanowanie plików strony');
+		$('#btn_init_extract').html('Scanning page files');
 		$.post('upgrade/driver.php',{
 			'action' : 'init_extract'
 		}).done(function(response){
@@ -100,15 +100,15 @@ $(function(){
 					Extractor_LockWebsite();
 				}
 			} catch (error){
-				Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+				Extractor_DisplayErrors(['Error performing operation']);
 			}
 		}).fail(function(xhr, status, error){
-			Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+			Extractor_DisplayErrors(['Error performing operation']);
 		});
 	}
 
 	function Extractor_LockWebsite(){
-		$('#btn_init_extract').html('Blokowanie dostępu do strony');
+		$('#btn_init_extract').html('Blocking access to the website');
 		$('#errors').html('');
 		$.post('upgrade/driver.php',{
 			'action' : 'lock_website'
@@ -118,14 +118,14 @@ $(function(){
 				if(response.error){
 					Extractor_DisplayErrors(response.messages);
 				} else {
-					$('#errors').html('Pozostało '+website_lock_time+' sekund');
+					$('#errors').html('Left '+website_lock_time+' seconds');
 					setTimeout(Extractor_OnWebsiteLock, 1000);
 				}
 			} catch (error){
-				Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+				Extractor_DisplayErrors(['Error performing operation']);
 			}
 		}).fail(function(xhr, status, error){
-			Extractor_DisplayErrors(['Błąd wykonywania operacji']);
+			Extractor_DisplayErrors(['Error performing operation']);
 		});
 	}
 
@@ -135,7 +135,7 @@ $(function(){
 			$('#errors').html('');
 			Extractor_RemoveUnusedFiles();
 		} else {
-			$('#errors').html('Pozostało '+website_lock_time+' '+dli(website_lock_time,'sekunda','sekundy','sekund'));
+			$('#errors').html('Left '+website_lock_time+' '+dli(website_lock_time,'second','seconds','seconds'));
 			setTimeout(Extractor_OnWebsiteLock, 1000);
 		}
 	}

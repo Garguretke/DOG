@@ -9,7 +9,7 @@ class GuardValidate extends Command {
 
 	protected $signature = 'guard:validate';
 
-	protected $description = 'Weryfikacja spójności plików';
+	protected $description = 'File integrity verification';
 
 	protected $guard;
 

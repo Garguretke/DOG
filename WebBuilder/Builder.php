@@ -156,8 +156,8 @@
 		$this->artisan("clear-compiled");
 		$this->artisan("config:clear");
 		$this->artisan("up");
-/*		$this->artisan("config:cache");
-		$this->artisan("route:cache");*/
+		// $this->artisan("config:cache");
+		// $this->artisan("route:cache");
 		$this->artisan("cache:clear");
 	}
 
@@ -425,7 +425,7 @@
 		$this->artisan("schema:generate");
 	}
 	if($this->params['mode'] == '5'){
-		$this->ave->echo("Creation of the required application folders is in progress");
+		$this->ave->echo("Creation of the required application folders is in progress.");
 		$this->ave->delete_files('bootstrap/cache', ['php']);
 		$folders = [
 			"$this->path/backup/setup",
@@ -445,5 +445,5 @@
 		}
 	}
 
-	$this->ave->pause("Operation completed, click enter to close");
+	$this->ave->pause("Operation completed, click enter to close.");
 ?>

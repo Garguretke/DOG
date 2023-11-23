@@ -19,7 +19,7 @@
 
 	$init_errors = [];
 	foreach($path as $p) if(!file_exists($p)){
-		array_push($init_errors,"Plik $p nie istnieje.");
+		array_push($init_errors,"File $p does not exist.");
 	}
 
 	$action = $_POST['action'] ?? '';
@@ -43,7 +43,7 @@
 			}
 			echo json_encode(['error' => false]);
 		} else if($action == 'init_extract'){
-			$logs->write('Skanowanie plików strony');
+			$logs->write('Scanning page files');
 			if(file_exists($file_upgrade_remove)) unlink($file_upgrade_remove);
 			if(file_exists($file_upgrade_remove_dir)) unlink($file_upgrade_remove_dir);
 			if(file_exists($file_upgrade_extract)) unlink($file_upgrade_extract);
@@ -73,7 +73,7 @@
 					'auto_update' => file_exists('.env') ? 1 : 0,
 				]);
 			} else {
-				echo json_encode(['error' => true, 'messages' => ['Plik data.dog jest uszkodzony.']]);
+				echo json_encode(['error' => true, 'messages' => ['The data.dog file is corrupt.']]);
 			}
 		} else if($action == 'remove_unused'){
 			if(file_exists($file_upgrade_remove)){
@@ -83,7 +83,7 @@
 					$date = date('Y-m-d_His');
 					foreach($files as $file){
 						if(file_exists($file)){
-							array_push($log,"Usunięcie pliku: $file");
+							array_push($log,"Deleting a file: $file");
 							$fdir = pathinfo($file,PATHINFO_DIRNAME);
 							if(!file_exists("_deleted/$date/$fdir")) mkdir("_deleted/$date/$fdir",0755,true);
 							rename($file,"_deleted/$date/$file");
@@ -93,10 +93,10 @@
 					unlink($file_upgrade_remove);
 					echo json_encode(['error' => false]);
 				} else {
-					echo json_encode(['error' => true, 'messages' => ["Błąd odczytu $file_upgrade_remove"]]);
+					echo json_encode(['error' => true, 'messages' => ["Reading error $file_upgrade_remove"]]);
 				}
 			} else {
-				echo json_encode(['error' => true, 'messages' => ["Nie znaleziono pliku $file_upgrade_remove"]]);
+				echo json_encode(['error' => true, 'messages' => ["File $file_upgrade_remove not found"]]);
 			}
 		} else if($action == 'remove_unused_dir'){
 			if(file_exists($file_upgrade_remove_dir)){
@@ -118,10 +118,10 @@
 					unlink($file_upgrade_remove_dir);
 					echo json_encode(['error' => false]);
 				} else {
-					echo json_encode(['error' => true, 'messages' => ["Błąd odczytu $file_upgrade_remove_dir"]]);
+					echo json_encode(['error' => true, 'messages' => ["Reading error $file_upgrade_remove_dir"]]);
 				}
 			} else {
-				echo json_encode(['error' => true, 'messages' => ["Nie znaleziono pliku $file_upgrade_remove_dir"]]);
+				echo json_encode(['error' => true, 'messages' => ["File $file_upgrade_remove_dir not found"]]);
 			}
 		} else if($action == 'extract'){
 			if(file_exists($file_upgrade_extract)){
@@ -137,7 +137,7 @@
 						$zip->close();
 						$log = [];
 						foreach($files as $file){
-							array_push($log,"Rozpakowanie pliku: $file");
+							array_push($log,"Unpacking the file: $file");
 						}
 						array_push($log,'');
 						$logs->write($log);
@@ -161,16 +161,16 @@
 						}
 						echo json_encode(['error' => false]);
 					} else {
-						echo json_encode(['error' => true, 'messages' => ['Błąd wypakowywania zip: Kod #'.$res]]);
+						echo json_encode(['error' => true, 'messages' => ['Zip extract error: Code #'.$res]]);
 					}
 				} else {
-					echo json_encode(['error' => true, 'messages' => ["Błąd odczytu $file_upgrade_extract"]]);
+					echo json_encode(['error' => true, 'messages' => ["Reading error $file_upgrade_extract"]]);
 				}
 			} else {
-				echo json_encode(['error' => true, 'messages' => ["Nie znaleziono pliku $file_upgrade_extract"]]);
+				echo json_encode(['error' => true, 'messages' => ["File $file_upgrade_extract not found"]]);
 			}
 		} else {
-			echo json_encode(['error' => true, 'messages' => ['Nieznana akcja.']]);
+			echo json_encode(['error' => true, 'messages' => ['Unknown action.']]);
 		}
 	}
 ?>

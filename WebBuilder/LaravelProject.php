@@ -35,20 +35,20 @@ class LaravelProject {
 	}
 
 	public function artisan(string $command, bool $info = true) : void {
-		if($info) $this->ave->echo(" Wykonywanie polecenia artisan $command");
+		if($info) $this->ave->echo(" Executing a command artisan $command");
 		$php = $this->ave->get_file_path($this->php_path."/".$this->php_version."/php.exe");
 		system("\"$php\" \"artisan\" \"$command\"");
 	}
 
 	public function php(string $command, bool $info = true) : void {
-		if($info) $this->ave->echo(" Wykonywanie polecenia php $command");
+		if($info) $this->ave->echo(" Executing a command php $command");
 		$php = $this->ave->get_file_path($this->php_path."/".$this->php_version."/php.exe");
 		system("\"$php\" $command");
 	}
 
 	public function set_php_version(string $version) : bool {
 		if(!file_exists($this->ave->get_file_path($this->php_path."/$version"))){
-			$this->ave->echo(" Nie znaleziono wymaganego PHP v$version w AVE-UTILITIES");
+			$this->ave->echo(" The required PHP v$version was not found in AVE-UTILITIES");
 			return false;
 		} else {
 			$this->php_version = "$version";
@@ -59,7 +59,7 @@ class LaravelProject {
 	public function build(string $path) : bool {
 		$script = $this->ave->get_file_path("$path/WebBuilder/builder.php");
 		if(!file_exists($script)){
-			$this->ave->echo(" Nie znaleziono pliku $script");
+			$this->ave->echo(" File not found $script");
 			return true;
 		}
 		$this->path = $path;
