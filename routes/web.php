@@ -49,7 +49,7 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth']], function()
 {
-    // Kalkulator
+    // Liquid Calculator
     Route::get('/liqcalc', 'LiqCalcController@getIndex')->name('liqcalc.get-index');
 
     Route::get('/home', 'HomeController@getIndex')->name('home');
@@ -60,10 +60,10 @@ Route::group(['middleware'=>['auth']], function()
     Route::get('/player/shippuuden', 'PlayerController@Shippuuden')->name('player.shippuuden');
     Route::get('/player/boruto', 'PlayerController@Boruto')->name('player.boruto');
 
-    // Generator QR - formularz
+    // Generator QR - form
     Route::get('/generator-qr', 'QRCodeController@getIndex')->name('qrcode.get-index');
 
-    // Generator QR - przetwarzanie danych
+    // Generator QR - generate
     Route::post('/generator-qr', 'QRCodeController@Generate')->name('qrcode.generate');
 
     // Sewey
@@ -89,5 +89,8 @@ Route::group(['middleware'=>['auth']], function()
 
 	//Ranking
 	Route::get('/ranking', 'RankingController@getIndex')->name('ranking.get-index');
+
+	//Notebook
+	Route::get('/notebook' , 'NotebookController@getIndex')->name('notebook.get-index');
 
 });

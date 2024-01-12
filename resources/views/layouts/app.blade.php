@@ -55,6 +55,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('emeal.get-index') }}"><i class="fal fa-burger-soda fa-xl"></i></a>
                         </li>
+
+						<li class="nav-item">
+                            <a class="nav-link" href="{{ route('notebook.get-index') }}"><i class="fal fa-clipboard fa-xl"></i></a>
+                        </li>
 						
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('ranking.get-index') }}"><i class="fal fa-ranking-star fa-xl"></i></a>
