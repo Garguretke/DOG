@@ -14,7 +14,7 @@ MercjaDOG is a web application based on Laravel framework where you can find too
 - product ranking (under construction)
 - Cristiano Ronaldo funny feature (under construction)
 
-This is my small spaghetti code that incorporates several useful tools; however, the application may contain minor errors, especially in tools that are still under construction.
+The application may contain minor errors, especially in tools that are still under construction.
 
 ## License
 
