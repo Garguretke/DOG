@@ -10,6 +10,7 @@ MercjaDOG is a web application based on Laravel framework where you can find too
 - QR code generator
 - multimedia player utilizing data stored in a MySQL database, playing from embed links
 - dish recipe creation tool (eMeal) (under construction)
+- notebook (under construction)
 - product ranking (under construction)
 - Cristiano Ronaldo funny feature (under construction)
 
