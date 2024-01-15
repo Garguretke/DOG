@@ -92,5 +92,6 @@ Route::group(['middleware'=>['auth']], function()
 
 	//Notebook
 	Route::get('/notebook' , 'NotebookController@getIndex')->name('notebook.get-index');
-
+	Route::post('/notebook', 'NotebookController@store')->name('notebook.store');
+	Route::delete('/notebook/{id}', 'NotebookController@destroy')->name('notebook.destroy');
 });
