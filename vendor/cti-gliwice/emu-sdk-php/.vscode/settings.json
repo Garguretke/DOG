@@ -1,0 +1,10 @@
+{
+	"explorer.autoReveal": false,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"search.exclude": {
+		"**/.git" : true,
+		"**/vendor" : true,
+	},
+	"php.version": "v8.1"
+}

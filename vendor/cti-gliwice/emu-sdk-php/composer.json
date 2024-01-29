@@ -1,0 +1,22 @@
+{
+    "name": "cti-gliwice/emu-sdk-php",
+    "description": "eMU SDK PHP",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+		"ext-curl": "*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "eMU\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Paweł Przespolewski",
+            "email": "pawelprzespolewski@cti.org.pl"
+        }
+    ],
+    "minimum-stability": "stable"
+}
