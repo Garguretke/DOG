@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="{{ $_COOKIE['theme'] ?? 'dark' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +27,7 @@
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('/plugins/bootstrap-table/bootstrap-table.min.js') }}"></script>
     <script src="{{ asset('/source/js/csrf.js') }}"></script>
+	<script src="{{ asset('/source/js/dog-main.js') }}"></script>
 
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm">
@@ -88,6 +89,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+						<li class="nav-item">
+							<a id="swap_theme_button" class="nav-link"><i class="fal {{ ($_COOKIE['theme'] ?? 'dark') == 'dark' ? 'fa-sun-bright':'fa-moon'}} fa-xl"></i></a>
+						</li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
